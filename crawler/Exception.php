@@ -1,6 +1,6 @@
 <?php
 
-namespace insights\insightsCrawlerApi;
+namespace insights\api\crawler;
 
 class Exception extends \Exception {
 

@@ -1,5 +1,5 @@
 <?php
-namespace insights\insightsCrawlerApi;
+namespace insights\api\crawler;
 
 use GuzzleHttp\Client AS HTTPClient;
 use yii\base\Component;

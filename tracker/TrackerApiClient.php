@@ -1,5 +1,5 @@
 <?php
-namespace insights\insightsTrackerApi;
+namespace insights\api\tracker;
 
 use GuzzleHttp\Client AS HTTPClient;
 use yii\base\Component;

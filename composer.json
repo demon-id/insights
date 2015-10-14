@@ -1,5 +1,5 @@
 {
-    "name": "insights",
+    "name": "insights/api",
     "description": "Insights 2.0 API Clients",
     "type": "insights-api-clients",
     "keywords": ["insights api"],
@@ -15,8 +15,7 @@
     },
     "autoload": {
         "psr-4": {
-            "insights\\insightsCrawlerApi\\": "",
-            "insights\\insightsTrackerApi\\": ""
+            "insights\\api\\": ""
         }
     }
 }

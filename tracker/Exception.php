@@ -1,6 +1,6 @@
 <?php
 
-namespace insights\insightsTrackerApi;
+namespace insights\api\tracker;
 
 class Exception extends \Exception {
 
