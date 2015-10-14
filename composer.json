@@ -1,5 +1,5 @@
 {
-    "name": "insights/api",
+    "name": "insights",
     "description": "Insights 2.0 API Clients",
     "type": "insights-api-clients",
     "keywords": ["insights api"],
