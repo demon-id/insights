@@ -1,0 +1,22 @@
+{
+    "name": "insights/api",
+    "description": "Insights 2.0 API Clients",
+    "type": "insights-api-clients",
+    "keywords": ["insights api"],
+    "license": "BSD-3-Clause",
+    "authors": [
+        {
+            "name": "Stepnoy Alexandr"
+        }
+    ],
+    "require": {
+        "yiisoft/yii2": "*",
+        "guzzlehttp/guzzle": "~5.0"
+    },
+    "autoload": {
+        "psr-4": {
+            "insights\\insightsCrawlerApi\\": "",
+            "insights\\insightsTrackerApi\\": ""
+        }
+    }
+}
