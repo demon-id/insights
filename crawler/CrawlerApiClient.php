@@ -121,4 +121,5 @@ class CrawlerApiClient extends Component {
 			'content' => $page_content,
 		]);
 	}
+
 }
