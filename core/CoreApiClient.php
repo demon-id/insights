@@ -31,7 +31,7 @@ class CoreApiClient extends Component {
 	protected function sendRequest($name, $params=[], $headers=[])
 	{
 		$headers = ArrayHelper::merge($headers, [
-			'api_key' => $this->apiKey
+			'api-key' => $this->apiKey
 		]);
 
 		$request_params = $this->getRequestParams($name);
