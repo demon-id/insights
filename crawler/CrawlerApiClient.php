@@ -4,6 +4,7 @@ namespace insights\api\crawler;
 use GuzzleHttp\Client AS HTTPClient;
 use yii\base\Component;
 use yii\helpers\ArrayHelper;
+use yii\helpers\Json;
 
 class CrawlerApiClient extends Component {
 
@@ -126,7 +127,7 @@ class CrawlerApiClient extends Component {
 			'id' => $page_id,
 			'response_code' => $response_code,
 			'response_time' => $response_time,
-			'content' => $page_content,
+			'content' => Json::encode($page_content),
 		]);
 	}
 
