@@ -123,6 +123,7 @@ class CrawlerApiClient extends Component {
 
 	public function stopGrabeSitePage($page_id, $response_code, $response_time, $page_content)
 	{
+		die(Json::encode($page_content));
 		return $this->sendRequest('stop-grab-site-page', [
 			'id' => $page_id,
 			'response_code' => $response_code,
