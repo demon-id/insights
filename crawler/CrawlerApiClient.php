@@ -69,7 +69,7 @@ class CrawlerApiClient extends Component {
 		$request_url = $this->apiUrl.$request_params['url'];
 		$response = $this->HTTPClient->$request_type($request_url, [
 			'headers' => $headers,
-			'body' => $params
+			'body' => json_encode($params, JSON_UNESCAPED_UNICODE)
 		]);
 
 		$answer = $response->json();
@@ -123,12 +123,11 @@ class CrawlerApiClient extends Component {
 
 	public function stopGrabeSitePage($page_id, $response_code, $response_time, $page_content)
 	{
-		die(Json::encode($page_content));
 		return $this->sendRequest('stop-grab-site-page', [
 			'id' => $page_id,
 			'response_code' => $response_code,
 			'response_time' => $response_time,
-			'content' => Json::encode($page_content),
+			'content' => $page_content,
 		]);
 	}
 
