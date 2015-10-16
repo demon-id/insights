@@ -41,7 +41,15 @@ class CrawlerApiClient extends Component {
 		'stop-grab-site-page' => [
 			'url' => 'site-pages/stop-grab-page',
 			'type' => 'post'
-		]
+		],
+		'start-parse-site-page-links' => [
+			'url' => 'site-pages/start-parse-page-links',
+			'type' => 'post'
+		],
+		'stop-parse-site-page-links' => [
+			'url' => 'site-pages/stop-parse-page-links',
+			'type' => 'post'
+		],
 
 	];
 
@@ -122,6 +130,15 @@ class CrawlerApiClient extends Component {
 		]);
 	}
 
-	// test f sfsdfsd
-
+	public function startParseSitePageLinks($page_id)
+	{
+		return $this->sendRequest('start-parse-site-page-links', ['id'=>$page_id]);
+	}
+	public function stopParseSitePageLinks($page_id, $links)
+	{
+		return $this->sendRequest('stop-parse-site-page-links', [
+			'id' => $page_id,
+			'links' => $links
+		]);
+	}
 }
