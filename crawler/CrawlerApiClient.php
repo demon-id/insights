@@ -12,6 +12,8 @@ class CrawlerApiClient extends Component {
 
 	public $apiKey;
 
+	public $testUserIds;
+
 	protected $HTTPClient;
 
 	protected $methodParams = [
