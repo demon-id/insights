@@ -6,7 +6,7 @@ use yii\base\Component;
 use yii\helpers\ArrayHelper;
 use yii\helpers\Json;
 
-class CrawlerApiClient extends Component {
+class RequestApi extends Component {
 
 	public $apiUrl;
 
@@ -32,14 +32,6 @@ class CrawlerApiClient extends Component {
 		'delete-site' => [
 			'url' => 'sites/delete-site',
 			'type' => 'put'
-		],
-		'start-grab-site-robots' => [
-			'url' => 'sites/start-grab-robots',
-			'type' => 'post'
-		],
-		'stop-grab-site-robots' => [
-			'url' => 'sites/stop-grab-robots',
-			'type' => 'post'
 		],
 		'get-site-page' => [
 			'url' => 'site-pages/get-page',
@@ -119,19 +111,6 @@ class CrawlerApiClient extends Component {
 	public function deleteSite($site_id)
 	{
 		return $this->sendRequest('delete-site', ['site_id'=>$site_id]);
-	}
-
-	public function startGrabeSiteRobots($site_id)
-	{
-		return $this->sendRequest('start-grab-site-robots', ['id'=>$site_id]);
-	}
-
-	public function stopGrabeSiteRobots($site_id, $data)
-	{
-		return $this->sendRequest('stop-grab-site-robots', [
-			'id' => $site_id,
-			'data' => $data
-		]);
 	}
 
 	public function getSitePage($page_id)
