@@ -41,6 +41,22 @@ class CrawlerApiClient extends Component {
 			'url' => 'sites/stop-grab-robots',
 			'type' => 'post'
 		],
+		'start-grab-site-sitemap-index' => [
+			'url' => 'sites/start-grab-sitemap-index',
+			'type' => 'post'
+		],
+		'stop-grab-site-sitemap-index' => [
+			'url' => 'sites/stop-grab-sitemap-index',
+			'type' => 'post'
+		],
+		'start-grab-site-sitemap' => [
+			'url' => 'sites/start-grab-sitemap',
+			'type' => 'post'
+		],
+		'stop-grab-site-sitemap' => [
+			'url' => 'sites/stop-grab-sitemap',
+			'type' => 'post'
+		],
 		'get-site-page' => [
 			'url' => 'site-pages/get-page',
 			'type' => 'get'
@@ -129,6 +145,32 @@ class CrawlerApiClient extends Component {
 	public function stopGrabeSiteRobots($site_id, $data)
 	{
 		return $this->sendRequest('stop-grab-site-robots', [
+			'id' => $site_id,
+			'data' => $data
+		]);
+	}
+
+	public function startGrabeSiteSitemapIndex($site_id)
+	{
+		return $this->sendRequest('start-grab-site-sitemap-index', ['id'=>$site_id]);
+	}
+
+	public function stopGrabeSiteSitemapIndex($site_id, $data)
+	{
+		return $this->sendRequest('stop-grab-site-sitemap-index', [
+			'id' => $site_id,
+			'data' => $data
+		]);
+	}
+
+	public function startGrabeSiteSitemap($site_id)
+	{
+		return $this->sendRequest('start-grab-site-sitemap', ['id'=>$site_id]);
+	}
+
+	public function stopGrabeSiteSitemap($site_id, $data)
+	{
+		return $this->sendRequest('stop-grab-site-sitemap', [
 			'id' => $site_id,
 			'data' => $data
 		]);
