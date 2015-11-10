@@ -49,6 +49,14 @@ class CrawlerApiClient extends Component {
 			'url' => 'site-sitemaps/stop-grab-sitemap',
 			'type' => 'post'
 		],
+		'start-parse-sitemap-links' => [
+			'url' => 'site-sitemaps/start-parse-sitemap-links',
+			'type' => 'post'
+		],
+		'stop-parse-sitemap-links' => [
+			'url' => 'site-sitemaps/stop-parse-sitemap-links',
+			'type' => 'post'
+		],
 		'get-site-page' => [
 			'url' => 'site-pages/get-page',
 			'type' => 'get'
@@ -157,6 +165,18 @@ class CrawlerApiClient extends Component {
 		return $this->sendRequest('stop-grab-sitemap', [
 			'id' => $sitemap_id,
 			'data' => $data
+		]);
+	}
+
+	public function startParseSitemapLinks($sitemap_id)
+	{
+		return $this->sendRequest('start-parse-sitemap-links', ['id'=>$sitemap_id]);
+	}
+	public function stopParseSitemapLinks($sitemap_id, $links)
+	{
+		return $this->sendRequest('stop-parse-sitemap-links', [
+			'id' => $sitemap_id,
+			'links' => $links
 		]);
 	}
 
