@@ -150,19 +150,6 @@ class CrawlerApiClient extends Component {
 		]);
 	}
 
-	public function startGrabeSiteSitemapIndex($site_id)
-	{
-		return $this->sendRequest('start-grab-site-sitemap-index', ['id'=>$site_id]);
-	}
-
-	public function stopGrabeSiteSitemapIndex($site_id, $data)
-	{
-		return $this->sendRequest('stop-grab-site-sitemap-index', [
-			'id' => $site_id,
-			'data' => $data
-		]);
-	}
-
 	public function startGrabeSiteSitemap($site_id)
 	{
 		return $this->sendRequest('start-grab-site-sitemap', ['id'=>$site_id]);
