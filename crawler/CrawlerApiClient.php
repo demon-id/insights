@@ -42,11 +42,11 @@ class CrawlerApiClient extends Component {
 			'type' => 'post'
 		],
 		'start-grab-sitemap' => [
-			'url' => 'sites/start-grab-sitemap',
+			'url' => 'site-sitemaps/start-grab-sitemap',
 			'type' => 'post'
 		],
 		'stop-grab-sitemap' => [
-			'url' => 'sites/stop-grab-sitemap',
+			'url' => 'site-sitemaps/stop-grab-sitemap',
 			'type' => 'post'
 		],
 		'get-site-page' => [
