@@ -223,7 +223,7 @@ class CrawlerApiClient extends Component {
 		return $this->sendRequest('start-parse-site-page-content', ['id'=>$page_id]);
 	}
 
-	public function stopParseSitePageConetent($page_id, $data)
+	public function stopParseSitePageContent($page_id, $data)
 	{
 		return $this->sendRequest('stop-parse-site-page-content', [
 			'id' => $page_id,
