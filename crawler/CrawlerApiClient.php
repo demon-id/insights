@@ -57,11 +57,11 @@ class CrawlerApiClient extends Component {
 			'url' => 'site-sitemaps/stop-parse-sitemap-links',
 			'type' => 'post'
 		],
-		'start-grab-link' => [
+		'start-grab-external-link' => [
 			'url' => 'external-links/start-grab-link',
 			'type' => 'post'
 		],
-		'stop-grab-link' => [
+		'stop-grab-external-link' => [
 			'url' => 'external-links/stop-grab-link',
 			'type' => 'post'
 		],
@@ -199,14 +199,14 @@ class CrawlerApiClient extends Component {
 		]);
 	}
 
-	public function startGrabLink($link_id)
+	public function startGrabExternalLink($link_id)
 	{
-		return $this->sendRequest('start-grab-link', ['id'=>$link_id]);
+		return $this->sendRequest('start-grab-external-link', ['id'=>$link_id]);
 	}
 
-	public function stopGrabLink($link_id, $data)
+	public function stopGrabExternalLink($link_id, $data)
 	{
-		return $this->sendRequest('stop-grab-link', [
+		return $this->sendRequest('stop-grab-external-link', [
 			'id' => $link_id,
 			'data' => $data
 		]);
