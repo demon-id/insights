@@ -33,6 +33,10 @@ class CrawlerApiClient extends Component {
 			'url' => 'sites/delete-site',
 			'type' => 'put'
 		],
+		'add-keywords' => [
+			'url' => 'sites/add-keywords',
+			'type' => 'post'
+		],
 		'start-grab-site-robots' => [
 			'url' => 'sites/start-grab-robots',
 			'type' => 'post'
@@ -158,6 +162,11 @@ class CrawlerApiClient extends Component {
 	public function deleteSite($site_id)
 	{
 		return $this->sendRequest('delete-site', ['site_id'=>$site_id]);
+	}
+
+	public function addKeywords($site_id, $keywords)
+	{
+		return $this->sendRequest('add-keywords', ['site_id'=>$site_id, 'keywords'=>$keywords]);
 	}
 
 	public function startGrabeSiteRobots($site_id)
