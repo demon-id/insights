@@ -41,8 +41,8 @@ class CrawlerApiClient extends Component {
 			'url' => 'site-keywords/get-site-keywords',
 			'type' => 'get'
 		],
-		'delete-keyword' => [
-			'url' => 'site-keywords/delete-keyword',
+		'delete-site-keyword' => [
+			'url' => 'site-keywords/delete-site-keyword',
 			'type' => 'put'
 		],
 		'start-grab-site-robots' => [
@@ -190,9 +190,9 @@ class CrawlerApiClient extends Component {
 		return $this->sendRequest('get-site-keywords', ['site_id'=>$site_id]);
 	}
 
-	public function deleteKeyword($id)
+	public function deleteSiteKeyword($id, $site_id)
 	{
-		return $this->sendRequest('delete-keyword', ['id'=>$id]);
+		return $this->sendRequest('delete-site-keyword', ['id'=>$id, 'site_id'=>$site_id]);
 	}
 
 	public function startGrabeSiteRobots($site_id)
