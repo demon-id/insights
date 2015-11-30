@@ -101,11 +101,11 @@ class CrawlerApiClient extends Component {
 			'url' => 'site-page-keywords/stop-parse-page-keyword',
 			'type' => 'post'
 		],
-		'start-grab-serp' => [
+		'start-grab-keywords-serp' => [
 			'url' => 'keywords-serp/start-grab-serp',
 			'type' => 'post'
 		],
-		'stop-grab-serp' => [
+		'stop-grab-keywords-serp' => [
 			'url' => 'keywords-serp/stop-grab-serp',
 			'type' => 'post'
 		],
@@ -281,14 +281,14 @@ class CrawlerApiClient extends Component {
 		]);
 	}
 
-	public function startGrabSerp($keyword_id)
+	public function startGrabKeywordsSerp($keyword_id)
 	{
-		return $this->sendRequest('start-grab-serp', ['id'=>$keyword_id]);
+		return $this->sendRequest('start-grab-keywords-serp', ['id'=>$keyword_id]);
 	}
 
-	public function stopGrabSerp($keyword_id, $data)
+	public function stopGrabKeywordsSerp($keyword_id, $data)
 	{
-		return $this->sendRequest('stop-grab-serp', [
+		return $this->sendRequest('stop-grab-keywords-serp', [
 			'id' => $keyword_id,
 			'data' => $data
 		]);
