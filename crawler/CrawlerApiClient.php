@@ -204,12 +204,12 @@ class CrawlerApiClient extends Component {
 		return $this->sendRequest('count-sites-keywords', ['site_ids'=>$site_ids]);
 	}
 
-	public function startGrabeSiteRobots($site_id)
+	public function startGrabSiteRobots($site_id)
 	{
 		return $this->sendRequest('start-grab-site-robots', ['id'=>$site_id]);
 	}
 
-	public function stopGrabeSiteRobots($site_id, $data)
+	public function stopGrabSiteRobots($site_id, $data)
 	{
 		return $this->sendRequest('stop-grab-site-robots', [
 			'id' => $site_id,
@@ -222,12 +222,12 @@ class CrawlerApiClient extends Component {
 		return $this->sendRequest('get-site-page', ['id'=>$sitemap_id]);
 	}
 
-	public function startGrabeSitemap($sitemap_id)
+	public function startGrabSitemap($sitemap_id)
 	{
 		return $this->sendRequest('start-grab-sitemap', ['id'=>$sitemap_id]);
 	}
 
-	public function stopGrabeSitemap($sitemap_id, $data)
+	public function stopGrabSitemap($sitemap_id, $data)
 	{
 		return $this->sendRequest('stop-grab-sitemap', [
 			'id' => $sitemap_id,
