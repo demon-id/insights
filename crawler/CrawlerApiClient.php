@@ -33,6 +33,22 @@ class CrawlerApiClient extends Component {
 			'url' => 'sites/delete-site',
 			'type' => 'put'
 		],
+		'add-keywords' => [
+			'url' => 'site-keywords/add-keywords',
+			'type' => 'post'
+		],
+		'get-site-keywords' => [
+			'url' => 'site-keywords/get-site-keywords',
+			'type' => 'get'
+		],
+		'count-sites-keywords' => [
+			'url' => 'site-keywords/count-sites-keywords',
+			'type' => 'get'
+		],
+		'delete-site-keyword' => [
+			'url' => 'site-keywords/delete-site-keyword',
+			'type' => 'put'
+		],
 		'start-grab-site-robots' => [
 			'url' => 'sites/start-grab-robots',
 			'type' => 'post'
@@ -166,6 +182,26 @@ class CrawlerApiClient extends Component {
 	public function deleteSite($site_id)
 	{
 		return $this->sendRequest('delete-site', ['site_id'=>$site_id]);
+	}
+
+	public function addKeywords($site_id, $keywords=[])
+	{
+		return $this->sendRequest('add-keywords', ['site_id'=>$site_id, 'keywords'=>$keywords]);
+	}
+
+	public function getSiteKeywords($site_id)
+	{
+		return $this->sendRequest('get-site-keywords', ['site_id'=>$site_id]);
+	}
+
+	public function deleteSiteKeyword($id, $site_id)
+	{
+		return $this->sendRequest('delete-site-keyword', ['id'=>$id, 'site_id'=>$site_id]);
+	}
+
+	public function countSitesKeywords($site_ids)
+	{
+		return $this->sendRequest('count-sites-keywords', ['site_ids'=>$site_ids]);
 	}
 
 	public function startGrabeSiteRobots($site_id)
