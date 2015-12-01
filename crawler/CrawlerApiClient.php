@@ -329,4 +329,17 @@ class CrawlerApiClient extends Component {
 			'data' => $data
 		]);
 	}
+
+	public function startParseKeywordsSerp($keyword_id)
+	{
+		return $this->sendRequest('start-parse-keywords-serp', ['id'=>$keyword_id]);
+	}
+
+	public function stopParseKeywordsSerp($keyword_id, $data)
+	{
+		return $this->sendRequest('stop-parse-keywords-serp', [
+			'id' => $keyword_id,
+			'data' => $data
+		]);
+	}
 }
