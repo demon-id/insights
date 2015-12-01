@@ -125,6 +125,14 @@ class CrawlerApiClient extends Component {
 			'url' => 'keywords-serp/stop-grab-serp',
 			'type' => 'post'
 		],
+		'start-parse-keywords-serp' => [
+			'url' => 'keywords-serp/start-parse-serp',
+			'type' => 'post'
+		],
+		'stop-parse-keywords-serp' => [
+			'url' => 'keywords-serp/stop-parse-serp',
+			'type' => 'post'
+		],
 	];
 
 	public function __construct() {
