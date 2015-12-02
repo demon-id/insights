@@ -265,12 +265,12 @@ class CrawlerApiClient extends Component {
 		return $this->sendRequest('get-site-page', ['id'=>$page_id]);
 	}
 
-	public function startGrabeSitePage($page_id)
+	public function startGrabSitePage($page_id)
 	{
 		return $this->sendRequest('start-grab-site-page', ['id'=>$page_id]);
 	}
 
-	public function stopGrabeSitePage($page_id, $data)
+	public function stopGrabSitePage($page_id, $data)
 	{
 		return $this->sendRequest('stop-grab-site-page', [
 			'id' => $page_id,
