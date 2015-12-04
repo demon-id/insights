@@ -33,6 +33,10 @@ class CrawlerApiClient extends Component {
 			'url' => 'sites/delete-site',
 			'type' => 'put'
 		],
+		'hard-delete-site' => [
+			'url' => 'sites/hard-delete-site',
+			'type' => 'put'
+		],
 		'add-keywords' => [
 			'url' => 'site-keywords/add-keywords',
 			'type' => 'post'
@@ -190,6 +194,11 @@ class CrawlerApiClient extends Component {
 	public function deleteSite($site_id)
 	{
 		return $this->sendRequest('delete-site', ['site_id'=>$site_id]);
+	}
+
+	public function hardDeleteSite($site_id)
+	{
+		return $this->sendRequest('hard-delete-site', ['site_id'=>$site_id]);
 	}
 
 	public function addKeywords($site_id, $keywords=[])
