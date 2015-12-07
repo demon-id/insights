@@ -50,11 +50,11 @@ class CrawlerApiClient extends Component {
 			'type' => 'put'
 		],
 		'start-grab-site-robots' => [
-			'url' => 'sites/start-grab-robots',
+			'url' => 'crawler-sites/start-grab-robots',
 			'type' => 'post'
 		],
 		'stop-grab-site-robots' => [
-			'url' => 'sites/stop-grab-robots',
+			'url' => 'crawler-sites/stop-grab-robots',
 			'type' => 'post'
 		],
 		'start-grab-sitemap' => [
