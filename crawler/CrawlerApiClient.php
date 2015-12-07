@@ -76,6 +76,16 @@ class CrawlerApiClient extends Component {
 			'type' => 'post'
 		],
 
+		// Crawler external links
+		'start-grab-external-link' => [
+			'url' => 'crawler-external-links/start-grab-link',
+			'type' => 'post'
+		],
+		'stop-grab-external-link' => [
+			'url' => 'crawler-external-links/stop-grab-link',
+			'type' => 'post'
+		],
+
 
 		'add-keywords' => [
 			'url' => 'site-keywords/add-keywords',
@@ -110,14 +120,7 @@ class CrawlerApiClient extends Component {
 			'url' => 'site-sitemaps/stop-parse-sitemap-links',
 			'type' => 'post'
 		],
-		'start-grab-external-link' => [
-			'url' => 'external-links/start-grab-link',
-			'type' => 'post'
-		],
-		'stop-grab-external-link' => [
-			'url' => 'external-links/stop-grab-link',
-			'type' => 'post'
-		],
+
 
 		'start-parse-site-page-keyword' => [
 			'url' => 'site-page-keywords/start-parse-page-keyword',
