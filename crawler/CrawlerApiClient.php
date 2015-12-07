@@ -86,7 +86,25 @@ class CrawlerApiClient extends Component {
 			'type' => 'post'
 		],
 
+		// Crawler sitemaps
+		'start-grab-sitemap' => [
+			'url' => 'crawler-site-sitemaps/start-grab-sitemap',
+			'type' => 'post'
+		],
+		'stop-grab-sitemap' => [
+			'url' => 'crawler-site-sitemaps/stop-grab-sitemap',
+			'type' => 'post'
+		],
+		'start-parse-sitemap-links' => [
+			'url' => 'crawler-site-sitemaps/start-parse-sitemap-links',
+			'type' => 'post'
+		],
+		'stop-parse-sitemap-links' => [
+			'url' => 'crawler-site-sitemaps/stop-parse-sitemap-links',
+			'type' => 'post'
+		],
 
+		// Keywords
 		'add-keywords' => [
 			'url' => 'site-keywords/add-keywords',
 			'type' => 'post'
@@ -104,46 +122,31 @@ class CrawlerApiClient extends Component {
 			'type' => 'put'
 		],
 
-		'start-grab-sitemap' => [
-			'url' => 'site-sitemaps/start-grab-sitemap',
-			'type' => 'post'
-		],
-		'stop-grab-sitemap' => [
-			'url' => 'site-sitemaps/stop-grab-sitemap',
-			'type' => 'post'
-		],
-		'start-parse-sitemap-links' => [
-			'url' => 'site-sitemaps/start-parse-sitemap-links',
-			'type' => 'post'
-		],
-		'stop-parse-sitemap-links' => [
-			'url' => 'site-sitemaps/stop-parse-sitemap-links',
-			'type' => 'post'
-		],
-
-
+		// Crawler site page keywords
 		'start-parse-site-page-keyword' => [
-			'url' => 'site-page-keywords/start-parse-page-keyword',
+			'url' => 'crawler-site-page-keywords/start-parse-page-keyword',
 			'type' => 'post'
 		],
 		'stop-parse-site-page-keyword' => [
-			'url' => 'site-page-keywords/stop-parse-page-keyword',
+			'url' => 'crawler-site-page-keywords/stop-parse-page-keyword',
 			'type' => 'post'
 		],
+
+		// Crawler keywords serp
 		'start-grab-keywords-serp' => [
-			'url' => 'keywords-serp/start-grab-serp',
+			'url' => 'crawler-keywords-serp/start-grab-serp',
 			'type' => 'post'
 		],
 		'stop-grab-keywords-serp' => [
-			'url' => 'keywords-serp/stop-grab-serp',
+			'url' => 'crawler-keywords-serp/stop-grab-serp',
 			'type' => 'post'
 		],
 		'start-parse-keywords-serp' => [
-			'url' => 'keywords-serp/start-parse-serp',
+			'url' => 'crawler-keywords-serp/start-parse-serp',
 			'type' => 'post'
 		],
 		'stop-parse-keywords-serp' => [
-			'url' => 'keywords-serp/stop-parse-serp',
+			'url' => 'crawler-keywords-serp/stop-parse-serp',
 			'type' => 'post'
 		],
 	];
