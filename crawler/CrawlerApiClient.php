@@ -17,12 +17,10 @@ class CrawlerApiClient extends Component {
 	protected $HTTPClient;
 
 	protected $methodParams = [
+
+		// Sites
 		'get-sites' => [
 			'url' => 'sites/index',
-			'type' => 'get'
-		],
-		'check-site-available' => [
-			'url' => 'sites/check-site-available',
 			'type' => 'get'
 		],
 		'add-site' => [
@@ -33,6 +31,52 @@ class CrawlerApiClient extends Component {
 			'url' => 'sites/delete-site',
 			'type' => 'put'
 		],
+
+		// Crawler sites
+		'check-site-available' => [
+			'url' => 'sites/check-site-available',
+			'type' => 'get'
+		],
+		'start-grab-site-robots' => [
+			'url' => 'crawler-sites/start-grab-robots',
+			'type' => 'post'
+		],
+		'stop-grab-site-robots' => [
+			'url' => 'crawler-sites/stop-grab-robots',
+			'type' => 'post'
+		],
+
+		// Crawler site pages
+		'get-site-page' => [
+			'url' => 'crawler-site-pages/get-page',
+			'type' => 'get'
+		],
+		'start-grab-site-page' => [
+			'url' => 'crawler-site-pages/start-grab-page',
+			'type' => 'post'
+		],
+		'stop-grab-site-page' => [
+			'url' => 'crawler-site-pages/stop-grab-page',
+			'type' => 'post'
+		],
+		'start-parse-site-page-links' => [
+			'url' => 'crawler-site-pages/start-parse-page-links',
+			'type' => 'post'
+		],
+		'stop-parse-site-page-links' => [
+			'url' => 'crawler-site-pages/stop-parse-page-links',
+			'type' => 'post'
+		],
+		'start-parse-site-page-content' => [
+			'url' => 'crawler-site-pages/start-parse-page-content',
+			'type' => 'post'
+		],
+		'stop-parse-site-page-content' => [
+			'url' => 'crawler-site-pages/stop-parse-page-content',
+			'type' => 'post'
+		],
+
+
 		'add-keywords' => [
 			'url' => 'site-keywords/add-keywords',
 			'type' => 'post'
@@ -49,14 +93,7 @@ class CrawlerApiClient extends Component {
 			'url' => 'site-keywords/delete-site-keyword',
 			'type' => 'put'
 		],
-		'start-grab-site-robots' => [
-			'url' => 'crawler-sites/start-grab-robots',
-			'type' => 'post'
-		],
-		'stop-grab-site-robots' => [
-			'url' => 'crawler-sites/stop-grab-robots',
-			'type' => 'post'
-		],
+
 		'start-grab-sitemap' => [
 			'url' => 'site-sitemaps/start-grab-sitemap',
 			'type' => 'post'
@@ -81,34 +118,7 @@ class CrawlerApiClient extends Component {
 			'url' => 'external-links/stop-grab-link',
 			'type' => 'post'
 		],
-		'get-site-page' => [
-			'url' => 'site-pages/get-page',
-			'type' => 'get'
-		],
-		'start-grab-site-page' => [
-			'url' => 'site-pages/start-grab-page',
-			'type' => 'post'
-		],
-		'stop-grab-site-page' => [
-			'url' => 'site-pages/stop-grab-page',
-			'type' => 'post'
-		],
-		'start-parse-site-page-links' => [
-			'url' => 'site-pages/start-parse-page-links',
-			'type' => 'post'
-		],
-		'stop-parse-site-page-links' => [
-			'url' => 'site-pages/stop-parse-page-links',
-			'type' => 'post'
-		],
-		'start-parse-site-page-content' => [
-			'url' => 'site-pages/start-parse-page-content',
-			'type' => 'post'
-		],
-		'stop-parse-site-page-content' => [
-			'url' => 'site-pages/stop-parse-page-content',
-			'type' => 'post'
-		],
+
 		'start-parse-site-page-keyword' => [
 			'url' => 'site-page-keywords/start-parse-page-keyword',
 			'type' => 'post'
