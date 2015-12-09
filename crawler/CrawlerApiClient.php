@@ -32,6 +32,11 @@ class CrawlerApiClient extends Component {
 			'type' => 'put'
 		],
 
+		'start-crawl-site' => [
+			'url' => 'sites/start-crawl-site',
+			'type' => 'post'
+		],
+
 		// Crawler sites
 		'check-site-available' => [
 			'url' => 'crawler-sites/check-site-available',
@@ -215,6 +220,11 @@ class CrawlerApiClient extends Component {
 	public function hardDeleteSite($site_id)
 	{
 		return $this->sendRequest('hard-delete-site', ['site_id'=>$site_id]);
+	}
+
+	public function startCrawlSite($site_id, $force)
+	{
+		return $this->sendRequest('start-crawl-site', ['site_id'=>$site_id, 'force'=>$force]);
 	}
 
 	public function addKeywords($site_id, $keywords=[])
