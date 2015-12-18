@@ -167,6 +167,7 @@ class CrawlerApiClient extends Component {
 	protected function sendRequest($name, $params=[], $headers=[])
 	{
 		$headers = ArrayHelper::merge($headers, [
+			'Accept' =>'application/json',
 			'api-key' => $this->apiKey
 		]);
 
