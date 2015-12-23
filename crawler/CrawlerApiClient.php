@@ -179,9 +179,9 @@ class CrawlerApiClient extends Component {
 			'body' => $params
 		]);
 
-		//$answer = $response->json();
+		$answer = $response->json();
 
-		return $response;
+		return $answer;
 	}
 
 	protected function getRequestParams($name)
