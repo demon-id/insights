@@ -84,6 +84,14 @@ class CrawlerApiClient extends Component {
 			'url' => 'crawler-site-pages/stop-parse-page-content',
 			'type' => 'post'
 		],
+		'start-track-page-forms' => [
+			'url' => 'crawler-site-pages/start-track-page-forms',
+			'type' => 'post'
+		],
+		'stop-track-page-forms' => [
+			'url' => 'crawler-site-pages/stop-track-page-forms',
+			'type' => 'post'
+		],
 
 		// Crawler external links
 		'start-grab-external-link' => [
@@ -384,6 +392,18 @@ class CrawlerApiClient extends Component {
 		return $this->sendRequest('stop-parse-keywords-serp', [
 			'id' => $keyword_id,
 			'data' => $data
+		]);
+	}
+
+	public function startTrackPageForms($page_id)
+	{
+		return $this->sendRequest('start-track-page-forms', ['id'=>$page_id]);
+	}
+
+	public function stopTrackPageForms($page_id)
+	{
+		return $this->sendRequest('stop-track-page-forms', [
+			'id' => $page_id
 		]);
 	}
 }
