@@ -148,12 +148,12 @@ class CrawlerApiClient extends Component {
 			'url' => 'crawler-site-page-keywords/stop-parse-page-keyword',
 			'type' => 'post'
 		],
-		'start-parse-site-page-keywords-pack' => [
-			'url' => 'crawler-site-page-keywords/start-parse-page-keywords-pack',
+		'start-parse-site-page-keywords' => [
+			'url' => 'crawler-site-page-keywords/start-parse-page-keywords',
 			'type' => 'post'
 		],
-		'stop-parse-site-page-keywords-pack' => [
-			'url' => 'crawler-site-page-keywords/stop-parse-page-keywords-pack',
+		'stop-parse-site-page-keywords' => [
+			'url' => 'crawler-site-page-keywords/stop-parse-page-keywords',
 			'type' => 'post'
 		],
 
@@ -377,14 +377,14 @@ class CrawlerApiClient extends Component {
 		]);
 	}
 
-	public function startParseSitePageKeywordsPack($keyword_ids)
+	public function startParseSitePageKeywords($page_id)
 	{
-		return $this->sendRequest('start-parse-site-page-keywords-pack', ['keyword_ids'=>$keyword_ids]);
+		return $this->sendRequest('start-parse-site-page-keywords', ['page_id'=>$page_id]);
 	}
 
-	public function stopParseSitePageKeywordsPack($data)
+	public function stopParseSitePageKeywords($data)
 	{
-		return $this->sendRequest('stop-parse-site-page-keywords-pack', [
+		return $this->sendRequest('stop-parse-site-page-keywords', [
 			'data' => $data
 		]);
 	}
