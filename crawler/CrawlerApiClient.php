@@ -5,6 +5,7 @@ use GuzzleHttp\Client AS HTTPClient;
 use yii\base\Component;
 use yii\helpers\ArrayHelper;
 use yii\helpers\Json;
+use common\components\Log;
 
 class CrawlerApiClient extends Component {
 
@@ -190,14 +191,25 @@ class CrawlerApiClient extends Component {
 		$request_params = $this->getRequestParams($name);
 		$request_type = $request_params['type'];
 		$request_url = $this->apiUrl.$request_params['url'];
-		$response = $this->HTTPClient->$request_type($request_url, [
-			'headers' => $headers,
-			'body' => $params
-		]);
 
-		$answer = $response->json();
 
-		return $answer;
+		try {
+			$response = $this->HTTPClient->$request_type($request_url, [
+				'headers' => $headers,
+				'body' => $params,
+			]);
+
+			$answer = $response->json();
+
+			return $answer;
+
+		} catch(\GuzzleHttp\Exception\BadResponseException $e) {
+
+			Log::add($e->getMessage(), 'api-http-errors', \Yii::getAlias('@runtime').'/logs');
+
+			return false;
+		}
+
 	}
 
 	protected function getRequestParams($name)
