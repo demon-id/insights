@@ -196,7 +196,7 @@ class CrawlerApiClient extends Component {
 		try {
 			$response = $this->HTTPClient->$request_type($request_url, [
 				'headers' => $headers,
-				'body' => $params,
+				'json' => $params,
 			]);
 
 			$answer = $response->json();
