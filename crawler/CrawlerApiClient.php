@@ -32,7 +32,10 @@ class CrawlerApiClient extends Component {
 			'url' => 'sites/delete-site',
 			'type' => 'put'
 		],
-
+		'hard-delete-site' => [
+			'url' => 'sites/hard-delete-site',
+			'type' => 'put'
+		],
 		'start-crawl-site' => [
 			'url' => 'sites/start-crawl-site',
 			'type' => 'post'
@@ -42,10 +45,6 @@ class CrawlerApiClient extends Component {
 		'check-site-available' => [
 			'url' => 'crawler-sites/check-site-available',
 			'type' => 'get'
-		],
-		'hard-delete-site' => [
-			'url' => 'crawler-sites/hard-delete-site',
-			'type' => 'put'
 		],
 		'start-grab-site-robots' => [
 			'url' => 'crawler-sites/start-grab-robots',
