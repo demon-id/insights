@@ -69,6 +69,10 @@ class CrawlerApiClient extends Component {
 			'url' => 'crawler-site-pages/stop-grab-page',
 			'type' => 'post'
 		],
+		'stop-grab-site-page-with-links' => [
+			'url' => 'crawler-site-pages/stop-grab-page-with-links',
+			'type' => 'post'
+		],
 		'start-parse-site-page-links' => [
 			'url' => 'crawler-site-pages/start-parse-page-links',
 			'type' => 'post'
@@ -345,6 +349,14 @@ class CrawlerApiClient extends Component {
 	public function stopGrabSitePage($page_id, $data)
 	{
 		return $this->sendRequest('stop-grab-site-page', [
+			'id' => $page_id,
+			'data' => $data
+		]);
+	}
+
+	public function stopGrabSitePageWithLinks($page_id, $data)
+	{
+		return $this->sendRequest('stop-grab-site-page-with-links', [
 			'id' => $page_id,
 			'data' => $data
 		]);
