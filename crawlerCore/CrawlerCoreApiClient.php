@@ -41,7 +41,7 @@ class CrawlerCoreApiClient extends Component {
 			'type' => 'post'
 		],
 		'check-site-available' => [
-			'url' => 'crawler-sites/check-site-available',
+			'url' => 'sites/check-site-available',
 			'type' => 'get'
 		],
 
