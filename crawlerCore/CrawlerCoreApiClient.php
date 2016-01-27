@@ -138,9 +138,9 @@ class CrawlerCoreApiClient extends Component {
 		return $this->sendRequest('hard-delete-site', ['site_id'=>$site_id]);
 	}
 
-	public function startCrawlSite($site_id, $force)
+	public function startCrawlSite($site_id, $data)
 	{
-		return $this->sendRequest('start-crawl-site', ['site_id'=>$site_id, 'force'=>$force]);
+		return $this->sendRequest('start-crawl-site', ['site_id'=>$site_id, 'data'=>$data]);
 	}
 
 	public function addKeywords($site_id, $keywords=[])
