@@ -62,6 +62,13 @@ class CrawlerCoreApiClient extends Component {
 			'url' => 'site-keywords/delete-site-keyword',
 			'type' => 'put'
 		],
+
+		// Proxy
+		'get-proxy' => [
+			'url' => 'proxy/get-proxy',
+			'type' => 'get'
+		],
+
 	];
 
 	public function __construct() {
@@ -138,9 +145,9 @@ class CrawlerCoreApiClient extends Component {
 		return $this->sendRequest('hard-delete-site', ['site_id'=>$site_id]);
 	}
 
-	public function startCrawlSite($site_id, $force)
+	public function startCrawlSite($site_id, $data)
 	{
-		return $this->sendRequest('start-crawl-site', ['site_id'=>$site_id, 'force'=>$force]);
+		return $this->sendRequest('start-crawl-site', ['site_id'=>$site_id, 'data'=>$data]);
 	}
 
 	public function addKeywords($site_id, $keywords=[])
@@ -161,5 +168,10 @@ class CrawlerCoreApiClient extends Component {
 	public function countSitesKeywords($site_ids)
 	{
 		return $this->sendRequest('count-sites-keywords', ['site_ids'=>$site_ids]);
+	}
+
+	public function getProxy()
+	{
+		return $this->sendRequest('get-proxy');
 	}
 }
