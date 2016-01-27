@@ -41,6 +41,12 @@ class CrawlerApiClient extends Component {
 			'type' => 'post'
 		],
 
+		// View Sites
+		'get-view-site' => [
+			'url' => 'view-sites/view',
+			'type' => 'get'
+		],
+
 		// Crawler sites
 		'check-site-available' => [
 			'url' => 'crawler-sites/check-site-available',
@@ -277,6 +283,11 @@ class CrawlerApiClient extends Component {
 	public function countSitesKeywords($site_ids)
 	{
 		return $this->sendRequest('count-sites-keywords', ['site_ids'=>$site_ids]);
+	}
+
+	public function getViewSite($site_id)
+	{
+		return $this->sendRequest('get-view-site', ['id'=>$site_id]);
 	}
 
 	public function startGrabSiteRobots($site_id)
