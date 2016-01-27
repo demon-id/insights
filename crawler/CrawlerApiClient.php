@@ -47,7 +47,7 @@ class CrawlerApiClient extends Component {
 			'type' => 'get'
 		],
 		'get-view-site-attribute-error-data' => [
-			'url' => 'view-site-pages/get-view-site-attribute-error-data',
+			'url' => 'view-sites/get-view-site-attribute-error-data',
 			'type' => 'get'
 		],
 
