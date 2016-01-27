@@ -287,7 +287,7 @@ class CrawlerApiClient extends Component {
 
 	public function getViewSite($site_id)
 	{
-		return $this->sendRequest('get-view-site', ['site_id'=>$site_id]);
+		return $this->sendRequest('get-view-site', ['id'=>$site_id]);
 	}
 
 	public function startGrabSiteRobots($site_id)
