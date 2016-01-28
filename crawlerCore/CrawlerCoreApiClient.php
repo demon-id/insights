@@ -62,6 +62,14 @@ class CrawlerCoreApiClient extends Component {
 			'url' => 'site-keywords/delete-site-keyword',
 			'type' => 'put'
 		],
+		'start-crawl-serp-keyword' => [
+			'url' => 'site-keywords/start-crawl-serp-keyword',
+			'type' => 'put'
+		],
+		'stop-crawl-serp-keyword' => [
+			'url' => 'site-keywords/stop-crawl-serp-keyword',
+			'type' => 'put'
+		],
 
 		// Proxy
 		'get-proxy' => [
@@ -145,11 +153,6 @@ class CrawlerCoreApiClient extends Component {
 		return $this->sendRequest('hard-delete-site', ['site_id'=>$site_id]);
 	}
 
-	public function startCrawlSite($site_id, $data)
-	{
-		return $this->sendRequest('start-crawl-site', ['site_id'=>$site_id, 'data'=>$data]);
-	}
-
 	public function addKeywords($site_id, $keywords=[])
 	{
 		return $this->sendRequest('add-keywords', ['site_id'=>$site_id, 'keywords'=>$keywords]);
@@ -173,5 +176,20 @@ class CrawlerCoreApiClient extends Component {
 	public function getProxy()
 	{
 		return $this->sendRequest('get-proxy');
+	}
+
+	public function startCrawlSite($site_id, $data)
+	{
+		return $this->sendRequest('start-crawl-site', ['site_id'=>$site_id, 'data'=>$data]);
+	}
+
+	public function startCrawlSerpKeyword($keyword_id, $data)
+	{
+		return $this->sendRequest('start-crawl-serp-keyword', ['keyword_id'=>$keyword_id, 'data'=>$data]);
+	}
+
+	public function stopCrawlSerpKeyword($keyword_id, $data)
+	{
+		return $this->sendRequest('stop-crawl-serp-keyword', ['keyword_id'=>$keyword_id, 'data'=>$data]);
 	}
 }
