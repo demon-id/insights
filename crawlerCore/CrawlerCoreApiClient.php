@@ -70,6 +70,10 @@ class CrawlerCoreApiClient extends Component {
 			'url' => 'site-keywords/stop-crawl-serp-keyword',
 			'type' => 'put'
 		],
+		'get-keyword-serp' => [
+			'url' => 'site-keywords/get-keyword-serp',
+			'type' => 'get'
+		],
 
 		// Proxy
 		'get-proxy' => [
@@ -191,5 +195,10 @@ class CrawlerCoreApiClient extends Component {
 	public function stopCrawlSerpKeyword($keyword_id, $data)
 	{
 		return $this->sendRequest('stop-crawl-serp-keyword', ['keyword_id'=>$keyword_id, 'data'=>$data]);
+	}
+
+	public function getKeywordSerp($keyword_id)
+	{
+		return $this->sendRequest('get-keyword-serp', ['keyword_id'=>$keyword_id]);
 	}
 }
