@@ -50,6 +50,16 @@ class CrawlerApiClient extends Component {
 			'url' => 'view-sites/get-view-site-attribute-error-data',
 			'type' => 'get'
 		],
+		'get-view-site-page-source' => [
+			'url' => 'view-sites/get-view-site-page-source',
+			'type' => 'get'
+		],
+
+		// View Site Pages
+		'get-view-site-page' => [
+			'url' => 'view-site-pages/get-view-site-page',
+			'type' => 'get'
+		],
 
 		// Crawler sites
 		'check-site-available' => [
@@ -297,6 +307,16 @@ class CrawlerApiClient extends Component {
 	public function getViewSiteAttributeErrorData($site_id, $attribute)
 	{
 		return $this->sendRequest('get-view-site-attribute-error-data', ['site_id'=>$site_id, 'attribute'=>$attribute]);
+	}
+
+	public function getViewSitePageSource($site_id, $attribute, $page_id)
+	{
+		return $this->sendRequest('get-view-site-page-source', ['site_id'=>$site_id, 'attribute'=>$attribute, 'site_page_id'=>$page_id]);
+	}
+
+	public function getViewSitePage($page_id)
+	{
+		return $this->sendRequest('get-view-site-page', ['id'=>$page_id]);
 	}
 
 	public function startGrabSiteRobots($site_id)
