@@ -67,6 +67,12 @@ class CrawlerApiClient extends Component {
 			'type' => 'get'
 		],
 
+		// Data Sites
+		'get-data-sites' => [
+			'url' => 'data-sites/get-data-sites',
+			'type' => 'get'
+		],
+
 		// Crawler sites
 		'check-site-available' => [
 			'url' => 'crawler-sites/check-site-available',
@@ -328,6 +334,11 @@ class CrawlerApiClient extends Component {
 	public function getViewExternalLink($link_id)
 	{
 		return $this->sendRequest('get-view-external-link', ['id'=>$link_id]);
+	}
+
+	public function getDataSites($site_id)
+	{
+		return $this->sendRequest('get-data-sites', ['id'=>$site_id]);
 	}
 
 	public function startGrabSiteRobots($site_id)
