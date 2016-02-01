@@ -310,14 +310,14 @@ class CrawlerApiClient extends Component {
 		return $this->sendRequest('get-view-site', ['id'=>$site_id]);
 	}
 
-	public function getViewSiteAttributeErrorData($site_id, $attribute)
+	public function getViewSiteAttributeErrorData($site_id, $attribute, $current_page)
 	{
-		return $this->sendRequest('get-view-site-attribute-error-data', ['site_id'=>$site_id, 'attribute'=>$attribute]);
+		return $this->sendRequest('get-view-site-attribute-error-data', ['site_id'=>$site_id, 'attribute'=>$attribute, 'current_page'=>$current_page]);
 	}
 
-	public function getViewSitePageSource($site_id, $attribute, $page_id)
+	public function getViewSitePageSource($site_id, $attribute, $page_id, $current_page)
 	{
-		return $this->sendRequest('get-view-site-page-source', ['site_id'=>$site_id, 'attribute'=>$attribute, 'site_page_id'=>$page_id]);
+		return $this->sendRequest('get-view-site-page-source', ['site_id'=>$site_id, 'attribute'=>$attribute, 'site_page_id'=>$page_id, 'current_page'=>$current_page]);
 	}
 
 	public function getViewSitePage($page_id)
