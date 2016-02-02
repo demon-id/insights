@@ -50,6 +50,28 @@ class CrawlerApiClient extends Component {
 			'url' => 'view-sites/get-view-site-attribute-error-data',
 			'type' => 'get'
 		],
+		'get-view-site-page-source' => [
+			'url' => 'view-sites/get-view-site-page-source',
+			'type' => 'get'
+		],
+
+		// View Site Pages
+		'get-view-site-page' => [
+			'url' => 'view-site-pages/get-view-site-page',
+			'type' => 'get'
+		],
+
+		// View External Links
+		'get-view-external-link' => [
+			'url' => 'view-external-links/get-view-external-link',
+			'type' => 'get'
+		],
+
+		// Data Sites
+		'get-data-sites' => [
+			'url' => 'data-sites/get-data-sites',
+			'type' => 'get'
+		],
 
 		// Crawler sites
 		'check-site-available' => [
@@ -294,9 +316,29 @@ class CrawlerApiClient extends Component {
 		return $this->sendRequest('get-view-site', ['id'=>$site_id]);
 	}
 
-	public function getViewSiteAttributeErrorData($site_id, $attribute)
+	public function getViewSiteAttributeErrorData($site_id, $attribute, $current_page)
 	{
-		return $this->sendRequest('get-view-site-attribute-error-data', ['site_id'=>$site_id, 'attribute'=>$attribute]);
+		return $this->sendRequest('get-view-site-attribute-error-data', ['site_id'=>$site_id, 'attribute'=>$attribute, 'current_page'=>$current_page]);
+	}
+
+	public function getViewSitePageSource($site_id, $attribute, $page_id, $current_page)
+	{
+		return $this->sendRequest('get-view-site-page-source', ['site_id'=>$site_id, 'attribute'=>$attribute, 'site_page_id'=>$page_id, 'current_page'=>$current_page]);
+	}
+
+	public function getViewSitePage($page_id)
+	{
+		return $this->sendRequest('get-view-site-page', ['id'=>$page_id]);
+	}
+
+	public function getViewExternalLink($link_id)
+	{
+		return $this->sendRequest('get-view-external-link', ['id'=>$link_id]);
+	}
+
+	public function getDataSites($site_id)
+	{
+		return $this->sendRequest('get-data-sites', ['id'=>$site_id]);
 	}
 
 	public function startGrabSiteRobots($site_id)
