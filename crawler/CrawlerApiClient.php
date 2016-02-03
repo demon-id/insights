@@ -68,8 +68,8 @@ class CrawlerApiClient extends Component {
 		],
 
 		// Data Sites
-		'get-data-sites' => [
-			'url' => 'data-sites/get-data-sites',
+		'get-diagram-data' => [
+			'url' => 'data-sites/get-diagram-data',
 			'type' => 'get'
 		],
 
@@ -336,9 +336,9 @@ class CrawlerApiClient extends Component {
 		return $this->sendRequest('get-view-external-link', ['id'=>$link_id]);
 	}
 
-	public function getDataSites($site_id, $search_date=null)
+	public function getDiagramData($site_id, $search_date=null)
 	{
-		return $this->sendRequest('get-data-sites', ['id'=>$site_id, 'search_date'=>$search_date]);
+		return $this->sendRequest('get-diagram-data', ['id'=>$site_id, 'search_date'=>$search_date]);
 	}
 
 	public function startGrabSiteRobots($site_id)
