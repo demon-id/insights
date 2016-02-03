@@ -86,6 +86,11 @@ class CrawlerApiClient extends Component {
 			'url' => 'crawler-sites/stop-grab-robots',
 			'type' => 'post'
 		],
+		'add-crawler-task' => [
+			'url' => 'crawler-sites/add-crawler-task',
+			'type' => 'post'
+		],
+
 
 		// Crawler site pages
 		'get-site-page' => [
@@ -510,5 +515,11 @@ class CrawlerApiClient extends Component {
 		return $this->sendRequest('stop-track-page-forms', [
 			'id' => $page_id
 		]);
+	}
+
+
+	public function addCrawlerTask($task_type, $data)
+	{
+		return $this->sendRequest('add-crawler-task', ['task_type'=>$task_type, 'data'=>$data]);
 	}
 }
