@@ -536,8 +536,8 @@ class CrawlerApiClient extends Component {
 	}
 
 
-	public function addCrawlerTask($task_type, $data)
+	public function addCrawlerTask($data)
 	{
-		return $this->sendRequest('add-crawler-task', ['task_type'=>$task_type, 'data'=>$data]);
+		return $this->sendRequest('add-crawler-task', ['data'=>$data]);
 	}
 }
