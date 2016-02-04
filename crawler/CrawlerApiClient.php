@@ -60,6 +60,10 @@ class CrawlerApiClient extends Component {
 			'url' => 'view-site-pages/get-view-site-page',
 			'type' => 'get'
 		],
+		'get-site-map-pages' => [
+			'url' => 'view-site-pages/get-site-map-pages',
+			'type' => 'get'
+		],
 
 		// View External Links
 		'get-view-external-link' => [
@@ -68,8 +72,8 @@ class CrawlerApiClient extends Component {
 		],
 
 		// Data Sites
-		'get-data-sites' => [
-			'url' => 'data-sites/get-data-sites',
+		'get-diagram-data' => [
+			'url' => 'data-sites/get-diagram-data',
 			'type' => 'get'
 		],
 
@@ -340,14 +344,19 @@ class CrawlerApiClient extends Component {
 		return $this->sendRequest('get-view-site-page', ['id'=>$page_id]);
 	}
 
+	public function getSiteMapPages($site_id, $level=null, $parent_id=null)
+	{
+		return $this->sendRequest('get-site-map-pages', ['site_id'=>$site_id, 'level'=>$level, 'parent_id'=>$parent_id]);
+	}
+
 	public function getViewExternalLink($link_id)
 	{
 		return $this->sendRequest('get-view-external-link', ['id'=>$link_id]);
 	}
 
-	public function getDataSites($site_id, $search_date=null)
+	public function getDiagramData($site_id, $search_date=null)
 	{
-		return $this->sendRequest('get-data-sites', ['id'=>$site_id, 'search_date'=>$search_date]);
+		return $this->sendRequest('get-diagram-data', ['id'=>$site_id, 'search_date'=>$search_date]);
 	}
 
 	public function startGrabSiteRobots($site_id)
