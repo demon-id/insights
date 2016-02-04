@@ -340,9 +340,9 @@ class CrawlerApiClient extends Component {
 		return $this->sendRequest('get-view-site-page', ['id'=>$page_id]);
 	}
 
-	public function getSiteMapPages($site_id, $level=null, $parent_id=null)
+	public function getSiteMapPages($site_id, $level=null, $parent_id=null, $search_string=null)
 	{
-		return $this->sendRequest('get-site-map-pages', ['site_id'=>$site_id, 'level'=>$level, 'parent_id'=>$parent_id]);
+		return $this->sendRequest('get-site-map-pages', ['site_id'=>$site_id, 'level'=>$level, 'parent_id'=>$parent_id, 'search_string'=>$search_string]);
 	}
 
 	public function getViewExternalLink($link_id)
