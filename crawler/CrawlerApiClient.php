@@ -97,26 +97,30 @@ class CrawlerApiClient extends Component {
 			'url' => 'crawler-site-pages/get-page',
 			'type' => 'get'
 		],
-		'start-grab-site-page' => [
+		/*'start-grab-site-page' => [
 			'url' => 'crawler-site-pages/start-grab-page',
 			'type' => 'post'
 		],
 		'stop-grab-site-page' => [
 			'url' => 'crawler-site-pages/stop-grab-page',
 			'type' => 'post'
+		],*/
+		'start-grab-site-page-with-links' => [
+			'url' => 'crawler-site-pages/start-grab-page-with-links',
+			'type' => 'post'
 		],
 		'stop-grab-site-page-with-links' => [
 			'url' => 'crawler-site-pages/stop-grab-page-with-links',
 			'type' => 'post'
 		],
-		'start-parse-site-page-links' => [
+		/*'start-parse-site-page-links' => [
 			'url' => 'crawler-site-pages/start-parse-page-links',
 			'type' => 'post'
 		],
 		'stop-parse-site-page-links' => [
 			'url' => 'crawler-site-pages/stop-parse-page-links',
 			'type' => 'post'
-		],
+		],*/
 		'start-parse-site-page-content' => [
 			'url' => 'crawler-site-pages/start-parse-page-content',
 			'type' => 'post'
@@ -407,7 +411,7 @@ class CrawlerApiClient extends Component {
 		return $this->sendRequest('get-site-page', ['id'=>$page_id]);
 	}
 
-	public function startGrabSitePage($page_id)
+	/*public function startGrabSitePage($page_id)
 	{
 		return $this->sendRequest('start-grab-site-page', ['id'=>$page_id]);
 	}
@@ -418,6 +422,11 @@ class CrawlerApiClient extends Component {
 			'id' => $page_id,
 			'data' => $data
 		]);
+	}*/
+
+	public function startGrabSitePageWithLinks($page_id)
+	{
+		return $this->sendRequest('start-grab-site-page-with-links', ['id'=>$page_id]);
 	}
 
 	public function stopGrabSitePageWithLinks($page_id, $data)
@@ -428,7 +437,7 @@ class CrawlerApiClient extends Component {
 		]);
 	}
 
-	public function startParseSitePageLinks($page_id)
+	/*public function startParseSitePageLinks($page_id)
 	{
 		return $this->sendRequest('start-parse-site-page-links', ['id'=>$page_id]);
 	}
@@ -439,7 +448,7 @@ class CrawlerApiClient extends Component {
 			'id' => $page_id,
 			'links' => $links
 		]);
-	}
+	}*/
 
 	public function startParseSitePageContent($page_id)
 	{
