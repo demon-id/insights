@@ -72,6 +72,10 @@ class CrawlerApiClient extends Component {
 			'url' => 'view-site-pages/get-site-page-children',
 			'type' => 'get'
 		],
+		'get-view-site-page-keywords' => [
+			'url' => 'view-site-pages/get-site-page-keywords',
+			'type' => 'get'
+		],
 
 		// View External Links
 		'get-view-external-link' => [
@@ -365,6 +369,11 @@ class CrawlerApiClient extends Component {
 	public function getViewSitePageChildren($page_id)
 	{
 		return $this->sendRequest('get-view-site-page-children', ['page_id'=>$page_id]);
+	}
+
+	public function getViewSitePageKeywords($page_id)
+	{
+		return $this->sendRequest('get-view-site-page-keywords', ['page_id'=>$page_id]);
 	}
 
 	public function getViewExternalLink($link_id)
