@@ -64,6 +64,14 @@ class CrawlerApiClient extends Component {
 			'url' => 'view-site-pages/get-site-map-pages',
 			'type' => 'get'
 		],
+		'get-view-site-page-parents' => [
+			'url' => 'view-site-pages/get-site-page-parents',
+			'type' => 'get'
+		],
+		'get-view-site-page-children' => [
+			'url' => 'view-site-pages/get-site-page-children',
+			'type' => 'get'
+		],
 
 		// View External Links
 		'get-view-external-link' => [
@@ -347,6 +355,16 @@ class CrawlerApiClient extends Component {
 	public function getSiteMapPages($site_id, $level=null, $parent_id=null, $search_string=null)
 	{
 		return $this->sendRequest('get-site-map-pages', ['site_id'=>$site_id, 'level'=>$level, 'parent_id'=>$parent_id, 'search_string'=>$search_string]);
+	}
+
+	public function getViewSitePageParents($page_id)
+	{
+		return $this->sendRequest('get-view-site-page-parents', ['page_id'=>$page_id]);
+	}
+
+	public function getViewSitePageChildren($page_id)
+	{
+		return $this->sendRequest('get-view-site-page-children', ['page_id'=>$page_id]);
 	}
 
 	public function getViewExternalLink($link_id)
