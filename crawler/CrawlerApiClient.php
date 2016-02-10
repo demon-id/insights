@@ -41,42 +41,6 @@ class CrawlerApiClient extends Component {
 			'type' => 'post'
 		],
 
-		// View Sites
-		'get-view-site' => [
-			'url' => 'view-sites/get-view-site',
-			'type' => 'get'
-		],
-		'get-view-site-attribute-error-data' => [
-			'url' => 'view-sites/get-view-site-attribute-error-data',
-			'type' => 'get'
-		],
-		'get-view-site-page-source' => [
-			'url' => 'view-sites/get-view-site-page-source',
-			'type' => 'get'
-		],
-
-		// View Site Pages
-		'get-view-site-page' => [
-			'url' => 'view-site-pages/get-view-site-page',
-			'type' => 'get'
-		],
-		'get-site-map-pages' => [
-			'url' => 'view-site-pages/get-site-map-pages',
-			'type' => 'get'
-		],
-
-		// View External Links
-		'get-view-external-link' => [
-			'url' => 'view-external-links/get-view-external-link',
-			'type' => 'get'
-		],
-
-		// Data Sites
-		'get-diagram-data' => [
-			'url' => 'data-sites/get-diagram-data',
-			'type' => 'get'
-		],
-
 		// Crawler sites
 		'check-site-available' => [
 			'url' => 'crawler-sites/check-site-available',
@@ -322,41 +286,6 @@ class CrawlerApiClient extends Component {
 	public function countSitesKeywords($site_ids)
 	{
 		return $this->sendRequest('count-sites-keywords', ['site_ids'=>$site_ids]);
-	}
-
-	public function getViewSite($site_id)
-	{
-		return $this->sendRequest('get-view-site', ['id'=>$site_id]);
-	}
-
-	public function getViewSiteAttributeErrorData($site_id, $attribute, $current_page)
-	{
-		return $this->sendRequest('get-view-site-attribute-error-data', ['site_id'=>$site_id, 'attribute'=>$attribute, 'current_page'=>$current_page]);
-	}
-
-	public function getViewSitePageSource($site_id, $attribute, $page_id, $current_page)
-	{
-		return $this->sendRequest('get-view-site-page-source', ['site_id'=>$site_id, 'attribute'=>$attribute, 'site_page_id'=>$page_id, 'current_page'=>$current_page]);
-	}
-
-	public function getViewSitePage($page_id)
-	{
-		return $this->sendRequest('get-view-site-page', ['id'=>$page_id]);
-	}
-
-	public function getSiteMapPages($site_id, $level=null, $parent_id=null)
-	{
-		return $this->sendRequest('get-site-map-pages', ['site_id'=>$site_id, 'level'=>$level, 'parent_id'=>$parent_id]);
-	}
-
-	public function getViewExternalLink($link_id)
-	{
-		return $this->sendRequest('get-view-external-link', ['id'=>$link_id]);
-	}
-
-	public function getDiagramData($site_id, $search_date=null)
-	{
-		return $this->sendRequest('get-diagram-data', ['id'=>$site_id, 'search_date'=>$search_date]);
 	}
 
 	public function startGrabSiteRobots($site_id)
