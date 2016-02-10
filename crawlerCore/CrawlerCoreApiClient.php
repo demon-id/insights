@@ -24,6 +24,10 @@ class CrawlerCoreApiClient extends Component {
 			'url' => 'sites/index',
 			'type' => 'get'
 		],
+		'get-site' => [
+			'url' => 'sites/get-site',
+			'type' => 'get'
+		],
 		'add-site' => [
 			'url' => 'sites/add-site',
 			'type' => 'post'
@@ -134,6 +138,11 @@ class CrawlerCoreApiClient extends Component {
 	public function getSites()
 	{
 		return $this->sendRequest('get-sites');
+	}
+
+	public function getSite($site_id)
+	{
+		return $this->sendRequest('get-site', ['site_id'=>$site_id]);
 	}
 
 	/**
