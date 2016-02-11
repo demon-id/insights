@@ -130,6 +130,10 @@ class CrawlerCoreApiClient extends Component {
 			'url' => 'view-site-keywords/get-view-site-keywords',
 			'type' => 'get'
 		],
+		'get-view-site-page-keywords-by-keyword' => [
+			'url' => 'view-site-keywords/get-view-site-page-keywords-by-keyword',
+			'type' => 'get'
+		],
 
 		// Data Sites
 		'get-diagram-data' => [
@@ -292,6 +296,11 @@ class CrawlerCoreApiClient extends Component {
 	public function getViewSiteKeywords($site_id, $current_page)
 	{
 		return $this->sendRequest('get-view-site-keywords', ['site_id'=>$site_id, 'current_page'=>$current_page]);
+	}
+
+	public function getViewSitePageKeywordsByKeyword($site_id, $keyword_id, $current_page)
+	{
+		return $this->sendRequest('get-view-site-page-keywords-by-keyword', ['site_id'=>$site_id, 'keyword_id'=>$keyword_id, 'current_page'=>$current_page]);
 	}
 
 	public function getDiagramData($site_id, $search_date=null)
