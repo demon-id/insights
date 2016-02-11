@@ -125,6 +125,12 @@ class CrawlerCoreApiClient extends Component {
 			'type' => 'get'
 		],
 
+		// View Site Keywords
+		'get-view-site-keywords' => [
+			'url' => 'view-site-keywords/get-view-site-keywords',
+			'type' => 'get'
+		],
+
 		// Data Sites
 		'get-diagram-data' => [
 			'url' => 'data-sites/get-diagram-data',
@@ -281,6 +287,11 @@ class CrawlerCoreApiClient extends Component {
 	public function getViewExternalLink($link_id)
 	{
 		return $this->sendRequest('get-view-external-link', ['id'=>$link_id]);
+	}
+
+	public function getViewSiteKeywords($site_id)
+	{
+		return $this->sendRequest('get-view-site-keywords', ['site_id'=>$site_id]);
 	}
 
 	public function getDiagramData($site_id, $search_date=null)
