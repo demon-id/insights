@@ -289,9 +289,9 @@ class CrawlerCoreApiClient extends Component {
 		return $this->sendRequest('get-view-external-link', ['id'=>$link_id]);
 	}
 
-	public function getViewSiteKeywords($site_id)
+	public function getViewSiteKeywords($site_id, $page)
 	{
-		return $this->sendRequest('get-view-site-keywords', ['site_id'=>$site_id]);
+		return $this->sendRequest('get-view-site-keywords', ['site_id'=>$site_id, 'page'=>$page]);
 	}
 
 	public function getDiagramData($site_id, $search_date=null)
