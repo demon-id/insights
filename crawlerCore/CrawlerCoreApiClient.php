@@ -318,7 +318,7 @@ class CrawlerCoreApiClient extends Component {
 
 	public function getDataSitePageKeywordDiagram($site_id, $page_id, $keyword_id)
 	{
-		return $this->sendRequest('get-data-site-page-keyword-diagram', ['id'=>$site_id, 'page_id'=>$page_id, 'keyword_id'=>$keyword_id]);
+		return $this->sendRequest('get-data-site-page-keyword-diagram', ['site_id'=>$site_id, 'page_id'=>$page_id, 'keyword_id'=>$keyword_id]);
 	}
 
 	public function getProxy()
