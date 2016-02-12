@@ -130,14 +130,22 @@ class CrawlerCoreApiClient extends Component {
 			'url' => 'view-site-keywords/get-view-site-keywords',
 			'type' => 'get'
 		],
+
+		// View Site Page Keywords
 		'get-view-site-page-keywords-by-keyword' => [
-			'url' => 'view-site-keywords/get-view-site-page-keywords-by-keyword',
+			'url' => 'view-site-page-keywords/get-view-site-page-keywords-by-keyword',
 			'type' => 'get'
 		],
 
 		// Data Sites
 		'get-diagram-data' => [
 			'url' => 'data-sites/get-diagram-data',
+			'type' => 'get'
+		],
+
+		// Data Site Keywords
+		'get-data-site-page-keyword-diagram' => [
+			'url' => 'data-site-page-keywords/get-data-site-page-keywords-diagram',
 			'type' => 'get'
 		],
 
