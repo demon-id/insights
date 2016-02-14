@@ -65,9 +65,9 @@ class TrackerApiClient extends Component {
 		return $this->sendRequest('add-site', ['site_id'=>$site_id, 'url'=>$url]);
 	}
 
-	public function getSitePageForms($site_id, $url)
+	public function getSitePageForms($site_id, $url, $current_page)
 	{
-		return $this->sendRequest('get-site-page-forms', ['site_id'=>$site_id, 'url'=>$url]);
+		return $this->sendRequest('get-site-page-forms', ['site_id'=>$site_id, 'url'=>$url, 'current_page'=>$current_page]);
 	}
 
 	public function deleteSite($site_id)

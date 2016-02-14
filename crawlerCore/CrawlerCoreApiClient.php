@@ -281,9 +281,9 @@ class CrawlerCoreApiClient extends Component {
 		return $this->sendRequest('get-site-map-pages', ['site_id'=>$site_id, 'level'=>$level, 'parent_id'=>$parent_id, 'search_string'=>$search_string]);
 	}
 
-	public function getViewSitePageParents($page_id)
+	public function getViewSitePageParents($page_id, $current_page)
 	{
-		return $this->sendRequest('get-view-site-page-parents', ['page_id'=>$page_id]);
+		return $this->sendRequest('get-view-site-page-parents', ['page_id'=>$page_id, 'current_page'=>$current_page]);
 	}
 
 	public function getViewSitePageChildren($page_id)
@@ -291,9 +291,9 @@ class CrawlerCoreApiClient extends Component {
 		return $this->sendRequest('get-view-site-page-children', ['page_id'=>$page_id]);
 	}
 
-	public function getViewSitePageKeywords($page_id)
+	public function getViewSitePageKeywords($page_id, $current_page)
 	{
-		return $this->sendRequest('get-view-site-page-keywords', ['page_id'=>$page_id]);
+		return $this->sendRequest('get-view-site-page-keywords', ['page_id'=>$page_id, 'current_page'=>$current_page]);
 	}
 
 	public function getViewExternalLink($link_id)
