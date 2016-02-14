@@ -22,6 +22,10 @@ class TrackerApiClient extends Component {
 			'url' => 'sites/delete-site',
 			'type' => 'put'
 		],
+		'get-site-page-forms' => [
+			'url' => 'get/forms',
+			'type' => 'get'
+		],
 	];
 
 	public function __construct() {
@@ -59,6 +63,11 @@ class TrackerApiClient extends Component {
 	public function addSite($site_id, $url)
 	{
 		return $this->sendRequest('add-site', ['site_id'=>$site_id, 'url'=>$url]);
+	}
+
+	public function getSitePageForms($site_id, $url)
+	{
+		return $this->sendRequest('get-site-page-forms', ['site_id'=>$site_id, 'url'=>$url]);
 	}
 
 	public function deleteSite($site_id)
