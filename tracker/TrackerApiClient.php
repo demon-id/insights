@@ -26,6 +26,10 @@ class TrackerApiClient extends Component {
 			'url' => 'get/forms',
 			'type' => 'get'
 		],
+		'get-site-page-form-info' => [
+			'url' => 'get/forminfo',
+			'type' => 'get'
+		],
 	];
 
 	public function __construct() {
