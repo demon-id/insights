@@ -32,8 +32,8 @@ class CrawlerCoreApiClient extends Component {
 			'url' => 'sites/add-site',
 			'type' => 'post'
 		],
-		'update-sites-ga-acces-token' => [
-			'url' => 'sites/update-sites-ga-acces-token',
+		'update-sites-ga-access-token' => [
+			'url' => 'sites/update-sites-ga-access-token',
 			'type' => 'post'
 		],
 		'delete-site' => [
