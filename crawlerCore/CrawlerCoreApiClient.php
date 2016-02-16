@@ -199,7 +199,7 @@ class CrawlerCoreApiClient extends Component {
 	protected function getRequestParams($name)
 	{
 		if (empty($this->methodParams[$name])) {
-			throw new \BadMethodCallException('Api method is undefined.');
+			throw new \BadMethodCallException('Crawler Core Api method is undefined.');
 		}
 
 		return $this->methodParams[$name];
