@@ -225,7 +225,7 @@ class CrawlerCoreApiClient extends Component {
 		return $this->sendRequest('check-site-available', ['url'=>$url]);
 	}
 
-	public function addSite($site_id, $url, $ga_access_token)
+	public function addSite($site_id, $url, $ga_access_token='')
 	{
 		return $this->sendRequest('add-site', ['site_id'=>$site_id, 'url'=>$url, 'ga_access_token'=>$ga_access_token]);
 	}
