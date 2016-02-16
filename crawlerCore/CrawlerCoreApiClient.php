@@ -230,7 +230,7 @@ class CrawlerCoreApiClient extends Component {
 		return $this->sendRequest('add-site', ['site_id'=>$site_id, 'url'=>$url, 'ga_access_token'=>$ga_access_token]);
 	}
 
-	public function updateSitesGaAcessToken($site_ids, $ga_access_token)
+	public function updateSitesGaAccessToken($site_ids, $ga_access_token='')
 	{
 		return $this->sendRequest('update-sites-ga-access-token', ['site_ids'=>$site_ids, 'ga_access_token'=>$ga_access_token]);
 	}
