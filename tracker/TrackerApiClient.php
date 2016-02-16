@@ -99,9 +99,9 @@ class TrackerApiClient extends Component {
 		return $this->sendRequest('get-site-page-form-info', ['form_id'=>$form_id]);
 	}
 
-	public function sendEditFormResult($form_id, $data)
+	public function sendEditFormResult($form_id, $form_name, $data)
 	{
-		return $this->sendRequest('send-edit-form-result', ['form_id'=>$form_id, 'data'=>$data]);
+		return $this->sendRequest('send-edit-form-result', ['form_id'=>$form_id, 'form_name'=>$form_name, 'data'=>$data]);
 	}
 
 	public function changeSiteFormsStatus($form_ids, $status)
