@@ -22,6 +22,26 @@ class TrackerApiClient extends Component {
 			'url' => 'sites/delete-site',
 			'type' => 'put'
 		],
+		'get-site-page-forms' => [
+			'url' => 'get/forms',
+			'type' => 'get'
+		],
+		'get-site-page-form-info' => [
+			'url' => 'get/forminfo',
+			'type' => 'get'
+		],
+		'send-edit-form-result' => [
+			'url' => 'put/forminfo',
+			'type' => 'put'
+		],
+		'change-site-forms-status' => [
+			'url' => 'put/forminfo',
+			'type' => 'put'
+		],
+		'change-all-site-forms-status' => [
+			'url' => 'put/forminfo',
+			'type' => 'put'
+		],
 	];
 
 	public function __construct() {
@@ -37,10 +57,18 @@ class TrackerApiClient extends Component {
 		$request_params = $this->getRequestParams($name);
 		$request_type = $request_params['type'];
 		$request_url = $this->apiUrl.$request_params['url'];
-		$response = $this->HTTPClient->$request_type($request_url, [
-			'headers' => $headers,
-			'body' => $params
-		]);
+
+		$options = [
+			'headers'=>$headers
+		];
+
+		if($request_type === 'get'){
+			$options['query'] = $params;
+		}
+
+		$options['json'] = $params;
+
+		$response = $this->HTTPClient->$request_type($request_url, $options);
 
 		$answer = $response->json();
 
@@ -59,6 +87,31 @@ class TrackerApiClient extends Component {
 	public function addSite($site_id, $url)
 	{
 		return $this->sendRequest('add-site', ['site_id'=>$site_id, 'url'=>$url]);
+	}
+
+	public function getSitePageForms($site_id, $url, $current_page)
+	{
+		return $this->sendRequest('get-site-page-forms', ['site_id'=>$site_id, 'url'=>$url, 'page'=>$current_page]);
+	}
+
+	public function getSitePageFormInfo($form_id)
+	{
+		return $this->sendRequest('get-site-page-form-info', ['form_id'=>$form_id]);
+	}
+
+	public function sendEditFormResult($form_id, $data)
+	{
+		return $this->sendRequest('send-edit-form-result', ['form_id'=>$form_id, 'data'=>$data]);
+	}
+
+	public function changeSiteFormsStatus($form_ids, $status)
+	{
+		return $this->sendRequest('change-site-forms-status', ['form_ids'=>$form_ids, 'status'=>$status]);
+	}
+
+	public function changeAllSiteFormsStatus($site_id, $status)
+	{
+		return $this->sendRequest('change-all-site-forms-status', ['site_id'=>$site_id, 'status'=>$status]);
 	}
 
 	public function deleteSite($site_id)

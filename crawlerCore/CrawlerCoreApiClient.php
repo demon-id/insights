@@ -129,9 +129,27 @@ class CrawlerCoreApiClient extends Component {
 			'type' => 'get'
 		],
 
+		// View Site Keywords
+		'get-view-site-keywords' => [
+			'url' => 'view-site-keywords/get-view-site-keywords',
+			'type' => 'get'
+		],
+
+		// View Site Page Keywords
+		'get-view-site-page-keywords-by-keyword' => [
+			'url' => 'view-site-page-keywords/get-view-site-page-keywords-by-keyword',
+			'type' => 'get'
+		],
+
 		// Data Sites
 		'get-diagram-data' => [
 			'url' => 'data-sites/get-diagram-data',
+			'type' => 'get'
+		],
+
+		// Data Site Keywords
+		'get-data-site-page-keyword-diagram' => [
+			'url' => 'data-site-page-keywords/get-data-site-page-keywords-diagram',
 			'type' => 'get'
 		],
 
@@ -273,9 +291,9 @@ class CrawlerCoreApiClient extends Component {
 		return $this->sendRequest('get-site-map-pages', ['site_id'=>$site_id, 'level'=>$level, 'parent_id'=>$parent_id, 'search_string'=>$search_string]);
 	}
 
-	public function getViewSitePageParents($page_id)
+	public function getViewSitePageParents($page_id, $current_page)
 	{
-		return $this->sendRequest('get-view-site-page-parents', ['page_id'=>$page_id]);
+		return $this->sendRequest('get-view-site-page-parents', ['page_id'=>$page_id, 'current_page'=>$current_page]);
 	}
 
 	public function getViewSitePageChildren($page_id)
@@ -283,9 +301,9 @@ class CrawlerCoreApiClient extends Component {
 		return $this->sendRequest('get-view-site-page-children', ['page_id'=>$page_id]);
 	}
 
-	public function getViewSitePageKeywords($page_id)
+	public function getViewSitePageKeywords($page_id, $current_page)
 	{
-		return $this->sendRequest('get-view-site-page-keywords', ['page_id'=>$page_id]);
+		return $this->sendRequest('get-view-site-page-keywords', ['page_id'=>$page_id, 'current_page'=>$current_page]);
 	}
 
 	public function getViewExternalLink($link_id)
@@ -293,9 +311,24 @@ class CrawlerCoreApiClient extends Component {
 		return $this->sendRequest('get-view-external-link', ['id'=>$link_id]);
 	}
 
+	public function getViewSiteKeywords($site_id, $search_string, $current_page)
+	{
+		return $this->sendRequest('get-view-site-keywords', ['site_id'=>$site_id, 'search_string'=>$search_string, 'current_page'=>$current_page]);
+	}
+
+	public function getViewSitePageKeywordsByKeyword($site_id, $keyword_id, $current_page)
+	{
+		return $this->sendRequest('get-view-site-page-keywords-by-keyword', ['site_id'=>$site_id, 'keyword_id'=>$keyword_id, 'current_page'=>$current_page]);
+	}
+
 	public function getDiagramData($site_id, $search_date=null)
 	{
 		return $this->sendRequest('get-diagram-data', ['id'=>$site_id, 'search_date'=>$search_date]);
+	}
+
+	public function getDataSitePageKeywordDiagram($site_id, $page_id, $keyword_id)
+	{
+		return $this->sendRequest('get-data-site-page-keyword-diagram', ['site_id'=>$site_id, 'page_id'=>$page_id, 'keyword_id'=>$keyword_id]);
 	}
 
 	public function getProxy()
