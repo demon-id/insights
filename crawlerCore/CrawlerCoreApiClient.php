@@ -32,6 +32,10 @@ class CrawlerCoreApiClient extends Component {
 			'url' => 'sites/add-site',
 			'type' => 'post'
 		],
+		'update-sites-ga-access-token' => [
+			'url' => 'sites/update-sites-ga-access-token',
+			'type' => 'post'
+		],
 		'delete-site' => [
 			'url' => 'sites/delete-site',
 			'type' => 'put'
@@ -195,7 +199,7 @@ class CrawlerCoreApiClient extends Component {
 	protected function getRequestParams($name)
 	{
 		if (empty($this->methodParams[$name])) {
-			throw new \BadMethodCallException('Api method is undefined.');
+			throw new \BadMethodCallException('Crawler Core Api method is undefined.');
 		}
 
 		return $this->methodParams[$name];
@@ -221,10 +225,16 @@ class CrawlerCoreApiClient extends Component {
 		return $this->sendRequest('check-site-available', ['url'=>$url]);
 	}
 
-	public function addSite($site_id, $url)
+	public function addSite($site_id, $url, $ga_access_token='')
 	{
-		return $this->sendRequest('add-site', ['site_id'=>$site_id, 'url'=>$url]);
+		return $this->sendRequest('add-site', ['site_id'=>$site_id, 'url'=>$url, 'ga_access_token'=>$ga_access_token]);
 	}
+
+	public function updateSitesGaAccessToken($site_ids, $ga_access_token='')
+	{
+		return $this->sendRequest('update-sites-ga-access-token', ['site_ids'=>$site_ids, 'ga_access_token'=>$ga_access_token]);
+	}
+
 
 	public function deleteSite($site_id)
 	{
