@@ -39,7 +39,7 @@ class TrackerApiClient extends Component {
 			'type' => 'put'
 		],
 		'change-all-site-forms-status' => [
-			'url' => 'put/forminfo',
+			'url' => 'patch/tracking-forms-on-site',
 			'type' => 'put'
 		],
 	];
@@ -62,10 +62,7 @@ class TrackerApiClient extends Component {
 			'headers'=>$headers
 		];
 
-		if($request_type === 'get'){
-			$options['query'] = $params;
-		}
-
+		$options['query'] = $params;
 		$options['json'] = $params;
 
 		$response = $this->HTTPClient->$request_type($request_url, $options);
