@@ -142,8 +142,8 @@ class CrawlerCoreApiClient extends Component {
 		],
 
 		// Data Sites
-		'get-diagram-data' => [
-			'url' => 'data-sites/get-diagram-data',
+		'get-errors-diagram-data' => [
+			'url' => 'data-sites/get-errors-diagram-data',
 			'type' => 'get'
 		],
 
@@ -321,9 +321,9 @@ class CrawlerCoreApiClient extends Component {
 		return $this->sendRequest('get-view-site-page-keywords-by-keyword', ['site_id'=>$site_id, 'keyword_id'=>$keyword_id, 'current_page'=>$current_page]);
 	}
 
-	public function getDiagramData($site_id, $search_date=null)
+	public function getErrorsDiagramData($site_id, $search_date=null)
 	{
-		return $this->sendRequest('get-diagram-data', ['id'=>$site_id, 'search_date'=>$search_date]);
+		return $this->sendRequest('get-errors-diagram-data', ['id'=>$site_id, 'search_date'=>$search_date]);
 	}
 
 	public function getDataSitePageKeywordDiagram($site_id, $page_id, $keyword_id)
