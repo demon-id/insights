@@ -52,6 +52,14 @@ class CrawlerCoreApiClient extends Component {
 			'url' => 'sites/stop-crawl-site',
 			'type' => 'post'
 		],
+		'start-crawl-site-ga-data' => [
+			'url' => 'sites/start-crawl-site-ga-data',
+			'type' => 'post'
+		],
+		'stop-crawl-site-ga-data' => [
+			'url' => 'sites/stop-crawl-site-da-data',
+			'type' => 'post'
+		],
 		'check-site-available' => [
 			'url' => 'sites/check-site-available',
 			'type' => 'get'
@@ -344,6 +352,16 @@ class CrawlerCoreApiClient extends Component {
 	public function stopCrawlSite($site_id, $data)
 	{
 		return $this->sendRequest('stop-crawl-site', ['site_id'=>$site_id, 'data'=>$data]);
+	}
+
+	public function startCrawlSiteGaData($site_id, $data)
+	{
+		return $this->sendRequest('start-crawl-site-ga-data', ['site_id'=>$site_id, 'data'=>$data]);
+	}
+
+	public function stopCrawlSiteGaData($site_id, $data)
+	{
+		return $this->sendRequest('stop-crawl-site-ga-data', ['site_id'=>$site_id, 'data'=>$data]);
 	}
 
 	public function startCrawlSerpKeyword($keyword_id, $data)
