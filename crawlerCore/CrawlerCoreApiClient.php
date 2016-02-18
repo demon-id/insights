@@ -326,6 +326,11 @@ class CrawlerCoreApiClient extends Component {
 		return $this->sendRequest('get-errors-diagram-data', ['id'=>$site_id, 'search_date'=>$search_date]);
 	}
 
+	public function getDataSitePageGrades($site_id, $search_date=null)
+	{
+		return $this->sendRequest('get-data-site-page-grades', ['id'=>$site_id, 'search_date'=>$search_date]);
+	}
+
 	public function getDataSitePageKeywordDiagram($site_id, $page_id, $keyword_id)
 	{
 		return $this->sendRequest('get-data-site-page-keyword-diagram', ['site_id'=>$site_id, 'page_id'=>$page_id, 'keyword_id'=>$keyword_id]);
