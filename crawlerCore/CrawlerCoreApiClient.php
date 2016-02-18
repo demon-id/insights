@@ -156,8 +156,8 @@ class CrawlerCoreApiClient extends Component {
 		],
 
 		// Data Site Keywords
-		'get-data-site-page-keyword-diagram' => [
-			'url' => 'data-site-page-keywords/get-data-site-page-keywords-diagram',
+		'get-data-site-page-grades' => [
+			'url' => 'data-sites/get-data-site-page-grades',
 			'type' => 'get'
 		],
 
