@@ -57,7 +57,7 @@ class CrawlerCoreApiClient extends Component {
 			'type' => 'post'
 		],
 		'stop-crawl-site-ga-data' => [
-			'url' => 'sites/stop-crawl-site-da-data',
+			'url' => 'sites/stop-crawl-site-ga-data',
 			'type' => 'post'
 		],
 		'check-site-available' => [
