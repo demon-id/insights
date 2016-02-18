@@ -31,7 +31,7 @@ class TrackerApiClient extends Component {
 			'type' => 'get'
 		],
 		'send-edit-form-result' => [
-			'url' => 'put/forminfo',
+			'url' => 'patch/form-settings',
 			'type' => 'put'
 		],
 		'change-site-forms-status' => [
@@ -96,9 +96,9 @@ class TrackerApiClient extends Component {
 		return $this->sendRequest('get-site-page-form-info', ['form_id'=>$form_id]);
 	}
 
-	public function sendEditFormResult($form_id, $form_name, $data)
+	public function sendEditFormResult($data)
 	{
-		return $this->sendRequest('send-edit-form-result', ['form_id'=>$form_id, 'form_name'=>$form_name, 'data'=>$data]);
+		return $this->sendRequest('send-edit-form-result', ['data'=>$data]);
 	}
 
 	public function changeSiteFormsStatus($form_ids, $status)
