@@ -32,8 +32,12 @@ class CrawlerCoreApiClient extends Component {
 			'url' => 'sites/add-site',
 			'type' => 'post'
 		],
-		'update-sites-ga-access-token' => [
-			'url' => 'sites/update-sites-ga-access-token',
+		'get-site-ga-credentials' => [
+			'url' => 'sites/get-site-ga-credentials',
+			'type' => 'get'
+		],
+		'update-site-ga-credentials' => [
+			'url' => 'sites/update-site-ga-credentials',
 			'type' => 'post'
 		],
 		'delete-site' => [
@@ -237,16 +241,20 @@ class CrawlerCoreApiClient extends Component {
 		return $this->sendRequest('check-site-available', ['url'=>$url]);
 	}
 
-	public function addSite($site_id, $url, $ga_access_token='')
+	public function addSite($site_id, $url)
 	{
-		return $this->sendRequest('add-site', ['site_id'=>$site_id, 'url'=>$url, 'ga_access_token'=>$ga_access_token]);
+		return $this->sendRequest('add-site', ['site_id'=>$site_id, 'url'=>$url]);
 	}
 
-	public function updateSitesGaAccessToken($site_ids, $ga_access_token='')
+	public function getSitesGaCredentials($site_id)
 	{
-		return $this->sendRequest('update-sites-ga-access-token', ['site_ids'=>$site_ids, 'ga_access_token'=>$ga_access_token]);
+		return $this->sendRequest('get-site-ga-credentials', ['site_id'=>$site_id]);
 	}
 
+	public function updateSitesGaCredentials($site_id, $ga_profile_id=null, $ga_access_token=null)
+	{
+		return $this->sendRequest('update-site-ga-credentials', ['site_id'=>$site_id, 'ga_profile_id'=>$ga_profile_id, 'ga_access_token'=>$ga_access_token]);
+	}
 
 	public function deleteSite($site_id)
 	{
