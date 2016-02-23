@@ -331,9 +331,9 @@ class CrawlerCoreApiClient extends Component {
 		return $this->sendRequest('get-view-external-link', ['id'=>$link_id]);
 	}
 
-	public function getViewSiteKeywords($site_id, $search_string, $current_page)
+	public function getViewSiteKeywords($site_id, $search_string=null, $current_page=0, $sort=null)
 	{
-		return $this->sendRequest('get-view-site-keywords', ['site_id'=>$site_id, 'search_string'=>$search_string, 'current_page'=>$current_page]);
+		return $this->sendRequest('get-view-site-keywords', ['site_id'=>$site_id, 'search_string'=>$search_string, 'current_page'=>$current_page, 'sort'=>$sort]);
 	}
 
 	public function getViewSitePageKeywordsByKeyword($site_id, $keyword_id, $current_page)
