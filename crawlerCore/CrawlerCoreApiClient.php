@@ -362,9 +362,9 @@ class CrawlerCoreApiClient extends Component {
 		return $this->sendRequest('start-crawl-site', ['site_id'=>$site_id, 'data'=>$data]);
 	}
 
-	public function stopCrawlSite($site_id, $data)
+	public function stopCrawlSite($site_id, $crawler_name, $data)
 	{
-		return $this->sendRequest('stop-crawl-site', ['site_id'=>$site_id, 'data'=>$data]);
+		return $this->sendRequest('stop-crawl-site', ['site_id'=>$site_id, 'crawler_name'=>$crawler_name, 'data'=>$data]);
 	}
 
 	public function startCrawlSiteGaData($site_id, $data)
@@ -372,9 +372,9 @@ class CrawlerCoreApiClient extends Component {
 		return $this->sendRequest('start-crawl-site-ga-data', ['site_id'=>$site_id, 'data'=>$data]);
 	}
 
-	public function stopCrawlSiteGaData($site_id, $data)
+	public function stopCrawlSiteGaData($site_id, $crawler_name, $data)
 	{
-		return $this->sendRequest('stop-crawl-site-ga-data', ['site_id'=>$site_id, 'data'=>$data]);
+		return $this->sendRequest('stop-crawl-site-ga-data', ['site_id'=>$site_id, 'crawler_name'=>$crawler_name, 'data'=>$data]);
 	}
 
 	public function startCrawlSerpKeyword($keyword_id, $data)
@@ -382,9 +382,9 @@ class CrawlerCoreApiClient extends Component {
 		return $this->sendRequest('start-crawl-serp-keyword', ['keyword_id'=>$keyword_id, 'data'=>$data]);
 	}
 
-	public function stopCrawlSerpKeyword($keyword_id, $data)
+	public function stopCrawlSerpKeyword($keyword_id, $crawler_name, $data)
 	{
-		return $this->sendRequest('stop-crawl-serp-keyword', ['keyword_id'=>$keyword_id, 'data'=>$data]);
+		return $this->sendRequest('stop-crawl-serp-keyword', ['keyword_id'=>$keyword_id, 'crawler_name'=>$crawler_name, 'data'=>$data]);
 	}
 
 	public function getKeywordSerp($keyword_id)
