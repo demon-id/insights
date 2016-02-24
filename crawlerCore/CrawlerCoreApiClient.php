@@ -316,9 +316,9 @@ class CrawlerCoreApiClient extends Component {
 		return $this->sendRequest('get-view-site-page-parents', ['page_id'=>$page_id, 'current_page'=>$current_page]);
 	}
 
-	public function getViewSitePageChildren($page_id)
+	public function getViewSitePageChildren($page_id, $page=0, $filter=null)
 	{
-		return $this->sendRequest('get-view-site-page-children', ['page_id'=>$page_id]);
+		return $this->sendRequest('get-view-site-page-children', ['page_id'=>$page_id, 'current_page'=>$page, 'filter'=>$filter]);
 	}
 
 	public function getViewSitePageKeywords($page_id, $current_page)

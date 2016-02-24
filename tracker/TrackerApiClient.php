@@ -48,7 +48,7 @@ class TrackerApiClient extends Component {
 		$this->HTTPClient = new HTTPClient;
 	}
 
-	protected function sendRequest($name, $params=[], $headers=[])
+	protected function sendRequest($name, $query_params=[], $body_params=[], $headers=[])
 	{
 		$headers = ArrayHelper::merge($headers, [
 			'api-key' => $this->apiKey
@@ -62,8 +62,8 @@ class TrackerApiClient extends Component {
 			'headers'=>$headers
 		];
 
-		$options['query'] = $params;
-		$options['json'] = $params;
+		$options['query'] = $query_params;
+		$options['json'] = $body_params;
 
 		$response = $this->HTTPClient->$request_type($request_url, $options);
 
@@ -83,7 +83,7 @@ class TrackerApiClient extends Component {
 
 	public function addSite($site_id, $url)
 	{
-		return $this->sendRequest('add-site', ['site_id'=>$site_id, 'url'=>$url]);
+		return $this->sendRequest('add-site', [], ['site_id'=>$site_id, 'url'=>$url]);
 	}
 
 	public function getSitePageForms($site_id, $url)
@@ -98,7 +98,7 @@ class TrackerApiClient extends Component {
 
 	public function sendEditFormResult($data)
 	{
-		return $this->sendRequest('send-edit-form-result', ['data'=>$data]);
+		return $this->sendRequest('send-edit-form-result', [], ['data'=>$data]);
 	}
 
 	public function changeSiteFormsStatus($form_ids, $status)
@@ -108,7 +108,7 @@ class TrackerApiClient extends Component {
 
 	public function changeAllSiteFormsStatus($site_id, $status)
 	{
-		return $this->sendRequest('change-all-site-forms-status', ['site_id'=>$site_id, 'status'=>$status]);
+		return $this->sendRequest('change-all-site-forms-status', ['site_id'=>$site_id], ['status'=>$status]);
 	}
 
 	public function deleteSite($site_id)
