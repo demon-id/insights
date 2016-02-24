@@ -25,7 +25,7 @@ class CrawlerApiClient extends Component {
 			'type' => 'post'
 		],
 		'start-grab-site-robots' => [
-			'url' => 'crawler-sites/start-grab-site-robots',
+			'url' => 'crawler-sites/start-grab-robots',
 			'type' => 'post'
 		],
 
