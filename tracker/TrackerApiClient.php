@@ -61,7 +61,7 @@ class TrackerApiClient extends Component {
         'get-lead-visits' => [
             'url' => 'get/lead-visits',
             'type' => 'get'
-        ],cd i
+        ],
 	];
 
 	public function __construct() {
@@ -135,4 +135,79 @@ class TrackerApiClient extends Component {
 	{
 		return $this->sendRequest('delete-site', ['site_id'=>$site_id]);
 	}
+
+    /**
+     * @param $site_id
+     * @param $order_by
+     * @param $page
+     * @param $like
+     * @return mixed
+     */
+    public function getSiteLeads($site_id, $order_by = '', $page = 1, $like = '')
+    {
+        $params = [
+            'site_id'  => $site_id,
+            'order_by' => $order_by,
+            'page'     => $page
+        ];
+
+        if (!empty($like)) {
+            $params['like'] = $like;
+        }
+
+        return $this->sendRequest('get-site-leads', $params);
+    }
+
+    /**
+     * @param $site_id
+     * @param string $order_by
+     * @param int $page
+     * @return mixed
+     */
+    public function getSiteVisitors($site_id, $page = 1)
+    {
+        return $this->sendRequest('get-site-visitors', [
+            'site_id' => $site_id,
+            'page'    => $page
+        ]);
+    }
+
+    /**
+     * @param $lead_id
+     * @return mixed
+     */
+    public function getLeadProfile($lead_id)
+    {
+        return $this->sendRequest('get-lead-profile', [
+            'lead_id' => $lead_id,
+        ]);
+    }
+
+    /**
+     * @param $site_id
+     * @param $lead_id
+     * @param $page
+     * @return mixed
+     */
+    public function getLeadForms($lead_id, $page = 1)
+    {
+        return $this->sendRequest('get-lead-forms', [
+            'lead_id' => $lead_id,
+            'page'    => $page
+        ]);
+    }
+
+    /**
+     * @param $site_id
+     * @param $lead_id
+     * @param $page
+     * @return mixed
+     */
+    public function getLeadVisits($lead_id, $page = 1)
+    {
+        return $this->sendRequest('get-lead-visits', [
+            'lead_id' => $lead_id,
+            'page'    => $page
+        ]);
+    }
 }
