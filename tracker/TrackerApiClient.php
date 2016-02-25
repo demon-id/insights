@@ -42,6 +42,26 @@ class TrackerApiClient extends Component {
 			'url' => 'patch/tracking-forms-on-site',
 			'type' => 'put'
 		],
+        'get-site-leads' => [
+            'url' => 'get/leads',
+            'type' => 'get'
+        ],
+        'get-site-visitors' => [
+            'url' => 'get/visitors',
+            'type' => 'get'
+        ],
+        'get-lead-profile' => [
+            'url' => 'get/lead-profile',
+            'type' => 'get'
+        ],
+        'get-lead-forms' => [
+            'url' => 'get/lead-forms',
+            'type' => 'get'
+        ],
+        'get-lead-visits' => [
+            'url' => 'get/lead-visits',
+            'type' => 'get'
+        ],cd i
 	];
 
 	public function __construct() {
