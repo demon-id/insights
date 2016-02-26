@@ -175,6 +175,12 @@ class CrawlerCoreApiClient extends Component {
 			'type' => 'get'
 		],
 
+		// Data Site GA Data
+		'get-data-site-ga-data' => [
+			'url' => 'data-site-ga-data/get-site-data',
+			'type' => 'get'
+		],
+
 		// Proxy
 		'get-proxy' => [
 			'url' => 'proxy/get-proxy',
@@ -365,6 +371,11 @@ class CrawlerCoreApiClient extends Component {
 	public function getDataSitePageKeywordDiagram($site_id, $page_id, $keyword_id)
 	{
 		return $this->sendRequest('get-data-site-page-keyword-diagram', ['site_id'=>$site_id, 'page_id'=>$page_id, 'keyword_id'=>$keyword_id]);
+	}
+
+	public function getDataSiteGaData($site_id)
+	{
+		return $this->sendRequest('get-data-site-ga-data', ['site_id'=>$site_id]);
 	}
 
 	public function getProxy()
