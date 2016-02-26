@@ -27,7 +27,7 @@ class TrackerApiClient extends Component {
 			'type' => 'get'
 		],
 		'get-site-page-form-info' => [
-			'url' => 'get/forminfo',
+			'url' => 'get/form-info',
 			'type' => 'get'
 		],
 		'send-edit-form-result' => [
@@ -35,7 +35,7 @@ class TrackerApiClient extends Component {
 			'type' => 'put'
 		],
 		'change-site-forms-status' => [
-			'url' => 'put/forminfo',
+			'url' => 'put/form-info',
 			'type' => 'put'
 		],
 		'change-all-site-forms-status' => [
@@ -60,6 +60,10 @@ class TrackerApiClient extends Component {
         ],
         'get-lead-visits' => [
             'url' => 'get/lead-visits',
+            'type' => 'get'
+        ],
+        'get-site-tracker' => [
+            'url' => 'get/tracker',
             'type' => 'get'
         ],
 	];
@@ -208,6 +212,17 @@ class TrackerApiClient extends Component {
         return $this->sendRequest('get-lead-visits', [
             'lead_id' => $lead_id,
             'page'    => $page
+        ]);
+    }
+
+    /**
+     * @param $site_id
+     * @return mixed
+     */
+    public function getSiteTracker($site_id)
+    {
+        return $this->sendRequest('get-site-tracker', [
+            'site_id' => $site_id,
         ]);
     }
 }
