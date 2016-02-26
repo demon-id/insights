@@ -52,6 +52,11 @@ class CrawlerApiClient extends Component {
 			'type' => 'post'
 		],
 
+		'start-parse-page-keywords' => [
+			'url' => 'crawler-site-pages/start-parse-page-keywords',
+			'type' => 'post'
+		],
+
 		// Crawler external links
 		'start-grab-external-link' => [
 			'url' => 'crawler-external-links/start-grab-link',
@@ -65,16 +70,6 @@ class CrawlerApiClient extends Component {
 		],
 		'start-parse-sitemap-links' => [
 			'url' => 'crawler-site-sitemaps/start-parse-sitemap-links',
-			'type' => 'post'
-		],
-
-		// Crawler site page keywords
-		'start-parse-site-page-keyword' => [
-			'url' => 'crawler-site-page-keywords/start-parse-page-keyword',
-			'type' => 'post'
-		],
-		'start-parse-site-page-keywords' => [
-			'url' => 'crawler-site-page-keywords/start-parse-page-keywords',
 			'type' => 'post'
 		],
 
@@ -195,16 +190,6 @@ class CrawlerApiClient extends Component {
 		return $this->sendRequest('start-parse-site-page-content', ['id'=>$page_id]);
 	}
 
-	public function startParseSitePageKeyword($keyword_id)
-	{
-		return $this->sendRequest('start-parse-site-page-keyword', ['id'=>$keyword_id]);
-	}
-
-	public function startParseSitePageKeywords($page_id)
-	{
-		return $this->sendRequest('start-parse-site-page-keywords', ['page_id'=>$page_id]);
-	}
-
 	public function startGrabKeywordsSerp($keyword_id)
 	{
 		return $this->sendRequest('start-grab-keywords-serp', ['id'=>$keyword_id]);
@@ -218,6 +203,11 @@ class CrawlerApiClient extends Component {
 	public function startTrackPageForms($page_id)
 	{
 		return $this->sendRequest('start-track-page-forms', ['id'=>$page_id]);
+	}
+
+	public function startParsePageKeywords($page_id)
+	{
+		return $this->sendRequest('start-parse-page-keywords', ['id'=>$page_id]);
 	}
 
 	public function addCrawlerTask($data)
