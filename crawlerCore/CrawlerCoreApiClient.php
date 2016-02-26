@@ -168,10 +168,12 @@ class CrawlerCoreApiClient extends Component {
 			'url' => 'data-sites/get-errors-diagram-data',
 			'type' => 'get'
 		],
-
-		// Data Site Keywords
 		'get-data-site-page-grades' => [
 			'url' => 'data-sites/get-data-site-page-grades',
+			'type' => 'get'
+		],
+		'get-data-site-top-keywords' => [
+			'url' => 'data-sites/get-data-site-top-keywords',
 			'type' => 'get'
 		],
 
