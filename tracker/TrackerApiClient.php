@@ -27,7 +27,7 @@ class TrackerApiClient extends Component {
 			'type' => 'get'
 		],
 		'get-site-page-form-info' => [
-			'url' => 'get/forminfo',
+			'url' => 'get/form-info',
 			'type' => 'get'
 		],
 		'send-edit-form-result' => [
@@ -35,7 +35,7 @@ class TrackerApiClient extends Component {
 			'type' => 'put'
 		],
 		'change-site-forms-status' => [
-			'url' => 'put/forminfo',
+			'url' => 'put/form-info',
 			'type' => 'put'
 		],
 		'change-all-site-forms-status' => [
