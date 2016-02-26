@@ -62,6 +62,10 @@ class TrackerApiClient extends Component {
             'url' => 'get/lead-visits',
             'type' => 'get'
         ],
+        'get-site-tracker' => [
+            'url' => 'get/tracker',
+            'type' => 'get'
+        ],
 	];
 
 	public function __construct() {
@@ -208,6 +212,17 @@ class TrackerApiClient extends Component {
         return $this->sendRequest('get-lead-visits', [
             'lead_id' => $lead_id,
             'page'    => $page
+        ]);
+    }
+
+    /**
+     * @param $site_id
+     * @return mixed
+     */
+    public function getSiteTracker($site_id)
+    {
+        return $this->sendRequest('get-site-tracker', [
+            'site_id' => $site_id,
         ]);
     }
 }
