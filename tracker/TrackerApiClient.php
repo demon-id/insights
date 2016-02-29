@@ -88,6 +88,7 @@ class TrackerApiClient extends Component {
 
 		$options['query'] = $query_params;
 		$options['json'] = $body_params;
+        $options['exceptions'] = false;
 
 		$response = $this->HTTPClient->$request_type($request_url, $options);
 
