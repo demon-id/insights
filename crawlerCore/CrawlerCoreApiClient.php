@@ -168,10 +168,12 @@ class CrawlerCoreApiClient extends Component {
 			'url' => 'data-sites/get-errors-diagram-data',
 			'type' => 'get'
 		],
-
-		// Data Site Keywords
 		'get-data-site-page-grades' => [
 			'url' => 'data-sites/get-data-site-page-grades',
+			'type' => 'get'
+		],
+		'get-data-site-top-keywords' => [
+			'url' => 'data-sites/get-data-site-top-keywords',
 			'type' => 'get'
 		],
 
@@ -366,6 +368,11 @@ class CrawlerCoreApiClient extends Component {
 	public function getDataSitePageGrades($site_id, $search_date=null)
 	{
 		return $this->sendRequest('get-data-site-page-grades', ['id'=>$site_id, 'search_date'=>$search_date]);
+	}
+
+	public function getDataSiteTopKeywords($site_id, $search_date=null)
+	{
+		return $this->sendRequest('get-data-site-top-keywords', ['id'=>$site_id, 'search_date'=>$search_date]);
 	}
 
 	public function getDataSitePageKeywordDiagram($site_id, $page_id, $keyword_id)
