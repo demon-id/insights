@@ -82,6 +82,10 @@ class CrawlerCoreApiClient extends Component {
 			'url' => 'site-keywords/count-sites-keywords',
 			'type' => 'get'
 		],
+		'count-sites-pages' => [
+			'url' => 'sites/count-sites-pages',
+			'type' => 'get'
+		],
 		'delete-site-keyword' => [
 			'url' => 'site-keywords/delete-site-keyword',
 			'type' => 'put'
@@ -298,6 +302,11 @@ class CrawlerCoreApiClient extends Component {
 	public function countSitesKeywords($site_ids)
 	{
 		return $this->sendRequest('count-sites-keywords', ['site_ids'=>$site_ids]);
+	}
+
+	public function countSitesPages($site_ids)
+	{
+		return $this->sendRequest('count-sites-pages', ['site_ids'=>$site_ids]);
 	}
 
 	public function getViewSite($site_id)

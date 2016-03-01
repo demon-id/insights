@@ -66,6 +66,10 @@ class TrackerApiClient extends Component {
             'url' => 'get/tracker',
             'type' => 'get'
         ],
+		'count-sites-leads' => [
+			'url' => 'get/count-sites-leads',
+			'type' => 'get'
+		],
 	];
 
 	public function __construct() {
@@ -226,4 +230,10 @@ class TrackerApiClient extends Component {
             'site_id' => $site_id,
         ]);
     }
+
+	public function countSitesLeads($site_ids)
+	{
+		return $this->sendRequest('count-sites-leads', ['site_ids'=>$site_ids]);
+	}
+
 }
