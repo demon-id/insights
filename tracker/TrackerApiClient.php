@@ -242,8 +242,7 @@ class TrackerApiClient extends Component {
      */
     public function changeTrackerStatus($site_id, $status)
     {
-        return $this->sendRequest('change-tracker-status', [
-            'site_id' => $site_id,
+        return $this->sendRequest('change-tracker-status', ['site_id' => $site_id], [
             'status'  => $status,
         ]);
     }
