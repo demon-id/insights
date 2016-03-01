@@ -15,7 +15,7 @@ class TrackerApiClient extends Component {
 
 	protected $methodParams = [
 		'add-site' => [
-			'url' => 'sites/add-site',
+			'url' => 'post/site',
 			'type' => 'post'
 		],
 		'delete-site' => [
