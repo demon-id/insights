@@ -67,11 +67,11 @@ class TrackerApiClient extends Component {
             'type' => 'get'
         ],
         'change-tracker-status' => [
-            'url' => 'patch/trackerstatus',
+            'url' => 'patch/tracker-status',
             'type' => 'patch'
         ],
 		'count-sites-leads' => [
-			'url' => 'get/count-sites-leads',
+			'url' => 'get/quantity-leads-on-sites',
 			'type' => 'get'
 		],
 	];
