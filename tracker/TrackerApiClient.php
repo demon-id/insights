@@ -240,11 +240,11 @@ class TrackerApiClient extends Component {
      * @param $status
      * @return mixed
      */
-    public function changeTrackerStatus($tracker_id, $status)
+    public function changeTrackerStatus($site_id, $status)
     {
         return $this->sendRequest('change-tracker-status', [
-            'tracker_id' => $tracker_id,
-            'status'     => $status,
+            'site_id' => $site_id,
+            'status'  => $status,
         ]);
     }
 
