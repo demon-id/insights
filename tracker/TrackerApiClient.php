@@ -66,6 +66,10 @@ class TrackerApiClient extends Component {
             'url' => 'get/tracker',
             'type' => 'get'
         ],
+        'change-tracker-status' => [
+            'url' => 'patch/trackerstatus',
+            'type' => 'patch'
+        ],
 		'count-sites-leads' => [
 			'url' => 'get/count-sites-leads',
 			'type' => 'get'
@@ -228,6 +232,19 @@ class TrackerApiClient extends Component {
     {
         return $this->sendRequest('get-site-tracker', [
             'site_id' => $site_id,
+        ]);
+    }
+
+    /**
+     * @param $tracker_id
+     * @param $status
+     * @return mixed
+     */
+    public function changeTrackerStatus($tracker_id, $status)
+    {
+        return $this->sendRequest('change-tracker-status', [
+            'tracker_id' => $tracker_id,
+            'status'     => $status,
         ]);
     }
 
