@@ -37,14 +37,26 @@ class CoreApiClient extends Component {
 		$request_params = $this->getRequestParams($name);
 		$request_type = $request_params['type'];
 		$request_url = $this->apiUrl.$request_params['url'];
-		$response = $this->HTTPClient->$request_type($request_url, [
-			'headers' => $headers,
-			'body' => $params
-		]);
 
-		$answer = $response->json();
+		try {
+			$response = $this->HTTPClient->$request_type($request_url, [
+				'headers' => $headers,
+				'json' => $params,
+			]);
 
-		return $answer;
+			$answer = $response->json();
+
+			return $answer;
+
+		} catch(\GuzzleHttp\Exception\BadResponseException $e) {
+
+			Log::add('Message: '.$e->getMessage().' Response: '.$response->getBody(), 'api-http-errors', \Yii::getAlias('@runtime').'/logs');
+
+			return false;
+		} catch(\GuzzleHttp\Exception\ParseException $e) {
+			Log::add('Message: '.$e->getMessage().' Response: '.$response->getBody(), 'api-http-errors', \Yii::getAlias('@runtime').'/logs');
+			return false;
+		}
 	}
 
 	protected function getRequestParams($name)

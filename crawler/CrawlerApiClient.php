@@ -99,7 +99,6 @@ class CrawlerApiClient extends Component {
 		$request_type = $request_params['type'];
 		$request_url = $this->apiUrl.$request_params['url'];
 
-
 		try {
 			$response = $this->HTTPClient->$request_type($request_url, [
 				'headers' => $headers,
@@ -112,8 +111,11 @@ class CrawlerApiClient extends Component {
 
 		} catch(\GuzzleHttp\Exception\BadResponseException $e) {
 
-			Log::add($e->getMessage(), 'api-http-errors', \Yii::getAlias('@runtime').'/logs');
+			Log::add('Message: '.$e->getMessage().' Response: '.$response->getBody(), 'api-http-errors', \Yii::getAlias('@runtime').'/logs');
 
+			return false;
+		} catch(\GuzzleHttp\Exception\ParseException $e) {
+			Log::add('Message: '.$e->getMessage().' Response: '.$response->getBody(), 'api-http-errors', \Yii::getAlias('@runtime').'/logs');
 			return false;
 		}
 
