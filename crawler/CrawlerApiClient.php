@@ -114,7 +114,7 @@ class CrawlerApiClient extends Component {
 			Log::add('Message: '.$e->getMessage().' Response: '.$response->getBody(), 'api-http-errors', \Yii::getAlias('@runtime').'/logs');
 
 			return false;
-		} catch(\GuzzleHttp\Exception $e) {
+		} catch(\GuzzleHttp\Exception\ParseException $e) {
 			Log::add('Message: '.$e->getMessage().' Response: '.$response->getBody(), 'api-http-errors', \Yii::getAlias('@runtime').'/logs');
 			return false;
 		}
