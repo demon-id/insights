@@ -15,7 +15,7 @@ class TrackerApiClient extends Component {
 
 	protected $methodParams = [
 		'add-site' => [
-			'url' => 'sites/add-site',
+			'url' => 'post/site',
 			'type' => 'post'
 		],
 		'delete-site' => [
@@ -42,6 +42,10 @@ class TrackerApiClient extends Component {
 			'url' => 'patch/tracking-forms-on-site',
 			'type' => 'put'
 		],
+        'get-site-forms' => [
+            'url' => 'get/forms',
+            'type' => 'get'
+        ],
         'get-site-leads' => [
             'url' => 'get/leads',
             'type' => 'get'
@@ -66,8 +70,12 @@ class TrackerApiClient extends Component {
             'url' => 'get/tracker',
             'type' => 'get'
         ],
+        'change-tracker-status' => [
+            'url' => 'patch/tracker-status',
+            'type' => 'patch'
+        ],
 		'count-sites-leads' => [
-			'url' => 'get/count-sites-leads',
+			'url' => 'get/quantity-leads-on-sites',
 			'type' => 'get'
 		],
 	];
@@ -155,6 +163,26 @@ class TrackerApiClient extends Component {
 
     /**
      * @param $site_id
+     * @param int $page
+     * @param string $like
+     * @return mixed
+     */
+    public function getSiteForms($site_id, $page = 1, $like = '')
+    {
+        $params = [
+            'site_id'=> $site_id,
+            'page'   => $page
+        ];
+
+        if (!empty($like)) {
+            $params['like'] = $like;
+        }
+
+        return $this->sendRequest('get-site-forms', $params);
+    }
+
+    /**
+     * @param $site_id
      * @param $order_by
      * @param $page
      * @param $like
@@ -236,6 +264,18 @@ class TrackerApiClient extends Component {
     {
         return $this->sendRequest('get-site-tracker', [
             'site_id' => $site_id,
+        ]);
+    }
+
+    /**
+     * @param $tracker_id
+     * @param $status
+     * @return mixed
+     */
+    public function changeTrackerStatus($site_id, $status)
+    {
+        return $this->sendRequest('change-tracker-status', ['site_id' => $site_id], [
+            'status'  => $status,
         ]);
     }
 
