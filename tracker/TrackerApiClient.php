@@ -94,11 +94,19 @@ class TrackerApiClient extends Component {
 		$options['json'] = $body_params;
         $options['exceptions'] = false;
 
-		$response = $this->HTTPClient->$request_type($request_url, $options);
+		try {
+			$response = $this->HTTPClient->$request_type($request_url, $options);
 
-		$answer = $response->json();
+			$answer = $response->json();
 
-		return $answer;
+			return $answer;
+
+		} catch(\GuzzleHttp\Exception\BadResponseException $e) {
+
+			Log::add('Message: '.$e->getMessage().' Response: '.$response->getBody(), 'api-http-errors', \Yii::getAlias('@runtime').'/logs');
+
+			return false;
+		}
 	}
 
 	protected function getRequestParams($name)
