@@ -50,22 +50,23 @@ class CoreApiClient extends Component {
 
 		} catch(\GuzzleHttp\Exception\BadResponseException $e) {
 
-			$this->logExceptions($request_url, $response, $e);
+			$this->logExceptions($request_url, $params, $response, $e);
 
 			return false;
 		} catch(\GuzzleHttp\Exception\ParseException $e) {
 
-			$this->logExceptions($request_url, $response, $e);
+			$this->logExceptions($request_url, $params, $response, $e);
 
 			return false;
 		}
 
 	}
 
-	protected function logExceptions($request_url, $response, $e)
+	protected function logExceptions($request_url, $params, $response, $e)
 	{
 		Log::add(
 			'Url:'.$request_url."\n".
+			'Params:'.json_encode($params)."\n".
 			'Message: '.$e->getMessage()."\n".
 			'Response: '.$response->getBody()."\n",
 			'api-http-errors',
