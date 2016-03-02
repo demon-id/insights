@@ -102,24 +102,37 @@ class TrackerApiClient extends Component {
 		$options['json'] = $body_params;
         $options['exceptions'] = false;
 
-		try {
-			$response = $this->HTTPClient->$request_type($request_url, $options);
+        try {
+            $response = $this->HTTPClient->$request_type($request_url, $options);
 
-			$answer = $response->json();
+            $answer = $response->json();
 
-			return $answer;
+            return $answer;
 
-		} catch(\GuzzleHttp\Exception\BadResponseException $e) {
+        } catch(\GuzzleHttp\Exception\BadResponseException $e) {
 
-			Log::add('Message: '.$e->getMessage().' Response: '.$response->getBody(), 'api-http-errors', \Yii::getAlias('@runtime').'/logs');
+            $this->logExceptions($request_url, $response, $e);
 
-			return false;
+            return false;
         } catch(\GuzzleHttp\Exception\ParseException $e) {
-            Log::add('Message: '.$e->getMessage().' Response: '.$response->getBody(), 'api-http-errors', \Yii::getAlias('@runtime').'/logs');
+
+            $this->logExceptions($request_url, $response, $e);
+
             return false;
         }
-	}
 
+    }
+
+    protected function logExceptions($request_url, $response, $e)
+    {
+        Log::add(
+            'Url:'.$request_url."\n".
+            'Message: '.$e->getMessage()."\n".
+            'Response: '.$response->getBody()."\n",
+            'api-http-errors',
+            \Yii::getAlias('@runtime').'/logs'
+        );
+    }
 	protected function getRequestParams($name)
 	{
 		if (empty($this->methodParams[$name])) {
