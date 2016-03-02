@@ -40,7 +40,7 @@ class TrackerApiClient extends Component {
 		],
 		'change-all-site-forms-status' => [
 			'url' => 'patch/tracking-forms-on-site',
-			'type' => 'put'
+			'type' => 'patch'
 		],
         'get-site-forms' => [
             'url' => 'get/forms',
