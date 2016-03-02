@@ -42,6 +42,10 @@ class TrackerApiClient extends Component {
 			'url' => 'patch/tracking-forms-on-site',
 			'type' => 'put'
 		],
+        'get-site-forms' => [
+            'url' => 'get/forms',
+            'type' => 'get'
+        ],
         'get-site-leads' => [
             'url' => 'get/leads',
             'type' => 'get'
@@ -148,6 +152,26 @@ class TrackerApiClient extends Component {
 	{
 		return $this->sendRequest('delete-site', ['site_id'=>$site_id]);
 	}
+
+    /**
+     * @param $site_id
+     * @param int $page
+     * @param string $like
+     * @return mixed
+     */
+    public function getSiteForms($site_id, $page = 1, $like = '')
+    {
+        $params = [
+            'site_id'=> $site_id,
+            'page'   => $page
+        ];
+
+        if (!empty($like)) {
+            $params['like'] = $like;
+        }
+
+        return $this->sendRequest('get-site-forms', $params);
+    }
 
     /**
      * @param $site_id
