@@ -74,6 +74,10 @@ class TrackerApiClient extends Component {
             'url' => 'get/tracker',
             'type' => 'get'
         ],
+        'get-form-pages' => [
+            'url' => 'get/form-pages',
+            'type' => 'get'
+        ],
         'change-tracker-status' => [
             'url' => 'patch/tracker-status',
             'type' => 'patch'
@@ -305,6 +309,19 @@ class TrackerApiClient extends Component {
     {
         return $this->sendRequest('get-site-tracker', [
             'site_id' => $site_id,
+        ]);
+    }
+
+    /**
+     * @param $form_id
+     * @param int $page
+     * @return bool
+     */
+    public function getFormPages($form_id, $page = 1)
+    {
+        return $this->sendRequest('get-form-pages', [
+            'form_id' => $form_id,
+            'page'    => $page
         ]);
     }
 
