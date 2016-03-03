@@ -102,6 +102,7 @@ class TrackerApiClient extends Component {
 		$options['json'] = $body_params;
         $options['exceptions'] = false;
 
+        $response = null;
         try {
             $response = $this->HTTPClient->$request_type($request_url, $options);
 
@@ -128,7 +129,7 @@ class TrackerApiClient extends Component {
         Log::add(
             'Url:'.$request_url."\n".
             'Message: '.$e->getMessage()."\n".
-            'Response: '.$response->getBody()."\n",
+            'Response: '.(($response) ? $response->getBody() : '')."\n",
             'api-http-errors',
             \Yii::getAlias('@runtime').'/logs'
         );

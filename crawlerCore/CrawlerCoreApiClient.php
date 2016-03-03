@@ -211,6 +211,7 @@ class CrawlerCoreApiClient extends Component {
 		$request_url = $this->apiUrl.$request_params['url'];
 
 
+		$response = null;
 		try {
 			$response = $this->HTTPClient->$request_type($request_url, [
 				'headers' => $headers,
@@ -240,7 +241,7 @@ class CrawlerCoreApiClient extends Component {
 		Log::add(
 			'Url:'.$request_url."\n".
 			'Message: '.$e->getMessage()."\n".
-			'Response: '.$response->getBody()."\n",
+			'Response: '.(($response) ? $response->getBody() : '')."\n",
 			'api-http-errors',
 			\Yii::getAlias('@runtime').'/logs'
 		);
