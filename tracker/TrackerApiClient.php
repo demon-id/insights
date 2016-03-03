@@ -205,18 +205,18 @@ class TrackerApiClient extends Component {
     /**
      * @param $site_id
      * @param int $page
-     * @param string $like
+     * @param string $url
      * @return mixed
      */
-    public function getSiteForms($site_id, $page = 1, $like = '')
+    public function getSiteForms($site_id, $page = 1, $url = '')
     {
         $params = [
             'site_id'=> $site_id,
             'page'   => $page
         ];
 
-        if (!empty($like)) {
-            $params['like'] = $like;
+        if (!empty($url)) {
+            $params['url'] = $url;
         }
 
         return $this->sendRequest('get-site-forms', $params);
