@@ -38,10 +38,14 @@ class TrackerApiClient extends Component {
 			'url' => 'put/form-info',
 			'type' => 'put'
 		],
-		'change-all-site-forms-status' => [
-			'url' => 'patch/tracking-forms-on-site',
+		'forms-status-on-site' => [
+			'url' => 'patch/forms-status-on-site',
 			'type' => 'patch'
 		],
+        'forms-status-from-list' => [
+            'url' => 'patch/forms-status-from-list',
+            'type' => 'patch'
+        ],
         'get-site-forms' => [
             'url' => 'get/forms',
             'type' => 'get'
@@ -169,10 +173,30 @@ class TrackerApiClient extends Component {
 		return $this->sendRequest('change-site-forms-status', ['form_ids'=>$form_ids, 'status'=>$status]);
 	}
 
-	public function changeAllSiteFormsStatus($site_id, $status)
+    /**
+     * @param $site_id
+     * @param $status
+     * @return bool
+     */
+	public function changeFormsStatusOnSite($site_id, $status)
 	{
-		return $this->sendRequest('change-all-site-forms-status', ['site_id'=>$site_id], ['status'=>$status]);
+		return $this->sendRequest('forms-status-on-site', ['site_id' => $site_id], [
+            'status' => $status
+        ]);
 	}
+
+    /**
+     * @param array $form_ids
+     * @param $status
+     * @return bool
+     */
+    public function changeFormsStatusFromList(array $form_ids, $status)
+    {
+        return $this->sendRequest('forms-status-from-list', [], [
+            'form_ids' => $form_ids,
+            'status'   => $status
+        ]);
+    }
 
 	public function deleteSite($site_id)
 	{
@@ -182,18 +206,18 @@ class TrackerApiClient extends Component {
     /**
      * @param $site_id
      * @param int $page
-     * @param string $like
+     * @param string $url
      * @return mixed
      */
-    public function getSiteForms($site_id, $page = 1, $like = '')
+    public function getSiteForms($site_id, $page = 1, $url = '')
     {
         $params = [
             'site_id'=> $site_id,
             'page'   => $page
         ];
 
-        if (!empty($like)) {
-            $params['like'] = $like;
+        if (!empty($url)) {
+            $params['url'] = $url;
         }
 
         return $this->sendRequest('get-site-forms', $params);
