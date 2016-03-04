@@ -27,7 +27,7 @@ class TrackerApiClient extends Component {
 			'type' => 'get'
 		],
 		'get-site-page-form-info' => [
-			'url' => 'get/form-info',
+			'url' => 'get/form-details',
 			'type' => 'get'
 		],
 		'send-edit-form-result' => [
