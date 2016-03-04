@@ -31,8 +31,8 @@ class TrackerApiClient extends Component {
 			'type' => 'get'
 		],
 		'send-edit-form-result' => [
-			'url' => 'patch/form-settings',
-			'type' => 'put'
+			'url' => 'patch/form-details',
+			'type' => 'patch'
 		],
 		'change-site-forms-status' => [
 			'url' => 'put/form-info',
