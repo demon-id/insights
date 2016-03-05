@@ -5,7 +5,13 @@ use GuzzleHttp\Client AS HTTPClient;
 use yii\base\Component;
 use yii\helpers\ArrayHelper;
 
-class TrackerApiClient extends Component {
+class TrackerApiClient extends Component
+{
+    /**
+     * @const prefix CURLOPT_
+     */
+    const CONNECTTIMEOUT = 5;
+    const TIMEOUT = 5;
 
 	public $apiUrl;
 
@@ -109,6 +115,8 @@ class TrackerApiClient extends Component {
 		$options['query'] = $query_params;
 		$options['json'] = $body_params;
         $options['exceptions'] = false;
+        $options['connect_timeout'] = self::CONNECTTIMEOUT;
+        $options['timeout'] = self::TIMEOUT;
 
         $response = null;
         try {
@@ -124,6 +132,11 @@ class TrackerApiClient extends Component {
 
             return false;
         } catch(\GuzzleHttp\Exception\ParseException $e) {
+
+            $this->logExceptions($request_url, $response, $e);
+
+            return false;
+        } catch(\GuzzleHttp\Exception\ConnectException $e) {
 
             $this->logExceptions($request_url, $response, $e);
 
