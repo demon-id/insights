@@ -5,7 +5,13 @@ use GuzzleHttp\Client AS HTTPClient;
 use yii\base\Component;
 use yii\helpers\ArrayHelper;
 
-class TrackerApiClient extends Component {
+class TrackerApiClient extends Component
+{
+    /**
+     * @const prefix CURLOPT_
+     */
+    const CONNECTTIMEOUT = 5;
+    const TIMEOUT = 5;
 
 	public $apiUrl;
 
@@ -27,12 +33,12 @@ class TrackerApiClient extends Component {
 			'type' => 'get'
 		],
 		'get-site-page-form-info' => [
-			'url' => 'get/form-info',
+			'url' => 'get/form-details',
 			'type' => 'get'
 		],
 		'send-edit-form-result' => [
-			'url' => 'patch/form-settings',
-			'type' => 'put'
+			'url' => 'patch/form-details',
+			'type' => 'patch'
 		],
 		'change-site-forms-status' => [
 			'url' => 'put/form-info',
@@ -74,6 +80,10 @@ class TrackerApiClient extends Component {
             'url' => 'get/tracker',
             'type' => 'get'
         ],
+        'get-form-pages' => [
+            'url' => 'get/form-pages',
+            'type' => 'get'
+        ],
         'change-tracker-status' => [
             'url' => 'patch/tracker-status',
             'type' => 'patch'
@@ -105,7 +115,10 @@ class TrackerApiClient extends Component {
 		$options['query'] = $query_params;
 		$options['json'] = $body_params;
         $options['exceptions'] = false;
+        $options['connect_timeout'] = self::CONNECTTIMEOUT;
+        $options['timeout'] = self::TIMEOUT;
 
+        $response = null;
         try {
             $response = $this->HTTPClient->$request_type($request_url, $options);
 
@@ -123,6 +136,11 @@ class TrackerApiClient extends Component {
             $this->logExceptions($request_url, $response, $e);
 
             return false;
+        } catch(\GuzzleHttp\Exception\ConnectException $e) {
+
+            $this->logExceptions($request_url, $response, $e);
+
+            return false;
         }
 
     }
@@ -132,7 +150,7 @@ class TrackerApiClient extends Component {
         Log::add(
             'Url:'.$request_url."\n".
             'Message: '.$e->getMessage()."\n".
-            'Response: '.$response->getBody()."\n",
+            'Response: '.(($response) ? $response->getBody() : '')."\n",
             'api-http-errors',
             \Yii::getAlias('@runtime').'/logs'
         );
@@ -162,15 +180,23 @@ class TrackerApiClient extends Component {
 		return $this->sendRequest('get-site-page-form-info', ['form_id'=>$form_id]);
 	}
 
-	public function sendEditFormResult($data)
-	{
-		return $this->sendRequest('send-edit-form-result', [], ['data'=>$data]);
-	}
-
 	public function changeSiteFormsStatus($form_ids, $status)
 	{
 		return $this->sendRequest('change-site-forms-status', ['form_ids'=>$form_ids, 'status'=>$status]);
 	}
+
+    /**
+     * @param array $form
+     * @param array $fields
+     * @return bool
+     */
+    public function sendEditFormResult(array $form = [], array $fields = [])
+    {
+        return $this->sendRequest('send-edit-form-result', [], [
+            'form'   => $form,
+            'fields' => $fields,
+        ]);
+    }
 
     /**
      * @param $site_id
@@ -205,18 +231,18 @@ class TrackerApiClient extends Component {
     /**
      * @param $site_id
      * @param int $page
-     * @param string $like
+     * @param string $url
      * @return mixed
      */
-    public function getSiteForms($site_id, $page = 1, $like = '')
+    public function getSiteForms($site_id, $page = 1, $url = '')
     {
         $params = [
             'site_id'=> $site_id,
             'page'   => $page
         ];
 
-        if (!empty($like)) {
-            $params['like'] = $like;
+        if (!empty($url)) {
+            $params['url'] = $url;
         }
 
         return $this->sendRequest('get-site-forms', $params);
@@ -309,6 +335,19 @@ class TrackerApiClient extends Component {
     }
 
     /**
+     * @param $form_id
+     * @param int $page
+     * @return bool
+     */
+    public function getFormPages($form_id, $page = 1)
+    {
+        return $this->sendRequest('get-form-pages', [
+            'form_id' => $form_id,
+            'page'    => $page
+        ]);
+    }
+
+    /**
      * @param $tracker_id
      * @param $status
      * @return mixed
@@ -322,7 +361,7 @@ class TrackerApiClient extends Component {
 
 	public function countSitesLeads($site_ids)
 	{
-		return $this->sendRequest('count-sites-leads', ['site_ids'=>$site_ids]);
+		$response = $this->sendRequest('count-sites-leads', ['site_ids'=>$site_ids]);
 	}
 
 }

@@ -64,6 +64,14 @@ class CrawlerCoreApiClient extends Component {
 			'url' => 'sites/stop-crawl-site-ga-data',
 			'type' => 'post'
 		],
+		'start-crawl-site-domain-keywords-sr-data' => [
+			'url' => 'sites/start-crawl-site-domain-keywords-sr-data',
+			'type' => 'post'
+		],
+		'stop-crawl-site-domain-keywords-sr-data' => [
+			'url' => 'sites/stop-crawl-site-domain-keywords-sr-data',
+			'type' => 'post'
+		],
 		'check-site-available' => [
 			'url' => 'sites/check-site-available',
 			'type' => 'get'
@@ -101,6 +109,14 @@ class CrawlerCoreApiClient extends Component {
 		'get-keyword-serp' => [
 			'url' => 'site-keywords/get-keyword-serp',
 			'type' => 'get'
+		],
+		'start-crawl-keyword-keywords-sr-data' => [
+			'url' => 'site-keywords/start-crawl-keyword-keywords-sr-data',
+			'type' => 'put'
+		],
+		'stop-crawl-keyword-keywords-sr-data' => [
+			'url' => 'site-keywords/stop-crawl-keyword-keywords-sr-data',
+			'type' => 'put'
 		],
 
 		// View Sites
@@ -211,6 +227,7 @@ class CrawlerCoreApiClient extends Component {
 		$request_url = $this->apiUrl.$request_params['url'];
 
 
+		$response = null;
 		try {
 			$response = $this->HTTPClient->$request_type($request_url, [
 				'headers' => $headers,
@@ -240,7 +257,7 @@ class CrawlerCoreApiClient extends Component {
 		Log::add(
 			'Url:'.$request_url."\n".
 			'Message: '.$e->getMessage()."\n".
-			'Response: '.$response->getBody()."\n",
+			'Response: '.(($response) ? $response->getBody() : '')."\n",
 			'api-http-errors',
 			\Yii::getAlias('@runtime').'/logs'
 		);
@@ -435,6 +452,16 @@ class CrawlerCoreApiClient extends Component {
 		return $this->sendRequest('stop-crawl-site-ga-data', ['site_id'=>$site_id, 'crawler_name'=>$crawler_name, 'data'=>$data]);
 	}
 
+	public function startCrawlSiteDomainKeywordsSrData($site_id, $data)
+	{
+		return $this->sendRequest('start-crawl-site-domain-keywords-sr-data', ['site_id'=>$site_id, 'data'=>$data]);
+	}
+
+	public function stopCrawlSiteDomainKeywordsSrData($site_id, $crawler_name, $data)
+	{
+		return $this->sendRequest('stop-crawl-site-domain-keywords-sr-data', ['site_id'=>$site_id, 'crawler_name'=>$crawler_name, 'data'=>$data]);
+	}
+
 	public function startCrawlSerpKeyword($keyword_id, $data)
 	{
 		return $this->sendRequest('start-crawl-serp-keyword', ['keyword_id'=>$keyword_id, 'data'=>$data]);
@@ -448,5 +475,15 @@ class CrawlerCoreApiClient extends Component {
 	public function getKeywordSerp($keyword_id)
 	{
 		return $this->sendRequest('get-keyword-serp', ['keyword_id'=>$keyword_id]);
+	}
+
+	public function startCrawlKeywordKeywordsSrData($keyword_id, $data)
+	{
+		return $this->sendRequest('start-crawl-keyword-keywords-sr-data', ['keyword_id'=>$keyword_id, 'data'=>$data]);
+	}
+
+	public function stopCrawlKeywordKeywordsSrData($keyword_id, $crawler_name, $data)
+	{
+		return $this->sendRequest('stop-crawl-keyword-keywords-sr-data', ['keyword_id'=>$keyword_id, 'crawler_name'=>$crawler_name, 'data'=>$data]);
 	}
 }
