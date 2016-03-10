@@ -253,9 +253,10 @@ class TrackerApiClient extends Component
      * @param $order_by
      * @param $page
      * @param $like
+     * @param $imported
      * @return mixed
      */
-    public function getSiteLeads($site_id, $order_by = '', $page = 1, $like = '')
+    public function getSiteLeads($site_id, $order_by = '', $page = 1, $like = '', $imported = null)
     {
         $params = [
             'site_id'  => $site_id,
@@ -263,6 +264,9 @@ class TrackerApiClient extends Component
             'page'     => $page
         ];
 
+        if (!empty($imported)) {
+            $params['imported'] = $imported;
+        }
         if (!empty($like)) {
             $params['like'] = $like;
         }
