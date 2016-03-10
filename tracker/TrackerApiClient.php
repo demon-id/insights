@@ -365,7 +365,7 @@ class TrackerApiClient extends Component
 
 	public function countSitesLeads($site_ids)
 	{
-		return $this->sendRequest('count-sites-leads', ['site_ids'=>$site_ids]);
+		$response = $this->sendRequest('count-sites-leads', ['site_ids'=>$site_ids]);
 	}
 
 }
