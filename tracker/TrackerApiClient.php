@@ -5,6 +5,7 @@ use GuzzleHttp\Client AS HTTPClient;
 use GuzzleHttp\Post\PostFile;
 use yii\base\Component;
 use yii\helpers\ArrayHelper;
+use common\components\Log;
 
 class TrackerApiClient extends Component
 {

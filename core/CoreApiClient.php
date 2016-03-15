@@ -4,6 +4,7 @@ namespace insights\api\core;
 use GuzzleHttp\Client AS HTTPClient;
 use yii\base\Component;
 use yii\helpers\ArrayHelper;
+use common\components\Log;
 
 class CoreApiClient extends Component {
 
