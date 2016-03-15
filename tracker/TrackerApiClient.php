@@ -2,6 +2,7 @@
 namespace insights\api\tracker;
 
 use GuzzleHttp\Client AS HTTPClient;
+use GuzzleHttp\Post\PostFile;
 use yii\base\Component;
 use yii\helpers\ArrayHelper;
 
@@ -13,41 +14,41 @@ class TrackerApiClient extends Component
     const CONNECTTIMEOUT = 5;
     const TIMEOUT = 5;
 
-	public $apiUrl;
+    public $apiUrl;
 
-	public $apiKey;
+    public $apiKey;
 
-	protected $HTTPClient;
+    protected $HTTPClient;
 
-	protected $methodParams = [
-		'add-site' => [
-			'url' => 'post/site',
-			'type' => 'post'
-		],
-		'delete-site' => [
-			'url' => 'sites/delete-site',
-			'type' => 'put'
-		],
-		'get-site-page-forms' => [
-			'url' => 'get/forms',
-			'type' => 'get'
-		],
-		'get-site-page-form-info' => [
-			'url' => 'get/form-details',
-			'type' => 'get'
-		],
-		'send-edit-form-result' => [
-			'url' => 'patch/form-details',
-			'type' => 'patch'
-		],
-		'change-site-forms-status' => [
-			'url' => 'put/form-info',
-			'type' => 'put'
-		],
-		'forms-status-on-site' => [
-			'url' => 'patch/forms-status-on-site',
-			'type' => 'patch'
-		],
+    protected $methodParams = [
+        'add-site' => [
+            'url' => 'post/site',
+            'type' => 'post'
+        ],
+        'delete-site' => [
+            'url' => 'sites/delete-site',
+            'type' => 'put'
+        ],
+        'get-site-page-forms' => [
+            'url' => 'get/forms',
+            'type' => 'get'
+        ],
+        'get-site-page-form-info' => [
+            'url' => 'get/form-details',
+            'type' => 'get'
+        ],
+        'send-edit-form-result' => [
+            'url' => 'patch/form-details',
+            'type' => 'patch'
+        ],
+        'change-site-forms-status' => [
+            'url' => 'put/form-info',
+            'type' => 'put'
+        ],
+        'forms-status-on-site' => [
+            'url' => 'patch/forms-status-on-site',
+            'type' => 'patch'
+        ],
         'forms-status-from-list' => [
             'url' => 'patch/forms-status-from-list',
             'type' => 'patch'
@@ -88,35 +89,44 @@ class TrackerApiClient extends Component
             'url' => 'patch/tracker-status',
             'type' => 'patch'
         ],
-		'count-sites-leads' => [
-			'url' => 'get/quantity-leads-on-sites',
-			'type' => 'get'
-		],
-	];
+        'count-sites-leads' => [
+            'url' => 'get/quantity-leads-on-sites',
+            'type' => 'get'
+        ],
+        'import-leads' => [
+            'url' => 'post/import-leads',
+            'type' => 'post'
+        ],
+    ];
 
-	public function __construct() {
-		$this->HTTPClient = new HTTPClient;
-	}
+    public function __construct() {
+        $this->HTTPClient = new HTTPClient;
+    }
 
-	protected function sendRequest($name, $query_params=[], $body_params=[], $headers=[])
-	{
-		$headers = ArrayHelper::merge($headers, [
-			'api-key' => $this->apiKey
-		]);
+    protected function sendRequest($name, $query_params=[], $body_params=[], $headers=[])
+    {
+        $headers = ArrayHelper::merge($headers, [
+            'api-key' => $this->apiKey
+        ]);
 
-		$request_params = $this->getRequestParams($name);
-		$request_type = $request_params['type'];
-		$request_url = $this->apiUrl.$request_params['url'];
+        $request_params = $this->getRequestParams($name);
+        $request_type = $request_params['type'];
+        $request_url = $this->apiUrl.$request_params['url'];
 
-		$options = [
-			'headers'=>$headers
-		];
+        $options = [
+            'headers'=>$headers
+        ];
 
-		$options['query'] = $query_params;
-		$options['json'] = $body_params;
+        $options['query'] = $query_params;
         $options['exceptions'] = false;
         $options['connect_timeout'] = self::CONNECTTIMEOUT;
         $options['timeout'] = self::TIMEOUT;
+
+        if (!empty($headers['Content-type']) && $headers['Content-type'] == 'multipart/form-data') {
+            $options['body'] = $body_params;
+        } else {
+            $options['json'] = $body_params;
+        }
 
         $response = null;
         try {
@@ -156,34 +166,34 @@ class TrackerApiClient extends Component
         );
     }
 
-	protected function getRequestParams($name)
-	{
-		if (empty($this->methodParams[$name])) {
-			throw new \BadMethodCallException('Api method is undefined.');
-		}
+    protected function getRequestParams($name)
+    {
+        if (empty($this->methodParams[$name])) {
+            throw new \BadMethodCallException('Api method is undefined.');
+        }
 
-		return $this->methodParams[$name];
-	}
+        return $this->methodParams[$name];
+    }
 
-	public function addSite($site_id, $url)
-	{
-		return $this->sendRequest('add-site', [], ['site_id'=>$site_id, 'url'=>$url]);
-	}
+    public function addSite($site_id, $url)
+    {
+        return $this->sendRequest('add-site', [], ['site_id'=>$site_id, 'url'=>$url]);
+    }
 
-	public function getSitePageForms($site_id, $url)
-	{
-		return $this->sendRequest('get-site-page-forms', ['site_id'=>$site_id, 'url'=>$url]);
-	}
+    public function getSitePageForms($site_id, $url)
+    {
+        return $this->sendRequest('get-site-page-forms', ['site_id'=>$site_id, 'url'=>$url]);
+    }
 
-	public function getSitePageFormInfo($form_id)
-	{
-		return $this->sendRequest('get-site-page-form-info', ['form_id'=>$form_id]);
-	}
+    public function getSitePageFormInfo($form_id)
+    {
+        return $this->sendRequest('get-site-page-form-info', ['form_id'=>$form_id]);
+    }
 
-	public function changeSiteFormsStatus($form_ids, $status)
-	{
-		return $this->sendRequest('change-site-forms-status', ['form_ids'=>$form_ids, 'status'=>$status]);
-	}
+    public function changeSiteFormsStatus($form_ids, $status)
+    {
+        return $this->sendRequest('change-site-forms-status', ['form_ids'=>$form_ids, 'status'=>$status]);
+    }
 
     /**
      * @param array $form
@@ -203,12 +213,12 @@ class TrackerApiClient extends Component
      * @param $status
      * @return bool
      */
-	public function changeFormsStatusOnSite($site_id, $status)
-	{
-		return $this->sendRequest('forms-status-on-site', ['site_id' => $site_id], [
+    public function changeFormsStatusOnSite($site_id, $status)
+    {
+        return $this->sendRequest('forms-status-on-site', ['site_id' => $site_id], [
             'status' => $status
         ]);
-	}
+    }
 
     /**
      * @param array $form_ids
@@ -223,10 +233,10 @@ class TrackerApiClient extends Component
         ]);
     }
 
-	public function deleteSite($site_id)
-	{
-		return $this->sendRequest('delete-site', ['site_id'=>$site_id]);
-	}
+    public function deleteSite($site_id)
+    {
+        return $this->sendRequest('delete-site', ['site_id'=>$site_id]);
+    }
 
     /**
      * @param $site_id
@@ -363,9 +373,28 @@ class TrackerApiClient extends Component
         ]);
     }
 
-	public function countSitesLeads($site_ids)
-	{
-		$response = $this->sendRequest('count-sites-leads', ['site_ids'=>$site_ids]);
-	}
+    /**
+     * @param $site_ids
+     * @return bool
+     */
+    public function countSitesLeads($site_ids)
+    {
+        return $this->sendRequest('count-sites-leads', ['site_ids'=>$site_ids]);
+    }
 
+    /**
+     * @param $site_id
+     * @param $leads
+     * @param string $filename
+     * @return bool
+     */
+    public function insertLeads($site_id, $leads, $filename = null)
+    {
+        return $this->sendRequest('import-leads', [], [
+            'site_id' => $site_id,
+            'leads'   => new PostFile('leads', fopen($leads, 'r'), $filename),
+        ], [
+            'Content-type' => 'multipart/form-data'
+        ]);
+    }
 }
