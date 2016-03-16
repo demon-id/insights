@@ -72,6 +72,14 @@ class CrawlerCoreApiClient extends Component {
 			'url' => 'sites/stop-crawl-site-domain-keywords-sr-data',
 			'type' => 'post'
 		],
+		'start-crawl-site-domain-competitors-sr-data' => [
+			'url' => 'sites/start-crawl-site-domain-competitors-sr-data',
+			'type' => 'post'
+		],
+		'stop-crawl-site-domain-competitors-sr-data' => [
+			'url' => 'sites/stop-crawl-site-domain-competitors-sr-data',
+			'type' => 'post'
+		],
 		'check-site-available' => [
 			'url' => 'sites/check-site-available',
 			'type' => 'get'
@@ -460,6 +468,16 @@ class CrawlerCoreApiClient extends Component {
 	public function stopCrawlSiteDomainKeywordsSrData($site_id, $crawler_name, $data)
 	{
 		return $this->sendRequest('stop-crawl-site-domain-keywords-sr-data', ['site_id'=>$site_id, 'crawler_name'=>$crawler_name, 'data'=>$data]);
+	}
+
+	public function startCrawlSiteDomainCompetitorsSrData($site_id, $data)
+	{
+		return $this->sendRequest('start-crawl-site-domain-competitors-sr-data', ['site_id'=>$site_id, 'data'=>$data]);
+	}
+
+	public function stopCrawlSiteDomainCompetitorsSrData($site_id, $crawler_name, $data)
+	{
+		return $this->sendRequest('stop-crawl-site-domain-competitors-sr-data', ['site_id'=>$site_id, 'crawler_name'=>$crawler_name, 'data'=>$data]);
 	}
 
 	public function startCrawlSerpKeyword($keyword_id, $data)
