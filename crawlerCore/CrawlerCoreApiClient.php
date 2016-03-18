@@ -205,6 +205,12 @@ class CrawlerCoreApiClient extends Component {
 			'type' => 'get'
 		],
 
+		//Keywords Suggest
+		'get-keywords-suggest-data' => [
+			'url' => 'keyword-keywords-suggest/get-site-keywords-suggest-data',
+			'type' => 'get'
+		],
+
 		// Data Site GA Data
 		'get-data-site-ga-data' => [
 			'url' => 'data-site-ga-data/get-site-data',
@@ -433,6 +439,11 @@ class CrawlerCoreApiClient extends Component {
 	public function getDataSiteGaData($site_id)
 	{
 		return $this->sendRequest('get-data-site-ga-data', ['site_id'=>$site_id]);
+	}
+
+	public function getKeywordsSuggestData($site_id, $search_string=null, $current_page=0, $sort=null)
+	{
+		return $this->sendRequest('get-keywords-suggest-data', ['site_id'=>$site_id, 'search_string'=>$search_string, 'current_page'=>$current_page, 'sort'=>$sort]);
 	}
 
 	public function getProxy()
