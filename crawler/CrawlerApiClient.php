@@ -164,11 +164,12 @@ class CrawlerApiClient extends Component {
 		return $this->sendRequest('check-core-task-state', $data, [], $api_url);
 	}
 
-	public function terminateCoreTask($task_type, $object_id, $api_url=null)
+	public function terminateCoreTask($task_type, $object_id, $crawler_name, $api_url=null)
 	{
 		$data = [
 			'task_type' => $task_type,
-			'object_id' => $object_id
+			'object_id' => $object_id,
+			'crawler_name' => $crawler_name
 		];
 		return $this->sendRequest('terminate-core-task', $data, [], $api_url);
 	}
