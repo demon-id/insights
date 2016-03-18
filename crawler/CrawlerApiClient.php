@@ -20,6 +20,14 @@ class CrawlerApiClient extends Component {
 	protected $methodParams = [
 
 		// Crawler sites
+		'check-core-task-state' => [
+			'url' => 'crawler-sites/check-core-task-state',
+			'type' => 'get'
+		],
+		'terminate-core-task' => [
+			'url' => 'crawler-sites/terminate-core-task',
+			'type' => 'post'
+		],
 		'add-crawler-task' => [
 			'url' => 'crawler-sites/add-crawler-task',
 			'type' => 'post'
@@ -88,7 +96,7 @@ class CrawlerApiClient extends Component {
 		$this->HTTPClient = new HTTPClient;
 	}
 
-	protected function sendRequest($name, $params=[], $headers=[])
+	protected function sendRequest($name, $params=[], $headers=[], $api_url=null)
 	{
 		$headers = ArrayHelper::merge($headers, [
 			'Accept' =>'application/json',
@@ -97,7 +105,10 @@ class CrawlerApiClient extends Component {
 
 		$request_params = $this->getRequestParams($name);
 		$request_type = $request_params['type'];
-		$request_url = $this->apiUrl.$request_params['url'];
+
+		$apiUrl = ($api_url) ? $api_url : $this->apiUrl;
+
+		$request_url = $apiUrl . $request_params['url'];
 
 		$response = null;
 		try {
@@ -142,6 +153,25 @@ class CrawlerApiClient extends Component {
 		}
 
 		return $this->methodParams[$name];
+	}
+
+	public function checkCoreTaskState($task_type, $object_id, $api_url=null)
+	{
+		$data = [
+			'task_type' => $task_type,
+			'object_id' => $object_id
+		];
+		return $this->sendRequest('check-core-task-state', $data, [], $api_url);
+	}
+
+	public function terminateCoreTask($task_type, $object_id, $crawler_name, $api_url=null)
+	{
+		$data = [
+			'task_type' => $task_type,
+			'object_id' => $object_id,
+			'crawler_name' => $crawler_name
+		];
+		return $this->sendRequest('terminate-core-task', $data, [], $api_url);
 	}
 
 	public function getSites()
