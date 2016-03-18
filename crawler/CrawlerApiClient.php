@@ -88,7 +88,7 @@ class CrawlerApiClient extends Component {
 		$this->HTTPClient = new HTTPClient;
 	}
 
-	protected function sendRequest($name, $params=[], $headers=[])
+	protected function sendRequest($name, $params=[], $headers=[], $api_url=null)
 	{
 		$headers = ArrayHelper::merge($headers, [
 			'Accept' =>'application/json',
@@ -97,7 +97,10 @@ class CrawlerApiClient extends Component {
 
 		$request_params = $this->getRequestParams($name);
 		$request_type = $request_params['type'];
-		$request_url = $this->apiUrl.$request_params['url'];
+
+		$apiUrl = ($api_url) ? $api_url : $this->apiUrl;
+
+		$request_url = $apiUrl . $request_params['url'];
 
 		$response = null;
 		try {
@@ -142,6 +145,15 @@ class CrawlerApiClient extends Component {
 		}
 
 		return $this->methodParams[$name];
+	}
+
+	public function checkTaskState($task_type, $object_id, $api_url=null)
+	{
+		$data = [
+			'task_type' => $task_type,
+			'object_id' => $object_id
+		];
+		return $this->sendRequest('check-core-task-state', $data, [], $api_url);
 	}
 
 	public function getSites()
