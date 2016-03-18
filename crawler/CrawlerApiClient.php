@@ -20,6 +20,14 @@ class CrawlerApiClient extends Component {
 	protected $methodParams = [
 
 		// Crawler sites
+		'check-core-task-state' => [
+			'url' => 'crawler-sites/check-core-task-state',
+			'type' => 'get'
+		],
+		'terminate-core-task' => [
+			'url' => 'crawler-sites/terminate-core-task',
+			'type' => 'post'
+		],
 		'add-crawler-task' => [
 			'url' => 'crawler-sites/add-crawler-task',
 			'type' => 'post'
@@ -147,13 +155,22 @@ class CrawlerApiClient extends Component {
 		return $this->methodParams[$name];
 	}
 
-	public function checkTaskState($task_type, $object_id, $api_url=null)
+	public function checkCoreTaskState($task_type, $object_id, $api_url=null)
 	{
 		$data = [
 			'task_type' => $task_type,
 			'object_id' => $object_id
 		];
 		return $this->sendRequest('check-core-task-state', $data, [], $api_url);
+	}
+
+	public function terminateCoreTask($task_type, $object_id, $api_url=null)
+	{
+		$data = [
+			'task_type' => $task_type,
+			'object_id' => $object_id
+		];
+		return $this->sendRequest('terminate-core-task', $data, [], $api_url);
 	}
 
 	public function getSites()
