@@ -23,6 +23,10 @@ class CoreApiClient extends Component {
 			'url' => 'sites/mark-as-in-crawler',
 			'type' => 'put'
 		],
+		'update-site-partner-excesses' => [
+			'url' => 'sites/update-site-partner-excesses',
+			'type' => 'post'
+		],
 	];
 
 	public function __construct() {
@@ -93,5 +97,10 @@ class CoreApiClient extends Component {
 	public function markSiteAsInCrawler($core_site_id)
 	{
 		return $this->sendRequest('mark-site-as-in-crawler', ['site_id'=>$core_site_id]);
+	}
+
+	public function updateSitePartnerExcesses($core_site_id)
+	{
+		return $this->sendRequest('update-site-partner-excesses', ['site_id'=>$core_site_id]);
 	}
 }
