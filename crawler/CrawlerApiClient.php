@@ -36,6 +36,11 @@ class CrawlerApiClient extends Component {
 			'url' => 'crawler-sites/start-grab-robots',
 			'type' => 'post'
 		],
+		'start-get-serp-pages-count' => [
+			'url' => 'crawler-sites/start-get-serp-pages-count',
+			'type' => 'post'
+		],
+
 
 		// Crawler site pages
 		'get-site-page' => [
@@ -184,6 +189,11 @@ class CrawlerApiClient extends Component {
 	public function startGrabSiteRobots($site_id)
 	{
 		return $this->sendRequest('start-grab-site-robots', ['id'=>$site_id]);
+	}
+
+	public function startGetSerpPagesCount($site_id)
+	{
+		return $this->sendRequest('start-get-serp-pages-count', ['id'=>$site_id]);
 	}
 
 	public function getSitemap($sitemap_id)
