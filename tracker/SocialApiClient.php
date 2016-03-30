@@ -32,15 +32,16 @@ class SocialApiClient extends Component
         $this->HTTPClient = new HTTPClient;
     }
 
-    protected function sendRequest($name, $query_params=[], $body_params=[], $headers=[])
+    protected function sendRequest($name, $query_params=[], $headers=[])
     {
         $headers = ArrayHelper::merge($headers, [
             'api-key' => $this->apiKey
         ]);
 
         $request_params = $this->getRequestParams($name);
+        $query_str = implode('/', $query_params);
         $request_type = $request_params['type'];
-        $request_url = $this->apiUrl.$request_params['url'];
+        $request_url = $this->apiUrl . $request_params['url'] . '/' . $query_str;
 
         $options = [
             'headers'=>$headers
@@ -50,12 +51,6 @@ class SocialApiClient extends Component
         $options['exceptions'] = false;
         $options['connect_timeout'] = self::CONNECTTIMEOUT;
         $options['timeout'] = self::TIMEOUT;
-
-        if (!empty($headers['Content-type']) && $headers['Content-type'] == 'multipart/form-data') {
-            $options['body'] = $body_params;
-        } else {
-            $options['json'] = $body_params;
-        }
 
         $response = null;
         try {
@@ -111,8 +106,6 @@ class SocialApiClient extends Component
      */
     public function getSocialPages($email)
     {
-        return $this->sendRequest('get-social-pages', [
-            'email' => $email,
-        ]);
+        return $this->sendRequest('get-social-pages', [$email]);
     }
 }
