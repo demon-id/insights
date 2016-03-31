@@ -22,8 +22,8 @@ class SocialApiClient extends Component
     protected $HTTPClient;
 
     protected $methodParams = [
-        'get-social-pages' => [
-            'url' => 'get/social-pages',
+        'get-social-links' => [
+            'url' => 'get/social-links',
             'type' => 'get'
         ],
     ];
@@ -104,8 +104,8 @@ class SocialApiClient extends Component
      * @param int $page
      * @return bool
      */
-    public function getSocialPages($email)
+    public function getSocialLinks($email)
     {
-        return $this->sendRequest('get-social-pages', [$email]);
+        return $this->sendRequest('get-social-links', [$email]);
     }
 }
