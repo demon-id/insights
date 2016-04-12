@@ -57,7 +57,7 @@ class SocialApiClient extends Component
             $response = $this->HTTPClient->$request_type($request_url, $options);
 
 			//$answer = $response->json(); //Guzzle 5.3.0
-			$answer = json_encode(         //Guzzle 6.2.0
+			$answer = json_decode(         //Guzzle 6.2.0
 				(string) $response->getBody(),
 				true
 			);

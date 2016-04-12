@@ -255,7 +255,7 @@ class CrawlerCoreApiClient extends Component {
 			]);
 
 			//$answer = $response->json(); //Guzzle 5.3.0
-			$answer = json_encode(         //Guzzle 6.2.0
+			$answer = json_decode(         //Guzzle 6.2.0
 				(string) $response->getBody(),
 				true
 			);
