@@ -254,7 +254,11 @@ class CrawlerCoreApiClient extends Component {
 				'json' => $params,
 			]);
 
-			$answer = $response->json();
+			//$answer = $response->json();
+			$answer = json_encode(
+				(string) $response->getBody(),
+				true
+			);
 
 			return $answer;
 
