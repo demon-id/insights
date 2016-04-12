@@ -260,6 +260,7 @@ class CrawlerCoreApiClient extends Component {
 				true
 			);
 
+
 			return $answer;
 
 		} catch(\GuzzleHttp\Exception\BadResponseException $e) {
