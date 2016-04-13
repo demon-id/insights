@@ -50,11 +50,11 @@ class CoreApiClient extends Component {
 				'json' => $params,
 			]);
 
-			//$answer = $response->json(); //Guzzle 5.3.0
-			$answer = json_decode(         //Guzzle 6.2.0
+			$answer = $response->json(); //Guzzle 5.3.0
+			/*$answer = json_decode(         //Guzzle 6.2.0
 				(string) $response->getBody(),
 				true
-			);
+			);*/
 
 			return $answer;
 
