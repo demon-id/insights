@@ -566,6 +566,6 @@ class CrawlerCoreApiClient extends Component {
 
 	public function addSeomozData($url, $data, $last_update_date)
 	{
-		return $this->sendRequest('get-seomoz-data', ['url'=>$url, 'data'=>$data, 'last_update_date'=>$last_update_date]);
+		return $this->sendRequest('add-seomoz-data', ['url'=>$url, 'data'=>$data, 'last_update_date'=>$last_update_date]);
 	}
 }
