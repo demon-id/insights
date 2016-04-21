@@ -14,6 +14,7 @@ class CrawlerCoreApiClient extends Component {
 	public $apiKey;
 
 	public $testUserIds;
+	public $testPartnerIds;
 
 	protected $HTTPClient;
 
