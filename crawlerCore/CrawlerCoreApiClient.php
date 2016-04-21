@@ -81,6 +81,14 @@ class CrawlerCoreApiClient extends Component {
 			'url' => 'sites/stop-crawl-site-domain-competitors-sr-data',
 			'type' => 'post'
 		],
+		'start-crawl-site-competitors-data' => [
+			'url' => 'sites/start-crawl-site-competitors-data',
+			'type' => 'post'
+		],
+		'stop-crawl-site-competitors-data' => [
+			'url' => 'sites/stop-crawl-site-competitors-data',
+			'type' => 'post'
+		],
 		'check-site-available' => [
 			'url' => 'sites/check-site-available',
 			'type' => 'get'
@@ -228,6 +236,16 @@ class CrawlerCoreApiClient extends Component {
 		'get-proxy' => [
 			'url' => 'proxy/get-proxy',
 			'type' => 'get'
+		],
+
+		// Seomoz data
+		'get-seomoz-data' => [
+			'url' => 'seomoz-data/get-seomoz-data',
+			'type' => 'get'
+		],
+		'add-seomoz-data' => [
+			'url' => 'seomoz-data/add-seomoz-data',
+			'type' => 'post'
 		],
 
 	];
@@ -462,11 +480,6 @@ class CrawlerCoreApiClient extends Component {
 		return $this->sendRequest('get-site-competitors-data', ['site_id'=>$site_id, 'search_string'=>$search_string, 'current_page'=>$current_page, 'sort'=>$sort]);
 	}
 
-	public function getProxy()
-	{
-		return $this->sendRequest('get-proxy');
-	}
-
 	public function startCrawlSite($site_id, $data)
 	{
 		return $this->sendRequest('start-crawl-site', ['site_id'=>$site_id, 'data'=>$data]);
@@ -507,6 +520,16 @@ class CrawlerCoreApiClient extends Component {
 		return $this->sendRequest('stop-crawl-site-domain-competitors-sr-data', ['site_id'=>$site_id, 'crawler_name'=>$crawler_name, 'data'=>$data]);
 	}
 
+	public function startCrawlSiteCompetitorsData($site_id, $data)
+	{
+		return $this->sendRequest('start-crawl-site-competitors-data', ['site_id'=>$site_id, 'data'=>$data]);
+	}
+
+	public function stopCrawlSiteCompetitorsData($site_id, $crawler_name, $data)
+	{
+		return $this->sendRequest('stop-crawl-site-competitors-data', ['site_id'=>$site_id, 'crawler_name'=>$crawler_name, 'data'=>$data]);
+	}
+
 	public function startCrawlSerpKeyword($keyword_id, $data)
 	{
 		return $this->sendRequest('start-crawl-serp-keyword', ['keyword_id'=>$keyword_id, 'data'=>$data]);
@@ -530,5 +553,20 @@ class CrawlerCoreApiClient extends Component {
 	public function stopCrawlKeywordKeywordsSrData($keyword_id, $crawler_name, $data)
 	{
 		return $this->sendRequest('stop-crawl-keyword-keywords-sr-data', ['keyword_id'=>$keyword_id, 'crawler_name'=>$crawler_name, 'data'=>$data]);
+	}
+
+	public function getProxy()
+	{
+		return $this->sendRequest('get-proxy');
+	}
+
+	public function getSeomozData($urls_hash, $last_update_date=null)
+	{
+		return $this->sendRequest('get-seomoz-data', ['urls_hash'=>$urls_hash, 'last_update_date'=>$last_update_date]);
+	}
+
+	public function addSeomozData($url, $data, $last_update_date)
+	{
+		return $this->sendRequest('add-seomoz-data', ['url'=>$url, 'data'=>$data, 'last_update_date'=>$last_update_date]);
 	}
 }
