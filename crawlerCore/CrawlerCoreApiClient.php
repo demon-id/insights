@@ -228,7 +228,7 @@ class CrawlerCoreApiClient extends Component {
 
 		//Competitors
 		'get-site-competitors-data' => [
-			'url' => 'view-sr-site-domain-competitors/get-site-competitors-data',
+			'url' => 'view-site-competitors/get-site-competitors-data',
 			'type' => 'get'
 		],
 
@@ -486,9 +486,9 @@ class CrawlerCoreApiClient extends Component {
 		return $this->sendRequest('get-keywords-suggest-data', ['site_id'=>$site_id, 'keywords_ids'=>$keywords_ids, 'search_string'=>$search_string, 'current_page'=>$current_page, 'sort'=>$sort]);
 	}
 
-	public function getSiteCompetitorsData($site_id, $search_string=null, $current_page=0, $sort=null)
+	public function getSiteCompetitorsData($site_id, $current_page=0, $sort=null)
 	{
-		return $this->sendRequest('get-site-competitors-data', ['site_id'=>$site_id, 'search_string'=>$search_string, 'current_page'=>$current_page, 'sort'=>$sort]);
+		return $this->sendRequest('get-site-competitors-data', ['site_id'=>$site_id, 'current_page'=>$current_page, 'sort'=>$sort]);
 	}
 
 	public function startCrawlSite($site_id, $data)
