@@ -225,6 +225,14 @@ class CrawlerCoreApiClient extends Component {
 			'url' => 'keyword-keywords-suggest/get-site-keywords-suggest-data',
 			'type' => 'get'
 		],
+		'hide-keyword-suggest-data' => [
+			'url' => 'keyword-keywords-suggest/hide-site-keyword-suggest',
+			'type' => 'post'
+		],
+		'unhide-keyword-suggest-data' => [
+			'url' => 'keyword-keywords-suggest/unhide-site-keyword-suggest',
+			'type' => 'post'
+		],
 
 		//Competitors
 		'get-site-competitors-data' => [
@@ -484,6 +492,16 @@ class CrawlerCoreApiClient extends Component {
 	public function getKeywordsSuggestData($site_id, $keywords_ids, $search_string=null, $current_page=0, $sort=null)
 	{
 		return $this->sendRequest('get-keywords-suggest-data', ['site_id'=>$site_id, 'keywords_ids'=>$keywords_ids, 'search_string'=>$search_string, 'current_page'=>$current_page, 'sort'=>$sort]);
+	}
+
+	public function hideKeywordSuggest($site_id, $keyword_id)
+	{
+		return $this->sendRequest('hide-keyword-suggest-data', ['site_id'=>$site_id, 'keyword_id'=>$keyword_id]);
+	}
+
+	public function unhideKeywordSuggest($site_id, $keyword_id)
+	{
+		return $this->sendRequest('unhide-keyword-suggest-data', ['site_id'=>$site_id, 'keyword_id'=>$keyword_id]);
 	}
 
 	public function getSiteCompetitorsData($site_id, $current_page=0, $sort=null)
