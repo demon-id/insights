@@ -14,6 +14,7 @@ class CrawlerCoreApiClient extends Component {
 	public $apiKey;
 
 	public $testUserIds;
+	public $testPartnerIds;
 
 	protected $HTTPClient;
 
@@ -193,6 +194,12 @@ class CrawlerCoreApiClient extends Component {
 			'type' => 'get'
 		],
 
+		// View Content Effective Pages
+		'get-view-content-effective-pages' => [
+			'url' => 'view-content-effective-pages/get-view-content-effective-pages',
+			'type' => 'get'
+		],
+
 		// View Site Page Keywords
 		'get-view-site-page-keywords-by-keyword' => [
 			'url' => 'view-site-page-keywords/get-view-site-page-keywords-by-keyword',
@@ -218,18 +225,10 @@ class CrawlerCoreApiClient extends Component {
 			'url' => 'keyword-keywords-suggest/get-site-keywords-suggest-data',
 			'type' => 'get'
 		],
-		'hide-keyword-suggest-data' => [
-			'url' => 'keyword-keywords-suggest/hide-site-keyword-suggest',
-			'type' => 'post'
-		],
-		'unhide-keyword-suggest-data' => [
-			'url' => 'keyword-keywords-suggest/unhide-site-keyword-suggest',
-			'type' => 'post'
-		],
 
 		//Competitors
 		'get-site-competitors-data' => [
-			'url' => 'view-sr-site-domain-competitors/get-site-competitors-data',
+			'url' => 'view-site-competitors/get-site-competitors-data',
 			'type' => 'get'
 		],
 
@@ -452,6 +451,11 @@ class CrawlerCoreApiClient extends Component {
 		return $this->sendRequest('get-view-site-ga-data', ['site_id'=>$site_id]);
 	}
 
+	public function getViewContentEffectivePages($site_id)
+	{
+		return $this->sendRequest('get-view-content-effective-pages', ['site_id'=>$site_id]);
+	}
+
 	public function getErrorsDiagramData($site_id, $search_date=null)
 	{
 		return $this->sendRequest('get-errors-diagram-data', ['id'=>$site_id, 'search_date'=>$search_date]);
@@ -482,19 +486,9 @@ class CrawlerCoreApiClient extends Component {
 		return $this->sendRequest('get-keywords-suggest-data', ['site_id'=>$site_id, 'keywords_ids'=>$keywords_ids, 'search_string'=>$search_string, 'current_page'=>$current_page, 'sort'=>$sort]);
 	}
 
-	public function hideKeywordSuggest($site_id, $keyword_id)
+	public function getSiteCompetitorsData($site_id, $current_page=0, $sort=null)
 	{
-		return $this->sendRequest('hide-keyword-suggest-data', ['site_id'=>$site_id, 'keyword_id'=>$keyword_id]);
-	}
-
-	public function unhideKeywordSuggest($site_id, $keyword_id)
-	{
-		return $this->sendRequest('unhide-keyword-suggest-data', ['site_id'=>$site_id, 'keyword_id'=>$keyword_id]);
-	}
-
-	public function getSiteCompetitorsData($site_id, $search_string=null, $current_page=0, $sort=null)
-	{
-		return $this->sendRequest('get-site-competitors-data', ['site_id'=>$site_id, 'search_string'=>$search_string, 'current_page'=>$current_page, 'sort'=>$sort]);
+		return $this->sendRequest('get-site-competitors-data', ['site_id'=>$site_id, 'current_page'=>$current_page, 'sort'=>$sort]);
 	}
 
 	public function startCrawlSite($site_id, $data)
