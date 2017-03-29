@@ -136,6 +136,12 @@ class CrawlerCoreApiClient extends Component {
 			'type' => 'put'
 		],
 
+		// Site keywords localities
+		'get-site-keyword-localities' => [
+			'url' => 'site-keyword-localities/get-site-keyword-localities',
+			'type' => 'get'
+		],
+
 		// View Sites
 		'get-view-site' => [
 			'url' => 'view-sites/get-view-site',
@@ -597,5 +603,10 @@ class CrawlerCoreApiClient extends Component {
 	public function addSeomozData($url, $data, $last_update_date)
 	{
 		return $this->sendRequest('add-seomoz-data', ['url'=>$url, 'data'=>$data, 'last_update_date'=>$last_update_date]);
+	}
+
+	public function getSiteKeywordLocalities($site_id, $search_word=null)
+	{
+		return $this->sendRequest('get-site-keyword-localities', ['site_id'=>$site_id, 'search_word'=>$search_word]);
 	}
 }
