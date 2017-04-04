@@ -623,7 +623,7 @@ class CrawlerCoreApiClient extends Component {
 		return $this->sendRequest('add-site-keyword-localities', ['site_id'=>$site_id, 'localities'=>$localities]);
 	}
 
-	public function deleteSiteKeywordLocalities($id, $site_id)
+	public function deleteSiteKeywordLocality($id, $site_id)
 	{
 		return $this->sendRequest('delete-site-keyword-locality', ['id'=>$id, 'site_id'=>$site_id]);
 	}
