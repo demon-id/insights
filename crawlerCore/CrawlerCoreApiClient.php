@@ -99,6 +99,10 @@ class CrawlerCoreApiClient extends Component {
 			'url' => 'site-keywords/add-keywords',
 			'type' => 'post'
 		],
+		'add-locality-keywords' => [
+			'url' => 'site-keywords/add-locality-keywords',
+			'type' => 'post'
+		],
 		'get-site-keywords' => [
 			'url' => 'site-keywords/get-site-keywords',
 			'type' => 'get'
@@ -391,6 +395,11 @@ class CrawlerCoreApiClient extends Component {
 	public function addKeywords($site_id, $keywords=[])
 	{
 		return $this->sendRequest('add-keywords', ['site_id'=>$site_id, 'keywords'=>$keywords]);
+	}
+
+	public function addLocaityKeywords($site_id, $keyword_id, $locality_ids=[])
+	{
+		return $this->sendRequest('add-locality-keywords', ['site_id'=>$site_id, 'keyword_id'=>$keyword_id, 'locality_ids'=>$locality_ids]);
 	}
 
 	public function getSiteKeywords($site_id)
