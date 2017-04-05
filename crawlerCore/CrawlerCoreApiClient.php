@@ -397,7 +397,7 @@ class CrawlerCoreApiClient extends Component {
 		return $this->sendRequest('add-keywords', ['site_id'=>$site_id, 'keywords'=>$keywords]);
 	}
 
-	public function addLocaityKeywords($site_id, $keyword_id, $locality_ids=[])
+	public function addLocalityKeywords($site_id, $keyword_id, $locality_ids=[])
 	{
 		return $this->sendRequest('add-locality-keywords', ['site_id'=>$site_id, 'keyword_id'=>$keyword_id, 'locality_ids'=>$locality_ids]);
 	}
