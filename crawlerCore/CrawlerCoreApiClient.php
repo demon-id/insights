@@ -107,6 +107,10 @@ class CrawlerCoreApiClient extends Component {
 			'url' => 'site-keywords/get-site-keywords',
 			'type' => 'get'
 		],
+		'get-used-keyword-localities' => [
+			'url' => 'site-keywords/get-used-keyword-localities',
+			'type' => 'get'
+		],
 		'count-sites-keywords' => [
 			'url' => 'site-keywords/count-sites-keywords',
 			'type' => 'get'
@@ -405,6 +409,11 @@ class CrawlerCoreApiClient extends Component {
 	public function getSiteKeywords($site_id)
 	{
 		return $this->sendRequest('get-site-keywords', ['site_id'=>$site_id]);
+	}
+
+	public function getUsedKeywordLocalities($keyword_id, $site_id=null)
+	{
+		return $this->sendRequest('get-used-keyword-localities', ['keyword_id'=>$keyword_id, 'site_id'=>$site_id]);
 	}
 
 	public function deleteSiteKeyword($id, $site_id)
