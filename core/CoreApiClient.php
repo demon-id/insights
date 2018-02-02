@@ -27,6 +27,10 @@ class CoreApiClient extends Component {
 			'url' => 'sites/site-stats-updated',
 			'type' => 'post'
 		],
+		'get-owner-site' => [
+			'url' => 'sites/get-owner-site',
+			'type' => 'get'
+		],
 	];
 
 	public function __construct() {
@@ -106,5 +110,10 @@ class CoreApiClient extends Component {
 	public function siteStatsUpdated($core_site_id)
 	{
 		return $this->sendRequest('site-stats-updated', ['site_id'=>$core_site_id]);
+	}
+
+	public function getOwnerSite($core_site_id)
+	{
+		return $this->sendRequest('get-owner-site', ['site_id'=>$core_site_id]);
 	}
 }
