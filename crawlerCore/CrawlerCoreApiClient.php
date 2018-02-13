@@ -441,7 +441,7 @@ class CrawlerCoreApiClient extends Component {
 	}
 
 	public function getViewSite($site_id)
-	{
+	{           
 		return $this->sendRequest('get-view-site', ['id'=>$site_id]);
 	}
 
@@ -485,9 +485,9 @@ class CrawlerCoreApiClient extends Component {
 		return $this->sendRequest('get-view-external-link', ['id'=>$link_id]);
 	}
 
-	public function getViewSiteKeywords($site_id, $search_string=null, $current_page=0, $sort=null)
+	public function getViewSiteKeywords($site_id, $search_string=null, $current_page=0, $sort=null, $grades = null, $queues = null, $difficulties = null)
 	{
-		return $this->sendRequest('get-view-site-keywords', ['site_id'=>$site_id, 'search_string'=>$search_string, 'current_page'=>$current_page, 'sort'=>$sort]);
+                return $this->sendRequest('get-view-site-keywords', ['site_id'=>$site_id, 'search_string'=>$search_string, 'current_page'=>$current_page, 'sort'=>$sort, 'grades'=>$grades, 'queues'=>$queues, 'difficulties'=>$difficulties]);
 	}
 
 	public function getViewSitePageKeywordsByKeyword($site_id, $keyword_id, $current_page)
