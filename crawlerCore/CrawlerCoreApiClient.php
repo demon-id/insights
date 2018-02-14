@@ -147,6 +147,10 @@ class CrawlerCoreApiClient extends Component {
 			'url' => 'site-keywords/stop-crawl-keyword-keywords-sr-data',
 			'type' => 'put'
 		],
+		'update-site-keywords-queue-status' => [
+			'url' => 'site-keywords/update-site-keywords-queue-status',
+			'type' => 'put'
+		],
 
 		// Site keywords localities
 		'get-site-keyword-localities' => [
@@ -654,4 +658,10 @@ class CrawlerCoreApiClient extends Component {
 	{
 		return $this->sendRequest('delete-site-keyword-locality', ['id'=>$id, 'site_id'=>$site_id]);
 	}
+        
+	public function updateSiteKeywordsQueueStatus($site_id, $keyword_id, $status)
+	{
+		return $this->sendRequest('update-site-keywords-queue-status', ['site_id'=>$site_id, 'keyword_id'=>$keyword_id, 'status'=>$status]);
+	}
+
 }
