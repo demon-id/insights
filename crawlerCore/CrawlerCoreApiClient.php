@@ -149,7 +149,7 @@ class CrawlerCoreApiClient extends Component {
 		],
 		'update-site-keywords-queue-status' => [
 			'url' => 'site-keywords/update-site-keywords-queue-status',
-			'type' => 'put'
+			'type' => 'get'
 		],
 
 		// Site keywords localities
