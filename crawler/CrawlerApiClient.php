@@ -95,6 +95,10 @@ class CrawlerApiClient extends Component {
 			'url' => 'crawler-keywords-serp/start-parse-serp',
 			'type' => 'post'
 		],
+		'get-stop-words' => [
+			'url' => 'site-keywords/get-stop-words',
+			'type' => 'get'
+		],
 	];
 
 	public function __construct() {
@@ -274,5 +278,10 @@ class CrawlerApiClient extends Component {
 	public function addCrawlerTask($data)
 	{
 		return $this->sendRequest('add-crawler-task', ['data'=>$data]);
+	}
+
+	public function getStopWords()
+	{
+		return $this->sendRequest('get-stop-words', []);
 	}
 }

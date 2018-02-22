@@ -151,6 +151,10 @@ class CrawlerCoreApiClient extends Component {
 			'url' => 'site-keywords/set-site-keywords-queue-status',
 			'type' => 'get'
 		],
+		'get-stop-words' => [
+			'url' => 'site-keywords/get-stop-words',
+			'type' => 'get'
+		],
 
 		// Site keywords localities
 		'get-site-keyword-localities' => [
@@ -664,4 +668,8 @@ class CrawlerCoreApiClient extends Component {
 		return $this->sendRequest('set-site-keywords-queue-status', ['site_id'=>$site_id, 'keyword_id'=>$keyword_id, 'status'=>$status]);
 	}
 
+	public function getStopWords()
+	{            
+		return $this->sendRequest('get-stop-words', []);
+	}
 }
