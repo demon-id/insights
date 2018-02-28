@@ -93,6 +93,14 @@ class CrawlerCoreApiClient extends Component {
 			'url' => 'sites/check-site-available',
 			'type' => 'get'
 		],
+		'get-site-rules' => [
+			'url' => 'sites/get-site-rules',
+			'type' => 'get'
+		],
+		'update-rules' => [
+			'url' => 'sites/update-rules',
+			'type' => 'get'
+		],
 
 		// Keywords
 		'add-keywords' => [
@@ -406,6 +414,16 @@ class CrawlerCoreApiClient extends Component {
 	public function hardDeleteSite($site_id)
 	{
 		return $this->sendRequest('hard-delete-site', ['site_id'=>$site_id]);
+	}
+
+	public function getSiteRules($site_id)
+	{
+		return $this->sendRequest('get-site-rules', ['site_id'=>$site_id]);
+	}
+
+	public function updateRules($site_id, $rules)
+	{
+		return $this->sendRequest('update-rules', ['site_id'=>$site_id, 'rules'=>$rules]);
 	}
 
 	public function addKeywords($site_id, $keywords=[])
