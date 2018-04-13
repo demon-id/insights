@@ -213,6 +213,10 @@ class CrawlerCoreApiClient extends Component {
 			'url' => 'view-site-pages/get-site-page-keywords',
 			'type' => 'get'
 		],
+		'get-view-site-page-diagram' => [
+			'url' => 'view-site-pages/get-view-site-page-diagram',
+			'type' => 'get'
+		],
 
 		// View External Links
 		'get-view-external-link' => [
@@ -549,6 +553,11 @@ class CrawlerCoreApiClient extends Component {
 	public function getDataSitePageKeywordDiagram($site_id, $page_id, $keyword_id)
 	{
 		return $this->sendRequest('get-data-site-page-keyword-diagram', ['site_id'=>$site_id, 'page_id'=>$page_id, 'keyword_id'=>$keyword_id]);
+	}
+
+	public function getViewSitePageDiagram($site_id, $page_id)
+	{
+		return $this->sendRequest('get-view-site-page-diagram', ['site_id'=>$site_id, 'page_id'=>$page_id]);
 	}
 
 	public function getDataSiteGaData($site_id)
