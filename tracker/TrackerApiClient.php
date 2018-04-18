@@ -78,6 +78,10 @@ class TrackerApiClient extends Component
             'url' => 'get/lead-visits',
             'type' => 'get'
         ],
+        'get-lead-submit' => [
+            'url' => 'get/lead-submit',
+            'type' => 'get'
+        ],
         'get-site-tracker' => [
             'url' => 'get/tracker',
             'type' => 'get'
@@ -261,6 +265,15 @@ class TrackerApiClient extends Component
         }
 
         return $this->sendRequest('get-site-forms', $params);
+    }
+
+    /**
+     * @param $site_id
+     * @return mixed
+     */
+    public function getLeadSubmit($site_id)
+    {
+            return $this->sendRequest('get-lead-submit', ['site_id'=> $site_id]);
     }
 
     /**
