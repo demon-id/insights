@@ -79,7 +79,7 @@ class TrackerApiClient extends Component
             'type' => 'get'
         ],
         'get-lead-submit' => [
-            'url' => 'get/lead-submit',
+            'url' => 'get/submits',
             'type' => 'get'
         ],
         'get-site-tracker' => [
