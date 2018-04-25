@@ -530,9 +530,9 @@ class CrawlerCoreApiClient extends Component {
 		return $this->sendRequest('get-view-site-ga-data', ['site_id'=>$site_id]);
 	}
 
-	public function getViewContentEffectivePages($site_id, $is_full=null, $period=1, $current_page=0)
-	{
-		return $this->sendRequest('get-view-content-effective-pages', ['site_id'=>$site_id, 'is_full'=>$is_full, 'period'=>$period, 'current_page'=>$current_page]);
+	public function getViewContentEffectivePages($site_id, $is_full=null, $period=3, $current_page=0)
+	{                
+                return $this->sendRequest('get-view-content-effective-pages', ['site_id'=>$site_id, 'is_full'=>$is_full, 'period'=>$period, 'current_page'=>$current_page]);
 	}
 
 	public function getErrorsDiagramData($site_id, $search_date=null)
