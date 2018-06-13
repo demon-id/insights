@@ -246,6 +246,12 @@ class CrawlerCoreApiClient extends Component {
 			'type' => 'get'
 		],
 
+		// Data Content Effective Pages
+		'get-data-content-effective-pages' => [
+			'url' => 'view-content-effective-pages/get-data-content-effective-pages',
+			'type' => 'get'
+		],
+
 		// View Site Page Keywords
 		'get-view-site-page-keywords-by-keyword' => [
 			'url' => 'view-site-page-keywords/get-view-site-page-keywords-by-keyword',
@@ -530,9 +536,14 @@ class CrawlerCoreApiClient extends Component {
 		return $this->sendRequest('get-view-site-ga-data', ['site_id'=>$site_id]);
 	}
 
-	public function getViewContentEffectivePages($site_id, $is_full=null, $period=3, $current_page=0)
+	public function getViewContentEffectivePages($site_id)
 	{                
-                return $this->sendRequest('get-view-content-effective-pages', ['site_id'=>$site_id, 'is_full'=>$is_full, 'period'=>$period, 'current_page'=>$current_page]);
+                return $this->sendRequest('get-view-content-effective-pages', ['site_id'=>$site_id]);
+	}
+
+	public function getDataContentEffectivePages($site_id, $period=1, $current_page=0)
+	{                
+                return $this->sendRequest('get-data-content-effective-pages', ['site_id'=>$site_id, 'period'=>$period, 'current_page'=>$current_page]);
 	}
 
 	public function getErrorsDiagramData($site_id, $search_date=null)
