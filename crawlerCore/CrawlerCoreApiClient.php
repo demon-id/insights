@@ -576,9 +576,9 @@ class CrawlerCoreApiClient extends Component {
 		return $this->sendRequest('get-data-site-ga-data', ['site_id'=>$site_id]);
 	}
 
-	public function getKeywordsSuggestData($site_id, $type, $keywords_ids, $search_string=null, $current_page=0, $sort=null)
+	public function getKeywordsSuggestData($site_id, $type, $keywords_ids, $search_string=null, $current_page=0, $sort=null, $volume_greater=null, $volume_less=null, $competition=null)
 	{
-		return $this->sendRequest('get-keywords-suggest-data', ['site_id'=>$site_id, 'type'=>$type,  'keywords_ids'=>$keywords_ids, 'search_string'=>$search_string, 'current_page'=>$current_page, 'sort'=>$sort]);
+		return $this->sendRequest('get-keywords-suggest-data', ['site_id'=>$site_id, 'type'=>$type,  'keywords_ids'=>$keywords_ids, 'search_string'=>$search_string, 'current_page'=>$current_page, 'sort'=>$sort, 'volume_greater'=>$volume_greater, 'volume_less'=>$volume_less, 'competition'=>$competition]);
 	}
 
 	public function hideKeywordSuggest($site_id, $keyword_id)
