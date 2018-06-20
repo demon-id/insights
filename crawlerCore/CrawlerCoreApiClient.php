@@ -101,6 +101,10 @@ class CrawlerCoreApiClient extends Component {
 			'url' => 'sites/update-rules',
 			'type' => 'get'
 		],
+		'update-domain-scheme' => [
+			'url' => 'sites/update-domain-scheme',
+			'type' => 'get'
+		],
 
 		// Keywords
 		'add-keywords' => [
@@ -434,6 +438,11 @@ class CrawlerCoreApiClient extends Component {
 	public function updateRules($site_id, $rules)
 	{
 		return $this->sendRequest('update-rules', ['site_id'=>$site_id, 'rules'=>$rules]);
+	}
+
+	public function updateDomainScheme($site_id, $scheme)
+	{
+		return $this->sendRequest('update-domain-scheme', ['site_id'=>$site_id, 'scheme'=>$scheme]);
 	}
 
 	public function addKeywords($site_id, $keywords=[])
