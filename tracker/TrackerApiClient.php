@@ -427,12 +427,7 @@ class TrackerApiClient extends Component
      */
     public function getRelatedPosts($site_id, $model)
     {
-        return $this->sendRequest('get-related-posts', [
-            'site_id' => $site_id,
-            'last'    => $model->last,    'last_limit' => $model->last_limit,
-            'popular' => $model->popular, 'popular_limit' => $model->popular_limit,
-            'related' => $model->related, 'related_limit' => $model->related_limit
-        ]);
+        return $this->sendRequest('get-related-posts', ['site_id'=>$site_id, 'last'=>$model->last,'last_limit'=>$model->last_limit,'popular'=>$model->popular,'popular_limit'=>$model->popular_limit,'related'=>$model->related,'related_limit'=>$model->related_limit]);
     }
     
 }
