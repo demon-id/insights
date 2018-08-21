@@ -427,9 +427,9 @@ class TrackerApiClient extends Component
      * @param $related
      * @return mixed
      */
-    public function getRelatedPosts($site_id, $last, $popular, $related)
+    public function getRelatedPosts($site_id, $last, $popular, $related, $viewing_page)
     {
-        return $this->sendRequest('get-related-posts', ['site_id'=>$site_id, 'last'=>$last, 'popular'=>$popular, 'related'=>$related]);
+        return $this->sendRequest('get-related-posts', ['site_id'=>$site_id, 'last'=>$last, 'popular'=>$popular, 'related'=>$related, 'viewing_page'=>$viewing_page]);
     }
     
 }
