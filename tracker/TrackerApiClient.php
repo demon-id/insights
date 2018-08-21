@@ -102,6 +102,10 @@ class TrackerApiClient extends Component
             'url' => 'post/import-leads',
             'type' => 'post'
         ],
+        'get-related-posts' => [
+            'url' => 'get/related-posts',
+            'type' => 'get'
+        ],
     ];
 
     public function __construct() {
@@ -415,4 +419,20 @@ class TrackerApiClient extends Component
             'Content-type' => 'multipart/form-data'
         ]);
     }
+    
+    /**
+     * @param $site_id
+     * @param $model
+     * @return mixed
+     */
+    public function getRelatedPosts($site_id, $model)
+    {
+        return $this->sendRequest('get-related-posts', [
+            'site_id' => $site_id,
+            'last'    => $model->last,    'last_limit' => $model->last_limit,
+            'popular' => $model->popular, 'popular_limit' => $model->popular_limit,
+            'related' => $model->related, 'related_limit' => $model->related_limit
+        ]);
+    }
+    
 }
