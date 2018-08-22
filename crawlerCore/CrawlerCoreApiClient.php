@@ -727,6 +727,6 @@ class CrawlerCoreApiClient extends Component {
 
 	public function getRelatedPosts($site_id, $viewing_page)
 	{            
-		return $this->sendRequest('get-related-posts', ['site_id'=>$site_id, $viewing_page]);
+		return $this->sendRequest('get-related-posts', ['site_id'=>$site_id, 'viewing_page'=>$viewing_page]);
 	}
 }
