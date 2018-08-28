@@ -222,7 +222,7 @@ class CrawlerCoreApiClient extends Component {
 			'type' => 'get'
 		],
 		'get-related-posts' => [
-			'url' => 'view-site-pages/get-related-posts',
+			'url' => 'view-site-related-pages/get-related-posts',
 			'type' => 'get'
 		],
 
