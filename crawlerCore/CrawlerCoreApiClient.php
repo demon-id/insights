@@ -57,6 +57,10 @@ class CrawlerCoreApiClient extends Component {
 			'url' => 'sites/stop-crawl-site',
 			'type' => 'post'
 		],
+		'set-died-site-status' => [
+			'url' => 'sites/set-died-site-status',
+			'type' => 'post'
+		],
 		'start-crawl-site-ga-data' => [
 			'url' => 'sites/start-crawl-site-ga-data',
 			'type' => 'post'
@@ -614,6 +618,11 @@ class CrawlerCoreApiClient extends Component {
 	public function stopCrawlSite($site_id, $crawler_name, $data)
 	{
 		return $this->sendRequest('stop-crawl-site', ['site_id'=>$site_id, 'crawler_name'=>$crawler_name, 'data'=>$data]);
+	}
+
+	public function setDiedSiteStatus($site_id)
+	{
+		return $this->sendRequest('set-died-site-status', ['site_id'=>$site_id]);
 	}
 
 	public function startCrawlSiteGaData($site_id, $data)
