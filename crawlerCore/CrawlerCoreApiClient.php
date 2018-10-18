@@ -225,6 +225,10 @@ class CrawlerCoreApiClient extends Component {
 			'url' => 'view-site-pages/get-view-site-page-diagram',
 			'type' => 'get'
 		],
+		'get-related-posts' => [
+			'url' => 'view-site-related-pages/get-related-posts',
+			'type' => 'get'
+		],
 
 		// View External Links
 		'get-view-external-link' => [
@@ -728,5 +732,10 @@ class CrawlerCoreApiClient extends Component {
 	public function getStopWords()
 	{            
 		return $this->sendRequest('get-stop-words', []);
+	}
+
+	public function getRelatedPosts($site_id, $viewing_page)
+	{            
+		return $this->sendRequest('get-related-posts', ['site_id'=>$site_id, 'viewing_page'=>$viewing_page]);
 	}
 }

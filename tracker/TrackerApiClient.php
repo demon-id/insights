@@ -102,6 +102,14 @@ class TrackerApiClient extends Component
             'url' => 'post/import-leads',
             'type' => 'post'
         ],
+        'get-cta-leads' => [
+            'url' => 'get/cta-leads',
+            'type' => 'get'
+        ],
+        'get-related-posts' => [
+            'url' => 'get/related-posts',
+            'type' => 'get'
+        ],
     ];
 
     public function __construct() {
@@ -415,4 +423,26 @@ class TrackerApiClient extends Component
             'Content-type' => 'multipart/form-data'
         ]);
     }
+    
+    /**
+     * @param $site_id
+     * @return mixed
+     */
+    public function getCtaLeads($site_id)
+    {
+        return $this->sendRequest('get-cta-leads', ['site_id'=>$site_id]);
+    }
+    
+    
+    /**
+     * @param $site_id
+     * @param $last
+     * @param $popular
+     * @return mixed
+     */
+    public function getRelatedPosts($site_id, $last, $popular, $viewing_page)
+    {
+        return $this->sendRequest('get-related-posts', ['site_id'=>$site_id, 'last'=>$last, 'popular'=>$popular, 'viewing_page'=>$viewing_page]);
+    }
+    
 }
