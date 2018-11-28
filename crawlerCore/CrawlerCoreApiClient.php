@@ -14,6 +14,7 @@ class CrawlerCoreApiClient extends Component {
 	public $apiKey;
 
 	public $testUserIds;
+	public $testPartnerIds;
 
 	protected $HTTPClient;
 
@@ -56,6 +57,10 @@ class CrawlerCoreApiClient extends Component {
 			'url' => 'sites/stop-crawl-site',
 			'type' => 'post'
 		],
+		'set-died-site-status' => [
+			'url' => 'sites/set-died-site-status',
+			'type' => 'post'
+		],
 		'start-crawl-site-ga-data' => [
 			'url' => 'sites/start-crawl-site-ga-data',
 			'type' => 'post'
@@ -80,8 +85,28 @@ class CrawlerCoreApiClient extends Component {
 			'url' => 'sites/stop-crawl-site-domain-competitors-sr-data',
 			'type' => 'post'
 		],
+		'start-crawl-site-competitors-data' => [
+			'url' => 'sites/start-crawl-site-competitors-data',
+			'type' => 'post'
+		],
+		'stop-crawl-site-competitors-data' => [
+			'url' => 'sites/stop-crawl-site-competitors-data',
+			'type' => 'post'
+		],
 		'check-site-available' => [
 			'url' => 'sites/check-site-available',
+			'type' => 'get'
+		],
+		'get-site-rules' => [
+			'url' => 'sites/get-site-rules',
+			'type' => 'get'
+		],
+		'update-rules' => [
+			'url' => 'sites/update-rules',
+			'type' => 'get'
+		],
+		'update-domain-scheme' => [
+			'url' => 'sites/update-domain-scheme',
 			'type' => 'get'
 		],
 
@@ -90,8 +115,20 @@ class CrawlerCoreApiClient extends Component {
 			'url' => 'site-keywords/add-keywords',
 			'type' => 'post'
 		],
+		'add-locality-keywords' => [
+			'url' => 'site-keywords/add-locality-keywords',
+			'type' => 'post'
+		],
+		'get-site-keyword' => [
+			'url' => 'site-keywords/get-site-keyword',
+			'type' => 'get'
+		],
 		'get-site-keywords' => [
 			'url' => 'site-keywords/get-site-keywords',
+			'type' => 'get'
+		],
+		'get-used-keyword-localities' => [
+			'url' => 'site-keywords/get-used-keyword-localities',
 			'type' => 'get'
 		],
 		'count-sites-keywords' => [
@@ -125,6 +162,28 @@ class CrawlerCoreApiClient extends Component {
 		'stop-crawl-keyword-keywords-sr-data' => [
 			'url' => 'site-keywords/stop-crawl-keyword-keywords-sr-data',
 			'type' => 'put'
+		],
+		'set-site-keywords-queue-status' => [
+			'url' => 'site-keywords/set-site-keywords-queue-status',
+			'type' => 'get'
+		],
+		'get-stop-words' => [
+			'url' => 'site-keywords/get-stop-words',
+			'type' => 'get'
+		],
+
+		// Site keywords localities
+		'get-site-keyword-localities' => [
+			'url' => 'site-keyword-localities/get-site-keyword-localities',
+			'type' => 'get'
+		],
+		'add-site-keyword-localities' => [
+			'url' => 'site-keyword-localities/add-site-keyword-localities',
+			'type' => 'post'
+		],
+		'delete-site-keyword-locality' => [
+			'url' => 'site-keyword-localities/delete-site-keyword-locality',
+			'type' => 'post'
 		],
 
 		// View Sites
@@ -162,6 +221,14 @@ class CrawlerCoreApiClient extends Component {
 			'url' => 'view-site-pages/get-site-page-keywords',
 			'type' => 'get'
 		],
+		'get-view-site-page-diagram' => [
+			'url' => 'view-site-pages/get-view-site-page-diagram',
+			'type' => 'get'
+		],
+		'get-related-posts' => [
+			'url' => 'view-site-related-pages/get-related-posts',
+			'type' => 'get'
+		],
 
 		// View External Links
 		'get-view-external-link' => [
@@ -182,6 +249,18 @@ class CrawlerCoreApiClient extends Component {
 		// View Site GA Data
 		'get-view-site-ga-data' => [
 			'url' => 'view-site-ga-data/get-site-data',
+			'type' => 'get'
+		],
+
+		// View Content Effective Pages
+		'get-view-content-effective-pages' => [
+			'url' => 'view-content-effective-pages/get-view-content-effective-pages',
+			'type' => 'get'
+		],
+
+		// Data Content Effective Pages
+		'get-data-content-effective-pages' => [
+			'url' => 'view-content-effective-pages/get-data-content-effective-pages',
 			'type' => 'get'
 		],
 
@@ -210,10 +289,18 @@ class CrawlerCoreApiClient extends Component {
 			'url' => 'keyword-keywords-suggest/get-site-keywords-suggest-data',
 			'type' => 'get'
 		],
+		'hide-keyword-suggest-data' => [
+			'url' => 'keyword-keywords-suggest/hide-site-keyword-suggest',
+			'type' => 'post'
+		],
+		'unhide-keyword-suggest-data' => [
+			'url' => 'keyword-keywords-suggest/unhide-site-keyword-suggest',
+			'type' => 'post'
+		],
 
 		//Competitors
 		'get-site-competitors-data' => [
-			'url' => 'view-sr-site-domain-competitors/get-site-competitors-data',
+			'url' => 'view-site-competitors/get-site-competitors-data',
 			'type' => 'get'
 		],
 
@@ -227,6 +314,16 @@ class CrawlerCoreApiClient extends Component {
 		'get-proxy' => [
 			'url' => 'proxy/get-proxy',
 			'type' => 'get'
+		],
+
+		// Seomoz data
+		'get-seomoz-data' => [
+			'url' => 'seomoz-data/get-seomoz-data',
+			'type' => 'get'
+		],
+		'add-seomoz-data' => [
+			'url' => 'seomoz-data/add-seomoz-data',
+			'type' => 'post'
 		],
 
 	];
@@ -254,7 +351,11 @@ class CrawlerCoreApiClient extends Component {
 				'json' => $params,
 			]);
 
-			$answer = $response->json();
+			$answer = $response->json(); //Guzzle 5.3.0
+			/*$answer = json_decode(         //Guzzle 6.2.0
+				(string) $response->getBody(),
+				true
+			);*/
 
 			return $answer;
 
@@ -337,14 +438,44 @@ class CrawlerCoreApiClient extends Component {
 		return $this->sendRequest('hard-delete-site', ['site_id'=>$site_id]);
 	}
 
+	public function getSiteRules($site_id)
+	{
+		return $this->sendRequest('get-site-rules', ['site_id'=>$site_id]);
+	}
+
+	public function updateRules($site_id, $rules)
+	{
+		return $this->sendRequest('update-rules', ['site_id'=>$site_id, 'rules'=>$rules]);
+	}
+
+	public function updateDomainScheme($site_id, $scheme)
+	{
+		return $this->sendRequest('update-domain-scheme', ['site_id'=>$site_id, 'scheme'=>$scheme]);
+	}
+
 	public function addKeywords($site_id, $keywords=[])
 	{
 		return $this->sendRequest('add-keywords', ['site_id'=>$site_id, 'keywords'=>$keywords]);
 	}
 
+	public function addLocalityKeywords($site_id, $keyword_id, $locality_ids=[])
+	{
+		return $this->sendRequest('add-locality-keywords', ['site_id'=>$site_id, 'keyword_id'=>$keyword_id, 'locality_ids'=>$locality_ids]);
+	}
+
+	public function getSiteKeyword($site_id, $keyword_id)
+	{
+		return $this->sendRequest('get-site-keyword', ['site_id'=>$site_id, 'keyword_id'=>$keyword_id]);
+	}
+
 	public function getSiteKeywords($site_id)
 	{
 		return $this->sendRequest('get-site-keywords', ['site_id'=>$site_id]);
+	}
+
+	public function getUsedKeywordLocalities($keyword_id, $site_id=null)
+	{
+		return $this->sendRequest('get-used-keyword-localities', ['keyword_id'=>$keyword_id, 'site_id'=>$site_id]);
 	}
 
 	public function deleteSiteKeyword($id, $site_id)
@@ -363,7 +494,7 @@ class CrawlerCoreApiClient extends Component {
 	}
 
 	public function getViewSite($site_id)
-	{
+	{           
 		return $this->sendRequest('get-view-site', ['id'=>$site_id]);
 	}
 
@@ -407,9 +538,9 @@ class CrawlerCoreApiClient extends Component {
 		return $this->sendRequest('get-view-external-link', ['id'=>$link_id]);
 	}
 
-	public function getViewSiteKeywords($site_id, $search_string=null, $current_page=0, $sort=null)
+	public function getViewSiteKeywords($site_id, $search_string=null, $current_page=0, $sort=null, $grades = null, $queues = null, $difficulties = null)
 	{
-		return $this->sendRequest('get-view-site-keywords', ['site_id'=>$site_id, 'search_string'=>$search_string, 'current_page'=>$current_page, 'sort'=>$sort]);
+                return $this->sendRequest('get-view-site-keywords', ['site_id'=>$site_id, 'search_string'=>$search_string, 'current_page'=>$current_page, 'sort'=>$sort, 'grades'=>$grades, 'queues'=>$queues, 'difficulties'=>$difficulties]);
 	}
 
 	public function getViewSitePageKeywordsByKeyword($site_id, $keyword_id, $current_page)
@@ -420,6 +551,16 @@ class CrawlerCoreApiClient extends Component {
 	public function getViewSiteGaData($site_id)
 	{
 		return $this->sendRequest('get-view-site-ga-data', ['site_id'=>$site_id]);
+	}
+
+	public function getViewContentEffectivePages($site_id)
+	{                
+                return $this->sendRequest('get-view-content-effective-pages', ['site_id'=>$site_id]);
+	}
+
+	public function getDataContentEffectivePages($site_id, $period=1, $current_page=0)
+	{                
+                return $this->sendRequest('get-data-content-effective-pages', ['site_id'=>$site_id, 'period'=>$period, 'current_page'=>$current_page]);
 	}
 
 	public function getErrorsDiagramData($site_id, $search_date=null)
@@ -442,24 +583,35 @@ class CrawlerCoreApiClient extends Component {
 		return $this->sendRequest('get-data-site-page-keyword-diagram', ['site_id'=>$site_id, 'page_id'=>$page_id, 'keyword_id'=>$keyword_id]);
 	}
 
+	public function getViewSitePageDiagram($site_id, $page_id)
+	{
+		return $this->sendRequest('get-view-site-page-diagram', ['site_id'=>$site_id, 'page_id'=>$page_id]);
+	}
+
 	public function getDataSiteGaData($site_id)
 	{
 		return $this->sendRequest('get-data-site-ga-data', ['site_id'=>$site_id]);
 	}
 
-	public function getKeywordsSuggestData($site_id, $search_string=null, $current_page=0, $sort=null)
+	public function getKeywordsSuggestData($site_id, $type, $keywords_ids, $search_string=null, $current_page=0, $sort=null, $volume_greater=null, $volume_less=null, $competition_greater=null, $competition_less=null)
 	{
-		return $this->sendRequest('get-keywords-suggest-data', ['site_id'=>$site_id, 'search_string'=>$search_string, 'current_page'=>$current_page, 'sort'=>$sort]);
+		return $this->sendRequest('get-keywords-suggest-data', ['site_id'=>$site_id, 'type'=>$type,  'keywords_ids'=>$keywords_ids, 'search_string'=>$search_string, 'current_page'=>$current_page, 'sort'=>$sort, 
+                                                'volume_greater'=>$volume_greater, 'volume_less'=>$volume_less, 'competition_greater'=>$competition_greater, 'competition_less'=>$competition_less]);
 	}
 
-	public function getSiteCompetitorsData($site_id, $search_string=null, $current_page=0, $sort=null)
+	public function hideKeywordSuggest($site_id, $keyword_id)
 	{
-		return $this->sendRequest('get-site-competitors-data', ['site_id'=>$site_id, 'search_string'=>$search_string, 'current_page'=>$current_page, 'sort'=>$sort]);
+		return $this->sendRequest('hide-keyword-suggest-data', ['site_id'=>$site_id, 'keyword_id'=>$keyword_id]);
 	}
 
-	public function getProxy()
+	public function unhideKeywordSuggest($site_id, $keyword_id)
 	{
-		return $this->sendRequest('get-proxy');
+		return $this->sendRequest('unhide-keyword-suggest-data', ['site_id'=>$site_id, 'keyword_id'=>$keyword_id]);
+	}
+
+	public function getSiteCompetitorsData($site_id, $current_page=0, $sort=null)
+	{
+		return $this->sendRequest('get-site-competitors-data', ['site_id'=>$site_id, 'current_page'=>$current_page, 'sort'=>$sort]);
 	}
 
 	public function startCrawlSite($site_id, $data)
@@ -470,6 +622,11 @@ class CrawlerCoreApiClient extends Component {
 	public function stopCrawlSite($site_id, $crawler_name, $data)
 	{
 		return $this->sendRequest('stop-crawl-site', ['site_id'=>$site_id, 'crawler_name'=>$crawler_name, 'data'=>$data]);
+	}
+
+	public function setDiedSiteStatus($site_id)
+	{
+		return $this->sendRequest('set-died-site-status', ['site_id'=>$site_id]);
 	}
 
 	public function startCrawlSiteGaData($site_id, $data)
@@ -502,6 +659,16 @@ class CrawlerCoreApiClient extends Component {
 		return $this->sendRequest('stop-crawl-site-domain-competitors-sr-data', ['site_id'=>$site_id, 'crawler_name'=>$crawler_name, 'data'=>$data]);
 	}
 
+	public function startCrawlSiteCompetitorsData($site_id, $data)
+	{
+		return $this->sendRequest('start-crawl-site-competitors-data', ['site_id'=>$site_id, 'data'=>$data]);
+	}
+
+	public function stopCrawlSiteCompetitorsData($site_id, $crawler_name, $data)
+	{
+		return $this->sendRequest('stop-crawl-site-competitors-data', ['site_id'=>$site_id, 'crawler_name'=>$crawler_name, 'data'=>$data]);
+	}
+
 	public function startCrawlSerpKeyword($keyword_id, $data)
 	{
 		return $this->sendRequest('start-crawl-serp-keyword', ['keyword_id'=>$keyword_id, 'data'=>$data]);
@@ -525,5 +692,50 @@ class CrawlerCoreApiClient extends Component {
 	public function stopCrawlKeywordKeywordsSrData($keyword_id, $crawler_name, $data)
 	{
 		return $this->sendRequest('stop-crawl-keyword-keywords-sr-data', ['keyword_id'=>$keyword_id, 'crawler_name'=>$crawler_name, 'data'=>$data]);
+	}
+
+	public function getProxy()
+	{
+		return $this->sendRequest('get-proxy');
+	}
+
+	public function getSeomozData($urls_hash, $last_update_date=null)
+	{
+		return $this->sendRequest('get-seomoz-data', ['urls_hash'=>$urls_hash, 'last_update_date'=>$last_update_date]);
+	}
+
+	public function addSeomozData($url, $data, $last_update_date)
+	{
+		return $this->sendRequest('add-seomoz-data', ['url'=>$url, 'data'=>$data, 'last_update_date'=>$last_update_date]);
+	}
+
+	public function getSiteKeywordLocalities($site_id, $search_word=null, $current_page=0, $sort=null)
+	{
+		return $this->sendRequest('get-site-keyword-localities', ['site_id'=>$site_id, 'search_word'=>$search_word, 'current_page'=>$current_page, 'sort'=>$sort]);
+	}
+
+	public function addSiteKeywordLocalities($site_id, $localities=[])
+	{
+		return $this->sendRequest('add-site-keyword-localities', ['site_id'=>$site_id, 'localities'=>$localities]);
+	}
+
+	public function deleteSiteKeywordLocality($id, $site_id)
+	{
+		return $this->sendRequest('delete-site-keyword-locality', ['id'=>$id, 'site_id'=>$site_id]);
+	}
+        
+	public function setSiteKeywordsQueueStatus($site_id, $keyword_id, $status)
+	{
+		return $this->sendRequest('set-site-keywords-queue-status', ['site_id'=>$site_id, 'keyword_id'=>$keyword_id, 'status'=>$status]);
+	}
+
+	public function getStopWords()
+	{            
+		return $this->sendRequest('get-stop-words', []);
+	}
+
+	public function getRelatedPosts($site_id, $viewing_page)
+	{            
+		return $this->sendRequest('get-related-posts', ['site_id'=>$site_id, 'viewing_page'=>$viewing_page]);
 	}
 }

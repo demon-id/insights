@@ -78,6 +78,10 @@ class TrackerApiClient extends Component
             'url' => 'get/lead-visits',
             'type' => 'get'
         ],
+        'get-lead-submit' => [
+            'url' => 'get/submits',
+            'type' => 'get'
+        ],
         'get-site-tracker' => [
             'url' => 'get/tracker',
             'type' => 'get'
@@ -97,6 +101,14 @@ class TrackerApiClient extends Component
         'import-leads' => [
             'url' => 'post/import-leads',
             'type' => 'post'
+        ],
+        'get-cta-leads' => [
+            'url' => 'get/cta-leads',
+            'type' => 'get'
+        ],
+        'get-related-posts' => [
+            'url' => 'get/related-posts',
+            'type' => 'get'
         ],
     ];
 
@@ -133,7 +145,11 @@ class TrackerApiClient extends Component
         try {
             $response = $this->HTTPClient->$request_type($request_url, $options);
 
-            $answer = $response->json();
+			$answer = $response->json(); //Guzzle 5.3.0
+			/*$answer = json_decode(         //Guzzle 6.2.0
+				(string) $response->getBody(),
+				true
+			);*/
 
             return $answer;
 
@@ -257,6 +273,15 @@ class TrackerApiClient extends Component
         }
 
         return $this->sendRequest('get-site-forms', $params);
+    }
+
+    /**
+     * @param $site_id
+     * @return mixed
+     */
+    public function getLeadSubmit($site_id)
+    {
+            return $this->sendRequest('get-lead-submit', ['site_id'=> $site_id]);
     }
 
     /**
@@ -398,4 +423,26 @@ class TrackerApiClient extends Component
             'Content-type' => 'multipart/form-data'
         ]);
     }
+    
+    /**
+     * @param $site_id
+     * @return mixed
+     */
+    public function getCtaLeads($site_id)
+    {
+        return $this->sendRequest('get-cta-leads', ['site_id'=>$site_id]);
+    }
+    
+    
+    /**
+     * @param $site_id
+     * @param $last
+     * @param $popular
+     * @return mixed
+     */
+    public function getRelatedPosts($site_id, $last, $popular, $viewing_page)
+    {
+        return $this->sendRequest('get-related-posts', ['site_id'=>$site_id, 'last'=>$last, 'popular'=>$popular, 'viewing_page'=>$viewing_page]);
+    }
+    
 }

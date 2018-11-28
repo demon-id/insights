@@ -27,6 +27,10 @@ class CoreApiClient extends Component {
 			'url' => 'sites/site-stats-updated',
 			'type' => 'post'
 		],
+		'get-owner-site' => [
+			'url' => 'sites/get-owner-site',
+			'type' => 'get'
+		],
 	];
 
 	public function __construct() {
@@ -50,7 +54,11 @@ class CoreApiClient extends Component {
 				'json' => $params,
 			]);
 
-			$answer = $response->json();
+			$answer = $response->json(); //Guzzle 5.3.0
+			/*$answer = json_decode(         //Guzzle 6.2.0
+				(string) $response->getBody(),
+				true
+			);*/
 
 			return $answer;
 
@@ -104,5 +112,10 @@ class CoreApiClient extends Component {
 	public function siteStatsUpdated($core_site_id)
 	{
 		return $this->sendRequest('site-stats-updated', ['site_id'=>$core_site_id]);
+	}
+
+	public function getOwnerSite($core_site_id)
+	{
+		return $this->sendRequest('get-owner-site', ['site_id'=>$core_site_id]);
 	}
 }

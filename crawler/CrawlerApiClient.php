@@ -36,6 +36,11 @@ class CrawlerApiClient extends Component {
 			'url' => 'crawler-sites/start-grab-robots',
 			'type' => 'post'
 		],
+		'start-get-serp-pages-count' => [
+			'url' => 'crawler-sites/start-get-serp-pages-count',
+			'type' => 'post'
+		],
+
 
 		// Crawler site pages
 		'get-site-page' => [
@@ -90,6 +95,10 @@ class CrawlerApiClient extends Component {
 			'url' => 'crawler-keywords-serp/start-parse-serp',
 			'type' => 'post'
 		],
+		'get-stop-words' => [
+			'url' => 'site-keywords/get-stop-words',
+			'type' => 'get'
+		],
 	];
 
 	public function __construct() {
@@ -117,7 +126,11 @@ class CrawlerApiClient extends Component {
 				'json' => $params,
 			]);
 
-			$answer = $response->json();
+			$answer = $response->json(); //Guzzle 5.3.0
+			/*$answer = json_decode(         //Guzzle 6.2.0
+				(string) $response->getBody(),
+				true
+			);*/
 
 			return $answer;
 
@@ -184,6 +197,11 @@ class CrawlerApiClient extends Component {
 	public function startGrabSiteRobots($site_id)
 	{
 		return $this->sendRequest('start-grab-site-robots', ['id'=>$site_id]);
+	}
+
+	public function startGetSerpPagesCount($site_id)
+	{
+		return $this->sendRequest('start-get-serp-pages-count', ['id'=>$site_id]);
 	}
 
 	public function getSitemap($sitemap_id)
@@ -260,5 +278,10 @@ class CrawlerApiClient extends Component {
 	public function addCrawlerTask($data)
 	{
 		return $this->sendRequest('add-crawler-task', ['data'=>$data]);
+	}
+
+	public function getStopWords()
+	{
+		return $this->sendRequest('get-stop-words', []);
 	}
 }
