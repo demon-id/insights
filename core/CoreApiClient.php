@@ -70,13 +70,15 @@ class CoreApiClient extends Component {
 
 	protected function logExceptions($request_url, $response, $e)
 	{
-		Log::add(
-			'Url:'.$request_url."\n".
-			'Message: '.$e->getMessage()."\n".
-			'Response: '.(($response) ? $response->getBody() : '')."\n",
-			'api-http-errors',
-			\Yii::getAlias('@runtime').'/logs'
-		);
+		try {
+                        Log::add(
+                                'Url:'.$request_url."\n".
+                                'Message: '.$e->getMessage()."\n".
+                                'Response: '.(($response) ? $response->getBody() : '')."\n",
+                                'api-http-errors',
+                                \Yii::getAlias('@runtime').'/logs'
+                        );
+                } catch(Exception $e) {}
 	}
 
 	protected function getRequestParams($name)
