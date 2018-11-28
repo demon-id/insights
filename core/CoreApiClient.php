@@ -86,7 +86,8 @@ class CoreApiClient extends Component {
                                 'api-http-errors',
                                 \Yii::getAlias('@runtime').'/logs'
                         );
-                } catch(Exception $e) {}
+                } 
+                catch(Exception $e) {}
 	}
 
 	protected function getRequestParams($name)
